@@ -1,12 +1,11 @@
-# Add Authors here
-uright:
-   name: Jack Wong
-   username: uright
-   site: http://uright.ca/
-   avatar: jack-avatar.png
-   bio: "I'm a software engineer and a tech enthusiast. I love to share my knowledge and experience with others. I hope you find my blog useful."
-   email: jack.wong@uright.ca
-   social:
+---
+name: Jack Wong
+username: uright
+bio: "I'm a software engineer and a tech enthusiast. I love to share my knowledge and experience with others. I hope you find my blog useful."
+site: http://uright.ca/
+avatar: jack-avatar.png
+email: jack.wong@uright.ca
+social:
       - title: "github"
         url: "https://github.com/uright"
       - title: "linkedin"
@@ -29,4 +28,4 @@ uright:
       #   url: "https://dribbble.com/johndoe"
       # - title: "flickr"
       #   url: "https://flickr.com/johndoe"
-
+---

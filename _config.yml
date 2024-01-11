@@ -1,7 +1,7 @@
-title: devlopr
-subtitle: A Portfolio Jekyll Theme Built for Developers
+title: uright tech blog
+subtitle: Sharing development tips and tricks
 description: >- # this means to ignore newlines until "baseurl:"
-  devlopr-jekyll is a beautiful Jekyll Theme Built For Developers, which is optimized for speed and readability.
+  A tech blog for me to share my development tips and tricks
 
 url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -14,47 +14,47 @@ urls:
       url: /about
     - text: Blog
       url: /blog
-    - text: Gallery
-      url: /gallery
-    - text: Shop
-      url : /shop
-    - text: Contact
-      url : /contact
+    # - text: Gallery
+    #   url: /gallery
+    # - text: Shop
+    #   url : /shop
+    # - text: Contact
+    #   url : /contact
 
 
 # Edit Author details (For multi authors check _data/authors.yml)
 
-author_logo: profile.png
-author: John Doe
-author_bio: Hi, my name is John Doe. I built this site using devlopr-jekyll :D
-author_email: "mail@sujaykundu.com"
-author_location: India
-author_website_url: "https://sujaykundu.com"
-typewrite-text: devlopr is a jekyll framework built for developers. You can edit this in _config.yml file
-hero_cover_img: sample_cover.jpg # replace this for changing homepage cover (eg. try cover.jpeg). Image should be in /assets/img
+author_logo: jack-avatar.png
+author: uright
+author_bio: Hi, my name is Jack Wong. I'm a software engineer and a tech enthusiast. I love to share my knowledge and experience with others. I hope you find my blog useful.
+author_email: "jack.wong@uright.ca"
+author_location: Toronto, Canada
+author_website_url: "https://uright.ca/"
+typewrite-text: Quick development tips worth sharing
+hero_cover_img: cover3.jpeg
 
 # Experiences
 author_work_experiences:
-            - company_name: Google
-              company_logo: google.png
-              company_url: https://google.com
-              designation: Software Engineer
+            - company_name: Eviden
+              company_logo: eviden.jpeg
+              company_url: https://eviden.com
+              designation: Enterprise Architect
               description: Worked on various Google Products
               visibility: true
-            - company_name: Microsoft
-              company_logo: microsoft.png
-              company_url: https://microsoft.com
-              designation: Azure Developer
-              description: Worked on various Azure Cloud Products
+            - company_name: AppCentrica Inc.
+              company_logo: appcentrica.webp
+              company_url: https://appcentrica.com/
+              designation: Partner, Director of Architecture
+              description: Led major digital and business transformation projects for a large number of automobile, P&C insurance, and other financial and enterprise clients.
               visibility: true
 
 # Education
 author_education_details:
-              - college_logo: mit.png
-                college_name: MIT
-                college_url: https://mit.org
-                college_degree: CS Engineer
-                description: Bachelor of Technology
+              - college_logo: uwaterloo.jpeg
+                college_name: University of Waterloo
+                college_url: https://uwaterloo.ca/
+                college_degree: Bachelor of Computer Science
+                description: Computer Science, Business Options
                 visibility: true
 
 # Projects
@@ -71,35 +71,31 @@ author_project_details:
                 visibility: true
 
 # social links
-twitter_username: johndoe
-github_username:  sujaykundu777
-facebook_username: johndoe
-linkedin_username: johndoe
-behance_username: johndoe
-instagram_username: johndoe
-medium_username: johndoe
-telegram_username: johndoe
-dribbble_username: johndoe
-flickr_username: johndoe
+twitter_username: jack_kk_wong
+github_username:  uright
+# facebook_username: johndoe
+linkedin_username: jackwong3
+# behance_username: johndoe
+# instagram_username: johndoe
+# medium_username: johndoe
+# telegram_username: johndoe
+# dribbble_username: johndoe
+# flickr_username: johndoe
 
 #for comments ( we got Disqus and Hyvor Commenting, uncomment the one you want to use )
 
-# disqus_shortname: sujay-kundu
-hyvor_talk_website_id: 476
+disqus_shortname: urightblog
+# hyvor_talk_website_id: 476
 
 # wakatime username (coding activity)
 wakatime_username: sujaykundu777
 
 # mailchimp embedded form url (newsletter):
-mailchimp_form_url: https://sujaykundu.us10.list-manage.com/subscribe/post?u=50bab1c85eae24ecfb0f68361&amp;id=3a2dd721d0
+# mailchimp_form_url: https://sujaykundu.us10.list-manage.com/subscribe/post?u=50bab1c85eae24ecfb0f68361&amp;id=3a2dd721d0
 
 # contact form - (choose formspress or getform)
 # getform_endpoint: 83b703c3-9e47-4df4-ac55-e24d7eb02abc
 formspree_email: johndoe@gmail.com
-
-# releases - widget can be (sidebar, modal or embed)
-olvy_organization: devlopr
-olvy_widget_type: sidebar
 
 # syntax highlighter
 markdown: kramdown
