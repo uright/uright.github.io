@@ -19,6 +19,12 @@ A frequent scenario for privateGPT users involves the need to interact with a fr
 
 Below is the Python script I crafted, titled delete-ingested.py. This script is designed to list and delete all documents that have been ingested into privateGPT, thereby simplifying the file management process:
 
+```bash
+# Install required dependency
+echo "requests" >> requirements.txt
+pip install -r requirements.txt
+```
+
 ```python
 # `delete-ingested.py`
 import requests
