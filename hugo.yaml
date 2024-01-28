@@ -15,7 +15,7 @@ outputs:
 Paginate: 3
 enableRobotsTXT: true
 disqusShortname: urightblog
-# googleAnalytics: G-MEASUREMENT_ID
+googleAnalytics: G-76NMXX8Z0Q
 
 markup:
   goldmark:
