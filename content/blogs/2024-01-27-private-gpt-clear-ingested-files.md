@@ -4,15 +4,19 @@ date = 2024-01-27T23:25:28-05:00
 draft = false
 +++
 
-# PrivateGPT
+# privateGPT: An Overview and Recent Updates
 
-I've been following [privateGPT](https://github.com/imartinez/privateGPT) for quite sometimes now. Recently, they have made some big updates to the application. It now supports a web UI and backend API.
+As an avid follower of [privateGPT](https://github.com/imartinez/privateGPT), I have been closely monitoring its evolution. Recently, privateGPT has undergone significant enhancements, notably the integration of a web-based User Interface (UI) and a robust backend Application Programming Interface (API).
 
 ![privateGPT](/img/2024-01-27-private-gpt-clear-ingested-files/private-gpt.png)
 
-# Problem & Solution
+# Addressing a Common Challenge: Efficiently Managing Ingested Documents
 
-More than often, you may wish chat with another set of documents. The current UI does not consists of a clear ingested file option. Normally, you would stop the server, and manually remove `/local_data/private_gpt/qdrant` folder to clear off the vector database. But if you don't wish to restart, I've written a small python script to make use of the newly ingest API.
+A frequent scenario for privateGPT users involves the need to interact with a fresh set of documents. However, the current UI lacks a direct feature for clearing previously ingested files. Traditionally, this would require stopping the server and manually deleting the `/local_data/private_gpt/qdrant` folder to reset the vector database. For those seeking a more streamlined approach that avoids server restarts, I have developed a concise Python script. This script leverages the newly introduced ingest API to efficiently manage your documents.
+
+## The Solution: A Python Script for Simplified File Management
+
+Below is the Python script I crafted, titled delete-ingested.py. This script is designed to list and delete all documents that have been ingested into privateGPT, thereby simplifying the file management process:
 
 ```python
 # `delete-ingested.py`
@@ -58,7 +62,9 @@ for doc_id in doc_ids:
     delete_docs(doc_id)
 ```
 
-Simply run this script to clear the ingested/indexed file.
+## Executing the Script
+To clear the ingested/indexed files, simply execute the script with the following command:
+
 ```bash
 python3 delete-ingested.py
 ```
