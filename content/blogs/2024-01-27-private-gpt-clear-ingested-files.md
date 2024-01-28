@@ -1,5 +1,6 @@
 +++
 title = 'privateGPT Clear Ingested Files'
+description = 'Streamline Your privateGPT Experience: A Guide to Effortlessly Clearing Ingested Files with a Custom Python Script'
 date = 2024-01-27T23:25:28-05:00
 draft = false
 +++
