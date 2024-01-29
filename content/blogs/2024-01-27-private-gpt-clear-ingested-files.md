@@ -3,13 +3,15 @@ title = 'privateGPT Clear Ingested Files'
 description = 'Streamline Your privateGPT Experience: A Guide to Effortlessly Clearing Ingested Files with a Custom Python Script'
 date = 2024-01-27T23:25:28-05:00
 draft = false
+author = 'uright'
+tags = ['privategpt']
+toc = true
+image = '/img/2024-01-27-private-gpt-clear-ingested-files/private-gpt.png'
 +++
 
 # privateGPT: An Overview and Recent Updates
 
 As an avid follower of [privateGPT](https://github.com/imartinez/privateGPT), I have been closely monitoring its evolution. Recently, privateGPT has undergone significant enhancements, notably the integration of a web-based User Interface (UI) and a robust backend Application Programming Interface (API).
-
-![privateGPT](/img/2024-01-27-private-gpt-clear-ingested-files/private-gpt.png)
 
 # Addressing a Common Challenge: Efficiently Managing Ingested Documents
 
