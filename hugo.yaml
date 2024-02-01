@@ -337,6 +337,7 @@ params:
         if (heroElement) {
           heroElement.style.backgroundImage = "url('/img/background2.jpeg')";
           heroElement.style.backgroundPosition = "center";
+          heroElement.style.backgroundSize = "cover";
         }
       });
     </script>
