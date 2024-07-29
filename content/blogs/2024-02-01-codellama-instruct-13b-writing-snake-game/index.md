@@ -190,10 +190,10 @@ I did a quick test to see if codellama-13b 5-bit quantized model can write snake
 >
 > I hope this helps! Let me know if you have any other questions.
 
-For a screenshot of the prompt, click [here](/posts/2024-02-01-codellama-instruct-13b-writing-snake-game/llm-snake-game-prompts.png)
+For a screenshot of the prompt, click [here](llm-snake-game-prompts.png)
 ## Result in Action
 ```bash
 python game2.py
 ```
 
-{{< video "/posts/2024-02-01-codellama-instruct-13b-writing-snake-game/LLM-Snake-Game-Demo.mp4" "LLM-Snake-Game-Demo.mp4" >}}
+{{< video "LLM-Snake-Game-Demo.mp4" "LLM-Snake-Game-Demo.mp4" >}}
