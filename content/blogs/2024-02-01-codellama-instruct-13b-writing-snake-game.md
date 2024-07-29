@@ -9,7 +9,7 @@ description = 'Codellama-13b 5-bit quantized model was used to write a snake gam
 toc = true
 +++
 
-# Quick test on codellama-13b to write snake game
+## Quick test on codellama-13b to write snake game
 
 I did a quick test to see if codellama-13b 5-bit quantized model can write snake game. I've read and seen many people tried and it doesn't work. But I want to see the actual result and see how off codellama-13b is. I don't think it turned out that bad.
 
@@ -17,7 +17,7 @@ I did a quick test to see if codellama-13b 5-bit quantized model can write snake
 * Model: TheBloke/codellama-instruct-13b-q5_k_m.gguf
 * Hardware: MacBook M1 Pro 16GB ram
 
-# Prompts
+## Prompts
 
 > `User`: Write a snake game in Python
 
@@ -191,7 +191,7 @@ I did a quick test to see if codellama-13b 5-bit quantized model can write snake
 > I hope this helps! Let me know if you have any other questions.
 
 For a screenshot of the prompt, click [here](/posts/2024-02-01-codellama-instruct-13b-writing-snake-game/llm-snake-game-prompts.png)
-# Result in Action
+## Result in Action
 ```bash
 python game2.py
 ```
