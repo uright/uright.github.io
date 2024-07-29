@@ -35,4 +35,8 @@ h3 {
     color: var(--text-secondary-color) !important;
     max-height: 450px;
     line-height: 1rem;
-  }
+}
+
+#list-page .card > .card-header .card-img-top {
+    object-fit: contain;
+}
