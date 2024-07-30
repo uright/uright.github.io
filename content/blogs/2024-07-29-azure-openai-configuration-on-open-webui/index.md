@@ -10,22 +10,6 @@ toc = true
 
 +++
 
-# Table of Content
-* What is it about? Why are we doing it? what good is it for?
-  * Open WebUI (formerly Ollama WebUI) is excellenet at testing out Ollama open source model. And it has a great compatibility of comparing different open source models as well as OpenAI models.
-  * One of the challenge is that it does not have built-in support for Azure OpenAI service.
-  * In this article, we are going to go through step by step instructions on how to connect to Azure OpenAI service to unlock gpt-4o models on Open WebUI.
-* Configuration Overview
-  * Compose a diagram to describe the usage of litellm proxy server.
-* Configuration Procedures
-  * Pre-requisite:
-    * Open WebUI is installed and configured via Docker - link to installation document here.
-  * Steps
-    * Configure LiteLLM
-    * Update Open WebUI via Admin Console (provide screenshots
-  * Results
-    * Show a few screenshots of end product
-
 ## Purpose
 
 Open WebUI (previously known as Ollama WebUI) serves as a powerful tool for testing and comparing various open-source models, including those from OpenAI. Its versatility in handling different models makes it a valuable asset for researchers and developers. However, one notable limitation is the absence of built-in support for the Azure OpenAI Service.
