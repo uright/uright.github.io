@@ -4,7 +4,7 @@ description = 'A guide to configure Open WebUI to connect to Azure OpenAI servic
 date = 2024-07-29T10:45:17-04:00
 draft = false
 author = 'uright'
-tags = ['ollama','azure-openai','litellm']
+tags = ['ollama','azure-openai','litellm', 'open-webui']
 image = '/posts/2024-07-29-azure-openai-configuration-on-open-webui/blog-post-image.jpeg'
 toc = true
 
@@ -40,7 +40,7 @@ flowchart LR
   litellm -. "https://{yourendpoint}.openai.azure.com" .-> azureopenai
 ```
 
-## Configuration Procedures
+## Configuration Guide
 
 ### Prerequisites
 Open WebUI is installed and configured running in Docker. If not, follow the setup guide here: https://docs.openwebui.com/getting-started/
