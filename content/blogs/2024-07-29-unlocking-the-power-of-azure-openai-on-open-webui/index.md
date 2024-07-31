@@ -21,7 +21,7 @@ In this article, we provide a comprehensive, step-by-step guide on how to connec
 We will be using [*litellm proxy server*](https://www.litellm.ai/) to emulate the OpenAI API and connect to the Azure OpenAI service. This will allow us to use GPT-4 models on Open WebUI.
 
 ```mermaid
-flowchart LR
+flowchart TB
   browser((Browser))
   openwebui[Open WebUI]
   litellm[LiteLLM Proxy Server]
