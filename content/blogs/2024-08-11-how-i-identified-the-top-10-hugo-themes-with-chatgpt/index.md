@@ -88,15 +88,15 @@ This experiment was a clear demonstration of how AI can simplify complex tasks, 
 
 At the time of writing this post, the top 10 themes based on the number of Stars is as follow:
 
-| Theme Name                                                   | Forks | Stars |
-| ------------------------------------------------------------ | ----- | ----- |
-| [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod) | 2540  | 9362  |
-| [hugo-book](https://github.com/alex-shpak/hugo-book)         | 1164  | 3304  |
-| [archie](https://github.com/athul/archie)                    | 295   | 960   |
-| [hugo-theme-diary](https://github.com/AmazingRise/hugo-theme-diary) | 186   | 540   |
-| [blist-hugo-theme](https://github.com/apvarun/blist-hugo-theme) | 162   | 332   |
-| [gokarna](https://github.com/526avijitgupta/gokarna)         | 134   | 329   |
-| [hugo-orbit-theme](https://github.com/aerohub/hugo-orbit-theme) | 120   | 252   |
-| [digital-garden-hugo-theme](https://github.com/apvarun/digital-garden-hugo-theme) | 77    | 236   |
-| [hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog) | 132   | 203   |
-| [hugo-theme-pixyll](https://github.com/azmelanar/hugo-theme-pixyll) | 58    | 180   |
+| Theme Name                                                                           | Forks ⑂ | Stars 🌟 |
+| ------------------------------------------------------------------------------------ | ------- | --------- |
+| [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod)                      | 2540    | 9362      |
+| [hugo-book](https://github.com/alex-shpak/hugo-book)                                 | 1164    | 3304      |
+| [archie](https://github.com/athul/archie)                                            | 295     | 960       |
+| [hugo-theme-diary](https://github.com/AmazingRise/hugo-theme-diary)                  | 186     | 540       |
+| [blist-hugo-theme](https://github.com/apvarun/blist-hugo-theme)                      | 162     | 332       |
+| [gokarna](https://github.com/526avijitgupta/gokarna)                                 | 134     | 329       |
+| [hugo-orbit-theme](https://github.com/aerohub/hugo-orbit-theme)                      | 120     | 252       |
+| [digital-garden-hugo-theme](https://github.com/apvarun/digital-garden-hugo-theme)    | 77      | 236       |
+| [hugo-theme-bootstrap4-blog](https://github.com/alanorth/hugo-theme-bootstrap4-blog) | 132     | 203       |
+| [hugo-theme-pixyll](https://github.com/azmelanar/hugo-theme-pixyll)                  | 58      | 180       |
