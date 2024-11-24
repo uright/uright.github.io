@@ -1,0 +1,42 @@
+#single {
+    padding: 60px 0;
+    line-height: 1.25em !important;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+#single .page-content blockquote {
+    padding: 10px 15px !important;
+    border-left: 6px solid var(--primary-color) !important;
+    color: var(--text-secondary-color) !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+    margin: 10px 0 !important;
+    border-radius: 5px;
+}
+
+#single .page-content pre {
+    border-radius: 0.7em !important;
+    margin: 5px;
+    margin-bottom: 1em !important;
+    padding: 1em !important;
+    background-color: var(--secondary-color) !important;
+    color: var(--text-secondary-color) !important;
+    max-height: 100% !important;
+    line-height: 1rem;
+}
+
+#list-page .card > .card-header .card-img-top {
+    object-fit: contain;
+}
