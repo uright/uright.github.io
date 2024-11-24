@@ -32,6 +32,8 @@ Instead of manually going through each theme's repository, I turned to ChatGPT t
 
 ChatGPT delivered exactly what I needed—a Python script that systematically accessed each repository, retrieved the number of stars and forks, and then ranked the themes based on these metrics. The script was designed to handle errors gracefully, such as skipping over any repositories that were no longer available or had changed their URL structure.
 
+https://chatgpt.com/share/7125faa2-8825-4403-874f-098a3f323eab
+
 ```text
 # User Prompt
 Attached is a list of github links, can you write a python script and create a csv that export it's repo name, forks and stars?
