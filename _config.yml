@@ -150,6 +150,9 @@ paginate: 10
 # The base URL of your site
 baseurl: ""
 
+# Site license
+license: "All Rights Reserved"
+
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
