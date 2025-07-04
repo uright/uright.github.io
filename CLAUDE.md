@@ -4,51 +4,58 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a Hugo-based static site for the uright tech blog. It uses the `hugo-profile` theme as a git submodule and focuses on technology content related to AWS Bedrock, Azure OpenAI, LLMs, and deep learning.
+This is a Jekyll-based static site for the uright tech blog. It uses the `jekyll-theme-chirpy` theme and focuses on technology content related to AWS Bedrock, Azure OpenAI, LLMs, and deep learning.
 
 ## Common Commands
 
 ```bash
-# Install Hugo (required)
-brew install hugo
+# Install Ruby (if not already installed)
+# macOS: brew install ruby
+# Ubuntu: sudo apt-get install ruby-full
 
-# Initialize git submodules (required for theme)
-git submodule update --init
+# Install bundler
+gem install bundler
+
+# Install dependencies
+bundle install
 
 # Run development server
-hugo server -D
+bundle exec jekyll serve
 
 # Build for production
-hugo build
+bundle exec jekyll build
 ```
 
 ## Site Structure
 
-- **`hugo.yaml`**: Main configuration file containing site settings, theme configuration, and content parameters
-- **`content/blogs/`**: Blog posts in Markdown format, organized by date
-- **`static/`**: Static assets including images, CSS, and favicon files
-- **`layouts/`**: Custom Hugo templates and shortcodes
-- **`themes/hugo-profile/`**: Git submodule containing the Hugo theme
+- **`_config.yml`**: Main configuration file containing site settings, theme configuration, and content parameters
+- **`_posts/`**: Blog posts in Markdown format with date-prefixed filenames
+- **`assets/`**: Static assets including images, CSS, and favicon files
+- **`_includes/`**: Reusable Jekyll includes and custom components
+- **`_data/`**: Site data files (contact.yml, share.yml)
+- **`_tabs/`**: Static pages (about, archives, categories, tags)
+- **`_plugins/`**: Custom Jekyll plugins
 
 ## Content Management
 
-- Blog posts are located in `content/blogs/` with date-prefixed folders
-- Images for posts go in `static/img/` or `static/posts/`
-- Site uses dark theme by default (`defaultTheme: "dark"`)
-- Navigation is configured in `hugo.yaml` under `Menus.main`
+- Blog posts are located in `_posts/` with date-prefixed filenames (YYYY-MM-DD-title.md)
+- Images for posts go in `assets/img/`
+- Site uses dark theme by default (`theme_mode: dark`)
+- Navigation tabs are configured in `_tabs/` directory
+- Categories and tags are automatically generated from post front matter
 
 ## Theme Configuration
 
-The site uses the hugo-profile theme with extensive customization in `hugo.yaml`:
-- Custom CSS is enabled (`customCSS: true`)
-- Bootstrap CDN is disabled (`useBootstrapCDN: false`)
-- Various sections can be enabled/disabled (experience, education, projects, etc.)
-- Social links and contact information are configured in the params section
+The site uses the jekyll-theme-chirpy theme with customization in `_config.yml`:
+- Dark theme is enabled by default
+- Google Analytics integration (G-6MVNSG6PNN)
+- Disqus comments enabled (shortname: urightblog)
+- Social links and contact information are configured in the social section
+- PWA (Progressive Web App) features are enabled
 
 ## Development Notes
 
-- The theme is included as a git submodule, so changes to theme files should be handled carefully
-- Custom scripts are embedded in the configuration for background image handling
+- The theme is installed as a Ruby gem via Gemfile
 - Site includes Google Analytics and Disqus integration
-- Mermaid diagrams are supported via custom render hook
- No newline at end of file
+- Built-in support for syntax highlighting, TOC, and search functionality
+- Supports categories, tags, and archives pages automatically
