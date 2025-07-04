@@ -3,12 +3,19 @@
 ## Get started
 
 ```bash
-# Install hugo
-brew install hugo
+# Install Ruby (if not already installed)
+# macOS: brew install ruby
+# Ubuntu: sudo apt-get install ruby-full
 
-# Fetch submodule code
-git submodule update --init
+# Install bundler
+gem install bundler
 
-# Run server locally
-hugo server -D
+# Install dependencies
+bundle install
+
+# Run development server
+bundle exec jekyll serve
+
+# Build for production
+bundle exec jekyll build
 ```
