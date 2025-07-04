@@ -1,0 +1,10 @@
+copyright:
+  # Shown at the bottom of the post
+  license:
+    template: "All rights reserved."
+    name: "All Rights Reserved"
+    link: ""
+
+  # Displayed in the footer
+  brief: "All rights reserved."
+  verbose: "All rights reserved by the author."
