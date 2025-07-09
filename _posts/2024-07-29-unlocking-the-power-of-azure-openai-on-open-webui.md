@@ -53,6 +53,7 @@ Open WebUI should be installed and configured to run in Docker. If not, follow t
 
 1. Create an empty folder with a name of your choice. For this example, we'll call it *my-litellm-proxy*.
 2. Navigate into the folder and create a new file named `litellm_config.yaml` with the following content:
+
    ```yaml
    model_list:
      - model_name: azure-gpt-4o
