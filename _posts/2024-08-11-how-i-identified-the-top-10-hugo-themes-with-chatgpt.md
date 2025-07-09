@@ -8,7 +8,7 @@ image:
   path: /assets/img/2024-08-11-how-i-identified-the-top-10-hugo-themes-with-chatgpt/blog-post-image.jpeg
   alt: AI-powered Hugo theme selection
 redirect_from:
-  - /blogs/how-i-identified-the-top-10-hugo-themes-with-chatgpt/
+  - /blogs/2024-08-11-how-i-identified-the-top-10-hugo-themes-with-chatgpt/
 ---
 
 ## Introduction
