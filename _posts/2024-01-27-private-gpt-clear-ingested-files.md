@@ -7,6 +7,8 @@ tags: [privategpt, python, api]
 image:
   path: /assets/img/2024-01-27-private-gpt-clear-ingested-files/private-gpt.png
   alt: privateGPT Clear Ingested Files
+redirect_from:
+  - /blogs/private-gpt-clear-ingested-files/
 ---
 
 # privateGPT: An Overview and Recent Updates

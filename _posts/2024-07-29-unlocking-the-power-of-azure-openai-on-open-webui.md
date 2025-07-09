@@ -8,6 +8,8 @@ image:
   path: /assets/img/2024-07-29-unlocking-the-power-of-azure-openai-on-open-webui/blog-post-image.jpeg
   alt: Unlocking Azure OpenAI on Open WebUI
 mermaid: true
+redirect_from:
+  - /blogs/unlocking-the-power-of-azure-openai-on-open-webui/
 ---
 
 ## Purpose
