@@ -27,7 +27,7 @@ flowchart TB
   browser((Browser))
   openwebui[Open WebUI]
   litellm[LiteLLM Proxy Server]
-  azureopenai[« Azure OpenAI »\n GPT-4o]
+  azureopenai[« Azure OpenAI »<br>GPT-4o]
   
   subgraph "Docker Host"
     openwebui
@@ -39,7 +39,7 @@ flowchart TB
   end
 
   browser --> openwebui
-  openwebui -. "http://host.docker.internal:4000" .-> litellm
+  openwebui -. "http:\/\/host.docker.internal:4000" .-> litellm
   litellm -. "https://{yourendpoint}.openai.azure.com" .-> azureopenai
 ```
 
