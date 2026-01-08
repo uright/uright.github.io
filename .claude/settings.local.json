@@ -11,7 +11,12 @@
       "Bash(chmod:*)",
       "Bash(true)",
       "Bash(ls:*)",
-      "Bash(bundle exec:*)"
+      "Bash(bundle exec:*)",
+      "Bash(grep:*)",
+      "Bash(pip install:*)",
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": []
   }

@@ -19,3 +19,6 @@ bundle exec jekyll serve
 # Build for production
 bundle exec jekyll build
 ```
+
+## Additional Documents
+* [README_NEW_POST.md]()
