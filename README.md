@@ -21,4 +21,4 @@ bundle exec jekyll build
 ```
 
 ## Additional Documents
-* [README_NEW_POST.md]()
+* [README_NEW_POST.md](docs/README_NEW_POST.md)
