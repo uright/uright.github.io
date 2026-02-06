@@ -9,7 +9,7 @@ image:
   alt: "Shift+Enter shortcut fix in Claude Code and Antigravity"
 ---
 
-If you use Claude Code inside [Antigravity](http://antigravity.google/), you may have noticed that `Shift+Enter` doesn't work in the terminal. This is because Claude Code's `/terminal-setup` command only updates VSCode's `keybindings.json`, which Antigravity does not read. Here's how to fix it.
+If you use Claude Code inside [Antigravity](https://antigravity.google/), you may have noticed that `Shift+Enter` doesn't work in the terminal. This is because Claude Code's `/terminal-setup` command only updates VSCode's `keybindings.json`, which Antigravity does not read. Here's how to fix it.
 
 ## The Problem
 
