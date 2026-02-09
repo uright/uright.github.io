@@ -6,7 +6,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Jekyll-based static site for the uright tech blog. It uses the `jekyll-theme-chirpy` theme and focuses on technology content related to AWS Bedrock, Azure OpenAI, LLMs, and deep learning.
 
-## Common Commands
+## Development Setup
+
+You can run this Jekyll site using either local Ruby installation or Docker. Choose the method that works best for your environment.
+
+### Option 1: Docker (Recommended - No local Ruby needed)
+
+**Prerequisites:** Docker Desktop installed
+
+```bash
+# Build and start development server
+docker-compose up --build
+
+# Access site at http://localhost:4000
+# LiveReload enabled on port 35729
+
+# Stop server
+docker-compose down
+
+# Build for production
+docker-compose run --rm jekyll bundle exec jekyll build
+```
+
+See [README.Docker.md](README.Docker.md) for comprehensive Docker documentation.
+
+### Option 2: Local Ruby Installation
+
+**Prerequisites:** Ruby and Bundler installed locally
 
 ```bash
 # Install Ruby (if not already installed)
