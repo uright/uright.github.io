@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# Jekyll
+_site
+.jekyll-cache
+.jekyll-metadata
+
+# Bundler
+.bundle
+vendor
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+LICENSE
+docs
+
+# Tools
+tools
+
+# Node
+node_modules
+package.json
+package-lock.json
+*.config.js
+
+# Other
+*.gem
+*.gemspec
+.DS_Store
