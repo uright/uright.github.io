@@ -16,6 +16,9 @@ bundle install
 # Run development server
 bundle exec jekyll serve
 
+# Run development server in airbot 
+bundle exec jekyll serve --host 0.0.0.0
+
 # Build for production
 bundle exec jekyll build
 ```
