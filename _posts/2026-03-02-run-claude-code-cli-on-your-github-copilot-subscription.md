@@ -56,13 +56,19 @@ npx copilot-api@latest start
 
 ## Step 2: Authenticate with GitHub
 
-On first run, `copilot-api` will prompt you to authenticate with your GitHub account:
+Before starting the proxy, run the auth command to store your GitHub credentials:
+
+```bash
+copilot-api auth
+```
+
+This triggers a device code flow — it will print a code and open a browser prompt where you authorize the app against your GitHub account. Your Copilot subscription token is then saved locally for the proxy to use.
+
+Once authenticated, start the proxy:
 
 ```bash
 copilot-api start
 ```
-
-Follow the device code flow — it opens a browser prompt to authorize the app against your GitHub account. Your Copilot subscription is then used to generate tokens for the proxy.
 
 ## Step 3: Set Environment Variables
 
