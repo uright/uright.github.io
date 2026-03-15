@@ -104,3 +104,10 @@ Open WebUI should be installed and configured to run in Docker. If not, follow t
 ## All Set!
 
 ![You're all set!](/assets/img/2024-07-29-unlocking-the-power-of-azure-openai-on-open-webui/all-set.png)
+
+## See Also
+
+If you found this useful, you might also enjoy these related posts:
+
+- [Using AWS Bedrock Models from OpenWebUI]({% post_url 2026-02-16-using-aws-bedrock-models-from-openwebui %}) — the same LiteLLM proxy approach, applied to AWS Bedrock models (Claude, Llama, and more).
+- [Using GitHub Copilot Models via LiteLLM Proxy]({% post_url 2026-03-14-using-github-copilot-models-via-litellm-proxy %}) — route your GitHub Copilot subscription models through LiteLLM to Open WebUI and Claude Code CLI.

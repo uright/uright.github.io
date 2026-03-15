@@ -29,7 +29,7 @@ graph LR
 
 ## Why LiteLLM Proxy?
 
-[LiteLLM](https://github.com/BerriAI/litellm) is a unified LLM gateway that supports 100+ providers behind a single OpenAI-compatible API. Unlike `copilot-api`, it is:
+[LiteLLM](https://github.com/BerriAI/litellm) is a unified LLM gateway that supports 100+ providers behind a single OpenAI-compatible API. This same pattern was covered previously for [Azure OpenAI on Open WebUI]({% post_url 2024-07-29-unlocking-the-power-of-azure-openai-on-open-webui %}) — here we apply it to GitHub Copilot instead. Unlike `copilot-api`, it is:
 
 - **Officially supported by LiteLLM**: `github_copilot/` is a first-class provider in the LiteLLM library — though not officially supported by GitHub itself
 - **Multi-client ready**: serves OpenWebUI, Claude Code, and any API client at once
