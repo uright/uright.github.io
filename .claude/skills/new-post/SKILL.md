@@ -1,11 +1,11 @@
 ---
 name: new-post
-description: Creates new Jekyll blog posts with AI-powered metadata generation. Use when the user asks to "create a new post", "write a new blog post", "start a new article", or mentions creating Jekyll blog content.
+description: Creates new Jekyll blog posts with AI-powered metadata generation and initial draft content. Use when the user asks to "create a new post", "write a new blog post", "start a new article", or mentions creating Jekyll blog content.
 ---
 
 # New Blog Post Creator
 
-Creates Jekyll blog posts by collecting a brief description and intelligently generating suggestions for title, description, categories, tags, and featured image.
+Creates Jekyll blog posts by collecting a brief description, intelligently generating suggestions for title, description, categories, tags, and featured image, then drafting the initial post body content based on the user's idea.
 
 ## Quick Start
 
@@ -13,7 +13,8 @@ Creates Jekyll blog posts by collecting a brief description and intelligently ge
 2. Generate intelligent metadata suggestions using existing post patterns
 3. Present options via AskUserQuestion for each field
 4. Execute the post generator script
-5. Report results
+5. Draft initial post content and write it into the created file
+6. Report results
 
 ## Detailed Resources
 
@@ -67,13 +68,31 @@ source .venv/bin/activate && python3 tools/new-post.py \
 
 **Image handling**: If user selected "Yes" for featured image, generate descriptive filename from title slug and appropriate alt text from post description.
 
-### Step 5: Report Results
+### Step 5: Draft Initial Post Content
+
+After the script creates the file, read the created `.md` file to confirm the front matter, then **write a full initial draft of the post body** directly into that file using the user's original idea and any context provided.
+
+**Draft writing guidelines:**
+
+- **Opening section**: Start with a context-setting paragraph explaining the problem, situation, or motivation — match the conversational, direct tone of existing posts (see "The Situation", "Purpose" pattern)
+- **Structure**: Use `##` headings for major sections; `###` for sub-steps. Step-by-step tutorials use numbered `##` headings ("## Step 1: ...", "## Step 2: ...")
+- **Code blocks**: Include realistic, relevant code examples with proper language tags (` ```bash `, ` ```yaml `, ` ```python `)
+- **Mermaid diagrams**: If mermaid was selected, include one `mermaid` flowchart or sequence diagram where it adds value (e.g., architecture overview, process flow)
+- **Closing section**: End with a short conclusion, "All Set!" summary, or a "Tips" section with practical follow-up commands/advice
+- **Tone**: Practical, direct, developer-audience — no fluff. Match the voice of existing posts.
+- **Placeholders**: Use `[TODO: screenshot]` or `[TODO: add image here]` where screenshots would go. Use realistic example values (not `foo`/`bar`) that match the technology being discussed.
+- **Length**: Aim for a complete, publishable draft — not an outline. Write actual prose and real code examples.
+
+After drafting, use the Edit tool to replace the placeholder body in the created file with the full draft content.
+
+### Step 6: Report Results
 
 Show user:
 - ✅ Created post file path (e.g., `_posts/2026-02-08-post-slug.md`)
 - 📁 Created image directory path (if applicable)
 - 🖼️ Image filename and location (if applicable)
-- 📝 Next steps for adding content
+- 📝 Draft written — sections included in the post
+- Next steps: review draft, add screenshots/images, refine content
 
 ## Important Notes
 
