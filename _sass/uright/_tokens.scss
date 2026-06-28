@@ -1,0 +1,138 @@
+:root {
+  /* ---- surfaces (deepest → highest) ---- */
+  --gray-950: #0a0b0d;
+  --gray-900: #0f1113;
+  --gray-850: #131519;
+  --gray-800: #16181c;
+  --gray-750: #1a1d22;
+  --gray-700: #1f232a;
+  --gray-600: #272b33;
+  --gray-500: #353a44;
+  --gray-400: #4a515c;
+  --gray-300: #6b7280;
+  --gray-200: #8b94a1;
+  --gray-150: #a8b0bb;
+  --gray-100: #c8cdd5;
+  --gray-50:  #e6e9ee;
+  --white:    #f3f5f8;
+
+  /* ---- accent ramp ---- */
+  --accent-100: #ffe7d6;
+  --accent-200: #ffcaa6;
+  --accent-300: #ffa973;
+  --accent-400: #ff8a44;
+  --accent-500: #f26a21;
+  --accent-600: #db5715;
+  --accent-700: #b5440f;
+  --accent-800: #8a340c;
+  --accent-900: #5e230a;
+  --accent-contrast: #1f0d04;
+
+  /* ---- semantic hues ---- */
+  --green-500: #34d399;
+  --amber-500: #f5b544;
+  --amber-600: #e09a1f;
+  --red-500: #f0584f;
+  --red-600: #dc4138;
+  --blue-500: #4aa3ff;
+  --blue-600: #2f8ae8;
+  --violet-500: #9d7bff;
+  --agent-datadoug: #4cc9b0;
+
+  /* ---- alpha tints ---- */
+  --accent-alpha-08: rgba(242, 106, 33, 0.08);
+  --accent-alpha-12: rgba(242, 106, 33, 0.12);
+  --accent-alpha-16: rgba(242, 106, 33, 0.16);
+  --accent-alpha-24: rgba(242, 106, 33, 0.24);
+  --accent-alpha-40: rgba(242, 106, 33, 0.40);
+  --white-alpha-04: rgba(255, 255, 255, 0.04);
+  --white-alpha-06: rgba(255, 255, 255, 0.06);
+  --white-alpha-08: rgba(255, 255, 255, 0.08);
+  --white-alpha-10: rgba(255, 255, 255, 0.10);
+  --white-alpha-14: rgba(255, 255, 255, 0.14);
+  --black-alpha-30: rgba(0, 0, 0, 0.30);
+  --black-alpha-50: rgba(0, 0, 0, 0.50);
+
+  /* ---- semantic aliases ---- */
+  --surface-canvas: var(--gray-950);
+  --surface-panel: var(--gray-900);
+  --surface-raised: var(--gray-800);
+  --surface-overlay: var(--gray-750);
+  --surface-sunken: var(--gray-850);
+  --surface-hover: var(--white-alpha-04);
+  --surface-active: var(--white-alpha-08);
+  --surface-selected: var(--accent-alpha-12);
+
+  --text-primary: var(--white);
+  --text-secondary: var(--gray-150);
+  --text-tertiary: var(--gray-300);
+  --text-muted: var(--gray-200);
+  --text-disabled: var(--gray-400);
+  --text-accent: var(--accent-400);
+  --text-on-accent: var(--accent-contrast);
+  --text-link: var(--accent-400);
+
+  --border-subtle: var(--white-alpha-06);
+  --border-default: var(--white-alpha-10);
+  --border-strong: var(--white-alpha-14);
+  --border-accent: var(--accent-alpha-40);
+  --border-focus: var(--accent-500);
+
+  --action-primary: var(--accent-500);
+  --action-primary-hover: var(--accent-400);
+  --action-primary-active: var(--accent-600);
+  --focus-ring: var(--accent-alpha-40);
+
+  --status-success: var(--green-500);
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning: var(--amber-500);
+  --status-warning-bg: rgba(245, 181, 68, 0.12);
+  --status-danger: var(--red-500);
+  --status-danger-bg: rgba(240, 88, 79, 0.12);
+  --status-info: var(--blue-500);
+  --status-info-bg: rgba(74, 163, 255, 0.12);
+
+  --graph-edge: var(--white-alpha-14);
+  --graph-node-bg: var(--gray-800);
+
+  /* ---- elevation ---- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.62), 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-popover: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--white-alpha-08);
+  --glow-accent: 0 0 0 1px var(--accent-alpha-40), 0 4px 20px rgba(242, 106, 33, 0.24);
+  --glow-accent-soft: 0 0 20px rgba(242, 106, 33, 0.18);
+  --ring-focus: 0 0 0 2px var(--surface-canvas), 0 0 0 4px var(--accent-alpha-40);
+  --ring-focus-tight: 0 0 0 2px var(--accent-alpha-40);
+  --inset-top-highlight: inset 0 1px 0 var(--white-alpha-06);
+  --inset-input: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+
+  /* ---- motion ---- */
+  --dur-instant: 80ms;
+  --dur-fast: 130ms;
+  --dur-base: 190ms;
+  --dur-slow: 280ms;
+  --dur-slower: 420ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---- chrome dimensions ---- */
+  --titlebar-h: 48px;
+  --statusbar-h: 26px;
+  --explorer-w: 286px;
+  --rail-w: 264px;
+  --tab-h: 36px;
+
+  /* ---- radii ---- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-pill: 999px;
+}
