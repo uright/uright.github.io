@@ -1,0 +1,24 @@
+{%- comment -%}
+Resolves a category to a field from _data/uright.yml.
+Params: category (required, the category name), field (color|icon|description|slug).
+Falls back to site.data.uright.fallback for unknown categories.
+{%- endcomment -%}
+{%- assign _field = include.field | default: 'color' -%}
+{%- assign _match = nil -%}
+{%- for c in site.data.uright.categories -%}
+  {%- if c.name == include.category -%}{%- assign _match = c -%}{%- endif -%}
+{%- endfor -%}
+{%- if _match -%}
+  {%- case _field -%}
+    {%- when 'color' -%}{{ _match.color }}
+    {%- when 'icon' -%}{{ _match.icon }}
+    {%- when 'description' -%}{{ _match.description }}
+    {%- when 'slug' -%}{{ _match.slug }}
+  {%- endcase -%}
+{%- else -%}
+  {%- case _field -%}
+    {%- when 'color' -%}{{ site.data.uright.fallback.color }}
+    {%- when 'icon' -%}{{ site.data.uright.fallback.icon }}
+    {%- else -%}{{ site.data.uright.fallback.description }}
+  {%- endcase -%}
+{%- endif -%}
