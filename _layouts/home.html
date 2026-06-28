@@ -20,11 +20,12 @@ refactor: true
   <a class="ur-featured ur-card" href="{{ featured.url | relative_url }}">
     <div class="ur-featured-bar"></div>
     <div class="ur-featured-inner">
+      {%- if site.uright.show_thumbnails -%}
       <div class="ur-thumb ur-featured-thumb" style="color: {{ fcolor }}">
-        {%- if featured.image.path and site.uright.show_thumbnails -%}
-          <img src="{{ featured.image.path | relative_url }}" alt="{{ featured.image.alt | default: featured.title }}">
+        {%- if featured.image.path -%}<img src="{{ featured.image.path | relative_url }}" alt="{{ featured.image.alt | default: featured.title }}">
         {%- else -%}{% include uright-icon.html name=ficon size=34 %}{%- endif -%}
       </div>
+      {%- endif -%}
       <div class="ur-featured-body">
         <div class="ur-featured-meta">
           <span class="ur-eyebrow ur-eyebrow-accent">FEATURED ·</span>
