@@ -1,0 +1,8 @@
+/* ==========================================================================
+   uright Studio — Webfonts
+   Geist (UI) + Geist Mono (code/data) via Google Fonts.
+   NOTE: loaded over the network. See readme.md "Font substitution" — swap to
+   self-hosted .woff2 for offline/Electron packaging if needed.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');

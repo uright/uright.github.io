@@ -1,0 +1,49 @@
+/* ==========================================================================
+   uright Studio — Elevation, shadows & motion
+   Dark UI: elevation comes from borders + low-spread shadows, plus an
+   accent glow reserved for primary/active emphasis.
+   ========================================================================== */
+
+:root {
+  /* ---- Shadows (tuned for near-black surfaces) ------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40), 0 1px 1px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.62), 0 4px 12px rgba(0, 0, 0, 0.40);
+
+  /* Popover / menu: shadow + hairline top highlight for crisp edges */
+  --shadow-popover: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--white-alpha-08);
+
+  /* ---- Accent glows (use sparingly — primary action, active node) ----- */
+  --glow-accent: 0 0 0 1px var(--accent-alpha-40), 0 4px 20px rgba(242, 106, 33, 0.24);
+  --glow-accent-soft: 0 0 20px rgba(242, 106, 33, 0.18);
+
+  /* ---- Focus ring ------------------------------------------------------ */
+  --ring-focus: 0 0 0 2px var(--surface-canvas), 0 0 0 4px var(--accent-alpha-40);
+  --ring-focus-tight: 0 0 0 2px var(--accent-alpha-40);
+
+  /* ---- Inset / inner ---------------------------------------------------- */
+  --inset-top-highlight: inset 0 1px 0 var(--white-alpha-06);
+  --inset-input: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+
+  /* ---- Motion: durations ----------------------------------------------- */
+  --dur-instant: 80ms; /* @kind other */
+  --dur-fast: 130ms;   /* @kind other */
+  --dur-base: 190ms;   /* @kind other */
+  --dur-slow: 280ms;   /* @kind other */
+  --dur-slower: 420ms; /* @kind other */
+
+  /* ---- Motion: easing --------------------------------------------------- */
+  /* Crisp, productive feel — no bounce on UI chrome. */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+
+  /* ---- Common transitions ---------------------------------------------- */
+  --transition-colors: color var(--dur-fast) var(--ease-standard),
+                       background-color var(--dur-fast) var(--ease-standard),
+                       border-color var(--dur-fast) var(--ease-standard); /* @kind other */
+  --transition-transform: transform var(--dur-fast) var(--ease-out); /* @kind other */
+}

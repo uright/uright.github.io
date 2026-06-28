@@ -1,0 +1,120 @@
+/* ==========================================================================
+   uright Studio — Color tokens
+   Dark, modern, IDE-grade. Orange accent, soft charcoal→black surfaces.
+   ========================================================================== */
+
+:root {
+  /* ---- Base palette: surfaces (deepest → highest elevation) ------------- */
+  --gray-950: #0a0b0d; /* app canvas / deepest */
+  --gray-900: #0f1113; /* primary panel */
+  --gray-850: #131519; /* sunken inputs */
+  --gray-800: #16181c; /* card / raised surface */
+  --gray-750: #1a1d22; /* secondary surface */
+  --gray-700: #1f232a; /* hover surface */
+  --gray-600: #272b33; /* active / pressed surface */
+  --gray-500: #353a44; /* strong divider / control bg */
+  --gray-400: #4a515c; /* disabled fg / faint icon */
+  --gray-300: #6b7280; /* tertiary text */
+  --gray-200: #8b94a1; /* muted text */
+  --gray-150: #a8b0bb; /* secondary text */
+  --gray-100: #c8cdd5; /* high secondary */
+  --gray-50:  #e6e9ee; /* near-white */
+  --white:    #f3f5f8; /* primary text */
+
+  /* ---- Accent: orange scale (uright brand) ----------------------------- */
+  --accent-100: #ffe7d6;
+  --accent-200: #ffcaa6;
+  --accent-300: #ffa973;
+  --accent-400: #ff8a44;
+  --accent-500: #f26a21; /* brand base */
+  --accent-600: #db5715;
+  --accent-700: #b5440f;
+  --accent-800: #8a340c;
+  --accent-900: #5e230a;
+  --accent-contrast: #1f0d04; /* text/icon on a filled accent surface */
+
+  /* ---- Semantic hues --------------------------------------------------- */
+  --green-500:  #34d399;
+  --amber-500:  #f5b544;
+  --amber-600:  #e09a1f;
+  --red-500:    #f0584f;
+  --red-600:    #dc4138;
+  --blue-500:   #4aa3ff;
+  --blue-600:   #2f8ae8;
+  --violet-500: #9d7bff; /* used sparingly (lineage/graph accents) */
+
+  /* ---- Alpha tints (over dark) ----------------------------------------- */
+  --accent-alpha-08: rgba(242, 106, 33, 0.08);
+  --accent-alpha-12: rgba(242, 106, 33, 0.12);
+  --accent-alpha-16: rgba(242, 106, 33, 0.16);
+  --accent-alpha-24: rgba(242, 106, 33, 0.24);
+  --accent-alpha-40: rgba(242, 106, 33, 0.40);
+
+  --white-alpha-04: rgba(255, 255, 255, 0.04);
+  --white-alpha-06: rgba(255, 255, 255, 0.06);
+  --white-alpha-08: rgba(255, 255, 255, 0.08);
+  --white-alpha-10: rgba(255, 255, 255, 0.10);
+  --white-alpha-14: rgba(255, 255, 255, 0.14);
+  --black-alpha-30: rgba(0, 0, 0, 0.30);
+  --black-alpha-50: rgba(0, 0, 0, 0.50);
+
+  /* ======================================================================
+     Semantic aliases — reference these in components, not raw scale values
+     ====================================================================== */
+
+  /* Surfaces */
+  --surface-canvas:   var(--gray-950); /* the window background behind panels */
+  --surface-panel:    var(--gray-900); /* sidebars, primary panels */
+  --surface-raised:   var(--gray-800); /* cards, popovers, menus */
+  --surface-overlay:  var(--gray-750); /* dialogs floating above */
+  --surface-sunken:   var(--gray-850); /* inputs, code wells */
+  --surface-hover:    var(--white-alpha-04);
+  --surface-active:   var(--white-alpha-08);
+  --surface-selected: var(--accent-alpha-12);
+
+  /* Text */
+  --text-primary:   var(--white);
+  --text-secondary: var(--gray-150);
+  --text-tertiary:  var(--gray-300);
+  --text-muted:     var(--gray-200);
+  --text-disabled:  var(--gray-400);
+  --text-accent:    var(--accent-400);
+  --text-on-accent: var(--accent-contrast);
+  --text-link:      var(--accent-400);
+
+  /* Borders */
+  --border-subtle:   var(--white-alpha-06);
+  --border-default:  var(--white-alpha-10);
+  --border-strong:   var(--white-alpha-14);
+  --border-accent:   var(--accent-alpha-40);
+  --border-focus:    var(--accent-500);
+
+  /* Interactive / accent */
+  --action-primary:        var(--accent-500);
+  --action-primary-hover:  var(--accent-400);
+  --action-primary-active: var(--accent-600);
+  --focus-ring:            var(--accent-alpha-40);
+
+  /* Status */
+  --status-success:   var(--green-500);
+  --status-success-bg: rgba(52, 211, 153, 0.12);
+  --status-warning:   var(--amber-500);
+  --status-warning-bg: rgba(245, 181, 68, 0.12);
+  --status-danger:    var(--red-500);
+  --status-danger-bg:  rgba(240, 88, 79, 0.12);
+  --status-info:      var(--blue-500);
+  --status-info-bg:    rgba(74, 163, 255, 0.12);
+
+  /* Agent identity accents (unified emerald primary; neutral chips below
+     differentiate the three specialists without competing with the accent) */
+  --agent-lawtomatic: #6ea8ff; /* legal blue chip */
+  --agent-jessie:     #c98bdb; /* design lilac chip */
+  --agent-datadoug:   #4cc9b0; /* data teal chip */
+
+  /* Data-mapping / graph palette (DataDoug lineage + dependency views) */
+  --graph-source:  var(--blue-500);
+  --graph-target:  var(--accent-500);
+  --graph-transform: var(--violet-500);
+  --graph-edge:    var(--white-alpha-14);
+  --graph-node-bg: var(--gray-800);
+}
