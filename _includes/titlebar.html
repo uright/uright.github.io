@@ -1,0 +1,50 @@
+{%- comment -%} Builds the breadcrumb path from page context. {%- endcomment -%}
+{%- assign crumb = 'home' -%}
+{%- if page.layout == 'post' -%}{%- assign crumb = 'posts / ' | append: page.title -%}
+{%- elsif page.layout == 'archives' -%}{%- assign crumb = 'archives' -%}
+{%- elsif page.layout == 'categories' or page.layout == 'category' -%}{%- assign crumb = 'categories' -%}
+{%- elsif page.layout == 'tags' or page.layout == 'tag' -%}{%- assign crumb = 'tags' -%}
+{%- elsif page.url == '/about/' -%}{%- assign crumb = 'about' -%}
+{%- else -%}{%- assign crumb = 'posts' -%}{%- endif -%}
+
+<header class="ur-titlebar">
+  <button id="ur-explorer-toggle" class="ur-icon-btn ur-mobile-only" aria-label="Toggle explorer" aria-expanded="false">
+    {% include uright-icon.html name="menu" size=20 %}
+  </button>
+
+  <a class="ur-wordmark" href="{{ '/' | relative_url }}">
+    <span class="ur-dot" aria-hidden="true"></span>
+    <span class="ur-wordmark-text">uright</span>
+    <span class="ur-chip">blog</span>
+  </a>
+
+  <nav class="ur-breadcrumb ur-mono" aria-label="Breadcrumb">
+    <span class="ur-crumb-root">~/</span><span class="ur-crumb-path">{{ crumb }}</span>
+  </nav>
+
+  <button class="ur-search" id="ur-search-trigger" aria-label="Search posts">
+    {% include uright-icon.html name="search" size=16 %}
+    <span class="ur-search-placeholder">Search posts…</span>
+    <kbd class="ur-kbd">⌘K</kbd>
+  </button>
+
+  <nav class="ur-nav" aria-label="Primary">
+    <a href="{{ '/' | relative_url }}" class="ur-nav-link{% if page.layout == 'home' %} active{% endif %}">Home</a>
+    <a href="{{ '/archives/' | relative_url }}" class="ur-nav-link{% if page.layout == 'archives' %} active{% endif %}">Archives</a>
+    <a href="{{ '/categories/' | relative_url }}" class="ur-nav-link{% if page.layout == 'categories' or page.layout == 'category' %} active{% endif %}">Categories</a>
+    <a href="{{ '/tags/' | relative_url }}" class="ur-nav-link{% if page.layout == 'tags' or page.layout == 'tag' %} active{% endif %}">Tags</a>
+    <a href="{{ '/about/' | relative_url }}" class="ur-nav-link{% if page.url == '/about/' %} active{% endif %}">About</a>
+  </nav>
+
+  <div class="ur-social">
+    {%- for link in site.social.links -%}
+      {%- if link contains 'github' -%}<a href="{{ link }}" class="ur-icon-btn" aria-label="GitHub">{% include uright-icon.html name="github" size=18 %}</a>{%- endif -%}
+      {%- if link contains 'linkedin' -%}<a href="{{ link }}" class="ur-icon-btn" aria-label="LinkedIn">{% include uright-icon.html name="linkedin" size=18 %}</a>{%- endif -%}
+    {%- endfor -%}
+    <a href="{{ '/feed.xml' | relative_url }}" class="ur-icon-btn ur-rss" aria-label="RSS">{% include uright-icon.html name="rss" size=18 %}</a>
+  </div>
+
+  <button id="ur-rail-toggle" class="ur-icon-btn ur-mobile-only" aria-label="Toggle info panel" aria-expanded="false">
+    {% include uright-icon.html name="info" size=20 %}
+  </button>
+</header>
