@@ -1,0 +1,50 @@
+<aside class="ur-rail ur-scroll" aria-label="Context panel">
+{%- if page.layout == 'post' -%}
+  <div class="ur-outline">
+    <div class="ur-eyebrow">ON THIS PAGE</div>
+    <nav class="ur-toc" id="toc"></nav>
+
+    <div class="ur-eyebrow ur-outline-section">DETAILS</div>
+    <dl class="ur-detail-table ur-mono">
+      {%- assign cat = page.categories | last -%}
+      <div><dt>category</dt><dd>{{ cat }}</dd></div>
+      <div><dt>published</dt><dd>{{ page.date | date: '%Y-%m-%d' }}</dd></div>
+      <div><dt>words</dt><dd>{{ content | number_of_words }}</dd></div>
+      <div><dt>reading</dt><dd>{% include read-time.html content=content lang=site.lang %}</dd></div>
+    </dl>
+
+    <div class="ur-eyebrow ur-outline-section">SHARE</div>
+    <div class="ur-share">
+      {% include uright-icon.html name="link" size=18 %}
+      {% include uright-icon.html name="message-square" size=18 %}
+      {% include uright-icon.html name="external-link" size=18 %}
+    </div>
+  </div>
+{%- else -%}
+  {%- assign a = site.data.uright.about -%}
+  <div class="ur-about-card">
+    <div class="ur-avatar">{{ a.initials }}</div>
+    <div class="ur-about-name">{{ a.name }}</div>
+    <div class="ur-about-role ur-mono">{{ a.role }}</div>
+    <p class="ur-about-bio">{{ a.bio }}</p>
+    <div class="ur-about-social">
+      {%- for link in site.social.links -%}
+        {%- if link contains 'github' -%}<a href="{{ link }}" class="ur-icon-btn" aria-label="GitHub">{% include uright-icon.html name="github" size=18 %}</a>{%- endif -%}
+        {%- if link contains 'linkedin' -%}<a href="{{ link }}" class="ur-icon-btn" aria-label="LinkedIn">{% include uright-icon.html name="linkedin" size=18 %}</a>{%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="ur-eyebrow ur-about-section">POPULAR TAGS</div>
+    <div class="ur-tag-chips">
+      {%- for t in a.popular_tags -%}<a class="ur-tag-chip ur-mono" href="{{ '/tags/' | append: t | relative_url }}">#{{ t }}</a>{%- endfor -%}
+    </div>
+
+    <div class="ur-eyebrow ur-about-section">STATS</div>
+    <dl class="ur-detail-table ur-mono">
+      <div><dt>posts</dt><dd>{{ site.posts.size }}</dd></div>
+      <div><dt>categories</dt><dd>{{ site.data.uright.categories.size }}</dd></div>
+      <div><dt>tags</dt><dd>{{ site.tags.size }}</dd></div>
+    </dl>
+  </div>
+{%- endif -%}
+</aside>
