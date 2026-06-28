@@ -2,36 +2,56 @@
 # the default layout is 'page'
 icon: fas fa-info-circle
 order: 4
+layout: page
 ---
-<img src="/assets/img/jack-wong-profile.png" alt="jack-wong" style="float: right; margin-left: 20px; margin-bottom: 20px; width: 250px; height: auto; border-radius: 8px;">
 
-Hi, my name is Jack Wong. I'm a software engineer and a tech enthusiast. I love to share my knowledge and experience with others. I hope you find my blog useful.
+<div class="ur-about">
+  <div class="ur-about-head">
+    <div class="ur-eyebrow ur-mono">cat about.md</div>
+    <div class="ur-about-id">
+      <span class="ur-about-avatar-lg">JW</span>
+      <div>
+        <h1 class="ur-h1">Jack Wong</h1>
+        <div class="ur-about-role ur-mono">Enterprise Architect · tech evangelist</div>
+      </div>
+      <div class="ur-about-pills">
+        <a class="ur-pill" href="https://github.com/uright">GitHub</a>
+        <a class="ur-pill" href="https://www.linkedin.com/in/jackwong3">LinkedIn</a>
+      </div>
+    </div>
+  </div>
 
-## Skills
+  <p class="ur-lead">Building with LLMs in the open. I write about AI tooling, Claude Code, and the workflows behind shipping with large language models.</p>
 
-Here are a few technologies I've been working with recently:
+  <div class="ur-eyebrow ur-about-section">SKILLS</div>
+  <div class="ur-skill-chips">
+    <span class="ur-pill ur-mono">AWS Bedrock</span>
+    <span class="ur-pill ur-mono">Azure OpenAI</span>
+    <span class="ur-pill ur-mono">PGVector</span>
+    <span class="ur-pill ur-mono">Qdrant</span>
+    <span class="ur-pill ur-mono">LLMs &amp; deep learning</span>
+    <span class="ur-pill ur-mono">Enterprise architecture</span>
+  </div>
 
-- AWS Bedrock
-- Azure OpenAI
-- PGVector, Qrant
-- LLMs and deep learning
+  <div class="ur-eyebrow ur-about-section">EXPERIENCE</div>
+  <!-- TODO(author): replace with real experience entries -->
+  <div class="ur-exp">
+    <div class="ur-exp-item">
+      <span class="ur-exp-dot current"></span>
+      <div class="ur-exp-body">
+        <div class="ur-exp-role">Enterprise Architect <span class="ur-mono ur-muted">present</span></div>
+        <div class="ur-exp-company current">uright</div>
+        <p class="ur-exp-desc">Placeholder — add role description.</p>
+      </div>
+    </div>
+  </div>
 
-## Experience
-
-### Enterprise Architect
-**Eviden** | July 2023 - present
-
-Technology evangelist and architect for major enterprise transformation programs.
-
-### Partner, Director of Architecture
-**AppCentrica Inc** | October 2011 - July 2023
-
-Led major digital and business transformation projects for a large number of automobile, P&C insurance, and other financial and enterprise clients.
-
-## Education
-
-### Bachelor of Computer Science
-**University of Waterloo**
-
-* Honour Computer Science
-* Business Option
+  <div class="ur-eyebrow ur-about-section">EDUCATION</div>
+  <div class="ur-edu ur-card">
+    <span class="ur-edu-icon">{% include uright-icon.html name="layers" size=18 %}</span>
+    <div>
+      <div class="ur-edu-degree">B.Sc. Computer Science</div>
+      <div class="ur-mono ur-muted">Honours Computer Science · Business Option</div>
+    </div>
+  </div>
+</div>

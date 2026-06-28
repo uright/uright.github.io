@@ -106,3 +106,44 @@
 .ur-dot-sm { width: 6px; height: 6px; border-radius: 50%; flex: none; }
 
 @media (max-width: 1024px) { .ur-page { padding: 24px 18px 60px; } .ur-cat-grid { grid-template-columns: 1fr; } }
+
+/* ===== Tags cloud ===== */
+.ur-tag-cloud { display: flex; flex-wrap: wrap; gap: 14px 18px; padding: 24px; margin-top: 24px; align-items: baseline; }
+.ur-cloud-tag { text-decoration: none; white-space: nowrap; }
+.ur-cloud-tag sup { font-size: 0.6em; margin-left: 2px; }
+.ur-cloud-xl { font-size: 19px; font-weight: 600; color: var(--accent-300); }
+.ur-cloud-lg { font-size: 16px; color: var(--text-secondary); }
+.ur-cloud-md { font-size: 14px; color: var(--text-secondary); }
+.ur-cloud-sm { font-size: 13px; color: var(--text-tertiary); }
+
+/* ===== About ===== */
+.ur-about { max-width: 760px; margin: 0 auto; padding: 30px 44px 80px; }
+.ur-about-id { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); }
+.ur-about-avatar-lg {
+  width: 56px; height: 56px; border-radius: 50%; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; background: var(--surface-sunken); box-shadow: 0 0 0 2px var(--accent-500); color: var(--text-primary);
+}
+.ur-about-pills { margin-left: auto; display: flex; gap: 8px; }
+.ur-pill {
+  font-size: 12px; color: var(--text-secondary); text-decoration: none;
+  background: var(--surface-sunken); border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill); padding: 4px 12px; display: inline-block;
+}
+.ur-pill:hover { border-color: var(--border-accent); color: var(--accent-300); }
+.ur-skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.ur-exp { display: flex; flex-direction: column; gap: 16px; border-left: 2px solid var(--border-subtle); margin-left: 6px; }
+.ur-exp-item { display: flex; gap: 14px; position: relative; padding-left: 16px; }
+.ur-exp-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--surface-canvas); box-shadow: 0 0 0 2px var(--text-tertiary); position: absolute; left: -5px; top: 4px; }
+.ur-exp-dot.current { box-shadow: 0 0 0 2px var(--accent-500); background: var(--accent-500); }
+.ur-exp-role { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.ur-exp-company { font-size: 13px; color: var(--text-secondary); }
+.ur-exp-company.current { color: var(--accent-400); }
+.ur-exp-desc { font-size: 13px; color: var(--text-secondary); margin: 4px 0 0; }
+
+.ur-edu { display: flex; gap: 14px; align-items: center; padding: 16px; margin-top: 8px; }
+.ur-edu-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface-sunken); border-radius: var(--radius-lg); color: var(--text-secondary); }
+.ur-edu-degree { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+
+@media (max-width: 1024px) { .ur-about { padding: 24px 18px 60px; } }
