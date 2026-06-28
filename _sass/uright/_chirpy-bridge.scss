@@ -1,0 +1,127 @@
+// Chirpy bridge: point Chirpy's CSS variables at uright design tokens.
+// Chirpy 7.x exposes these under :root / [data-mode="dark"].
+// This ensures un-overridden Chirpy components inherit the dark IDE palette.
+
+html[data-mode="dark"],
+:root {
+  // ---- Framework / layout surfaces ----
+  --main-bg: var(--surface-canvas);
+  --mask-bg: var(--surface-panel);
+  --main-border-color: var(--border-subtle);
+
+  // ---- Text ----
+  --text-color: var(--text-secondary);
+  --text-muted-color: var(--text-tertiary);
+  --text-muted-highlight-color: var(--text-muted);
+  --heading-color: var(--text-primary);
+  --label-color: var(--text-tertiary);
+  --link-color: var(--text-link);
+  --link-underline-color: var(--accent-alpha-40);
+
+  // ---- Cards ----
+  --card-bg: var(--surface-raised);
+  --card-header-bg: var(--surface-panel);
+  --card-border-color: var(--border-subtle);
+  --card-box-shadow: var(--shadow-sm);
+  --card-shadow: var(--shadow-sm);
+  --card-hovor-bg: var(--surface-overlay);
+
+  // ---- Buttons ----
+  --button-bg: var(--surface-raised);
+  --btn-border-color: var(--border-default);
+  --btn-backtotop-color: var(--text-secondary);
+  --btn-backtotop-border-color: var(--border-subtle);
+  --btn-share-color: var(--text-tertiary);
+  --btn-share-hover-color: var(--text-secondary);
+  --btn-patinator-text-color: var(--text-secondary);
+  --btn-paginator-hover-color: var(--surface-raised);
+
+  // ---- Blockquote ----
+  --blockquote-border-color: var(--border-strong);
+  --blockquote-text-color: var(--text-muted);
+
+  // ---- Code / highlight ----
+  --code-bg: var(--surface-sunken);
+  --code-color: var(--accent-300);
+  --code-border-color: var(--border-subtle);
+  --highlight-bg-color: var(--surface-sunken);
+  --inline-code-bg: var(--surface-sunken);
+  --highlighter-rouge-color: var(--gray-100);
+  --highlight-lineno-color: var(--gray-400);
+  --language-border-color: var(--border-subtle);
+  --code-header-text-color: var(--text-tertiary);
+  --code-header-muted-color: var(--surface-panel);
+  --code-header-icon-color: var(--gray-400);
+  --clipboard-checked-color: var(--green-500);
+  --filepath-text-color: var(--gray-100);
+
+  // ---- Tables ----
+  --tb-border-color: var(--border-subtle);
+  --tb-odd-bg: var(--surface-sunken);
+  --tb-even-bg: var(--surface-panel);
+
+  // ---- Sidebar ----
+  --sidebar-bg: var(--surface-panel);
+  --sidebar-border-color: var(--border-subtle);
+  --sidebar-muted-color: var(--text-tertiary);
+  --sidebar-active-color: var(--text-primary);
+  --sidebar-hover-bg: var(--surface-hover);
+  --sidebar-btn-bg: var(--surface-raised);
+  --sidebar-btn-color: var(--text-tertiary);
+  --site-title-color: var(--text-secondary);
+  --site-subtitle-color: var(--text-tertiary);
+  --avatar-border-color: var(--border-default);
+
+  // ---- Topbar / search ----
+  --topbar-bg: var(--surface-panel);
+  --topbar-text-color: var(--text-secondary);
+  --search-border-color: var(--border-default);
+  --search-icon-color: var(--text-tertiary);
+  --search-tag-bg: var(--surface-raised);
+  --input-focus-border-color: var(--border-focus);
+
+  // ---- Tags / categories ----
+  --tag-border: var(--border-default);
+  --tag-hover: var(--surface-overlay);
+  --tag-shadow: var(--shadow-xs);
+  --dash-color: var(--border-default);
+  --categories-border: var(--border-subtle);
+  --categories-hover-bg: var(--surface-raised);
+  --categories-icon-hover-color: var(--text-primary);
+
+  // ---- Timeline / archive ----
+  --timeline-node-bg: var(--gray-300);
+  --timeline-color: var(--border-default);
+  --timeline-year-dot-color: var(--border-default);
+
+  // ---- TOC ----
+  --toc-highlight: var(--accent-400);
+  --toc-popup-border-color: var(--border-subtle);
+
+  // ---- Prompts / callouts ----
+  --prompt-text-color: var(--text-secondary);
+  --prompt-tip-bg: var(--status-success-bg);
+  --prompt-tip-icon-color: var(--status-success);
+  --prompt-info-bg: var(--status-info-bg);
+  --prompt-info-icon-color: var(--status-info);
+  --prompt-warning-bg: var(--status-warning-bg);
+  --prompt-warning-icon-color: var(--status-warning);
+  --prompt-danger-bg: var(--status-danger-bg);
+  --prompt-danger-icon-color: var(--status-danger);
+
+  // ---- Miscellaneous ----
+  --kbd-bg-color: var(--surface-raised);
+  --kbd-text-color: var(--text-secondary);
+  --kbd-wrap-color: var(--border-default);
+  --checkbox-color: var(--gray-400);
+  --checkbox-checked-color: var(--accent-400);
+  --img-bg: var(--surface-sunken);
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    var(--white-alpha-06) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --footnote-target-bg: var(--accent-alpha-16);
+  --post-list-text-color: var(--text-secondary);
+}
