@@ -119,6 +119,65 @@
 
 .ur-mobile-only { display: none; }
 
+/* ===== Chirpy search overlay ===== */
+/* #search is the container Chirpy JS shows/hides by adding d-flex / removing d-none */
+#search.ur-chirpy-search {
+  position: fixed;
+  top: var(--titlebar-h);
+  left: 50%; transform: translateX(-50%);
+  z-index: 910;
+  width: min(600px, 92vw);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 10px 14px;
+  align-items: center;
+  gap: 8px;
+}
+/* d-none / d-flex toggled by Chirpy JS */
+#search.ur-chirpy-search.d-none { display: none !important; }
+#search.ur-chirpy-search.d-flex { display: flex !important; }
+
+#search-input {
+  flex: 1;
+  background: transparent;
+  border: none; outline: none;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-family: var(--font-ui);
+}
+#search-input::placeholder { color: var(--text-tertiary); }
+
+/* Search result wrapper — full-width overlay below the search box */
+#search-result-wrapper {
+  position: fixed;
+  top: calc(var(--titlebar-h) + 62px);
+  left: 50%; transform: translateX(-50%);
+  z-index: 910;
+  width: min(600px, 92vw);
+  background: var(--surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+#search-result-wrapper.d-none { display: none !important; }
+
+#search-results { padding: 8px 0; }
+#search-results article {
+  padding: 8px 16px; border-bottom: 1px solid var(--border-subtle);
+  font-size: 14px; color: var(--text-secondary);
+}
+#search-results article:last-child { border-bottom: none; }
+#search-results h2 { font-size: 14px; margin: 0 0 2px; }
+#search-results h2 a { color: var(--text-primary); text-decoration: none; }
+#search-results h2 a:hover { color: var(--accent-400); }
+#search-results p { font-size: 12px; margin: 0; color: var(--text-tertiary); }
+
+#search-hints { padding: 8px 16px; color: var(--text-tertiary); font-size: 13px; }
+
 /* ===== Explorer ===== */
 .ur-explorer {
   width: var(--explorer-w);

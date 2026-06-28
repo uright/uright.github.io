@@ -32,12 +32,22 @@
 
 /* ===== Callout (warning) ===== */
 .ur-callout, .prompt-warning {
-  display: flex; gap: 10px;
+  position: relative;
   background: var(--status-warning-bg);
   border-left: 3px solid var(--amber-500);
   border-radius: var(--radius-md);
-  padding: 12px 14px; margin: 18px 0;
+  padding: 12px 14px 12px 44px; margin: 18px 0;
   color: var(--text-secondary);
+}
+/* Triangle-alert icon via inline SVG data-URI (stroke %23f5b544 = #f5b544, amber-500) */
+.ur-callout::before, .prompt-warning::before {
+  content: '';
+  position: absolute;
+  left: 13px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; flex: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f5b544' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Ccircle cx='12' cy='17' r='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /* ===== Article tables ===== */

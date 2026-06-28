@@ -29,3 +29,40 @@
   if (scrim) scrim.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 })();
+
+/* ===== Search trigger wiring =====
+ * Chirpy's minified JS binds click on #search-trigger to open its search UI.
+ * Our titlebar uses #ur-search-trigger (the visible styled button + Cmd/Ctrl+K).
+ * Bridge: clicking #ur-search-trigger or pressing Cmd/Ctrl+K programmatically
+ * clicks the Chirpy-internal #search-trigger, which activates Chirpy's search
+ * overlay (#search shows, #search-input gets focus, results panel activates).
+ * ===== */
+(function () {
+  var urBtn = document.getElementById('ur-search-trigger');
+  var chirpyTrigger = document.getElementById('search-trigger');
+  var searchInput = document.getElementById('search-input');
+
+  function activateSearch() {
+    // Let Chirpy's own JS handle the state (it bound to #search-trigger click).
+    if (chirpyTrigger) {
+      chirpyTrigger.click();
+    }
+    // As a fallback (in case Chirpy JS is not yet ready or took a different path),
+    // also directly focus the search input so the user can type immediately.
+    if (searchInput) {
+      searchInput.focus();
+    }
+  }
+
+  if (urBtn) {
+    urBtn.addEventListener('click', activateSearch);
+  }
+
+  document.addEventListener('keydown', function (e) {
+    // Cmd+K (mac) or Ctrl+K (win/linux) — open search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      activateSearch();
+    }
+  });
+})();

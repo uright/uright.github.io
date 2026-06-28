@@ -39,8 +39,27 @@ layout: compress
     <!-- Mobile drawer scrim -->
     <div class="ur-scrim" id="ur-scrim" hidden></div>
 
-    <!-- Chirpy search: mask + results (JS binds to these ids; ⌘K wiring deferred to Task 16) -->
-    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+    <!-- Chirpy DOM stubs: Chirpy's minified JS hard-codes these IDs; provide no-op stubs
+         so it doesn't throw TypeError when elements are absent from our custom layout. -->
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1" style="z-index:900;background:rgba(0,0,0,0.55);" aria-hidden="true"></div>
+    <button id="sidebar-trigger" aria-hidden="true" style="display:none"></button>
+    <div id="sidebar" aria-hidden="true" style="display:none"></div>
+    <div id="topbar-title" aria-hidden="true" style="display:none"></div>
+    <button id="mode-toggle" aria-hidden="true" style="display:none"></button>
+    <div id="back-to-top" aria-hidden="true" style="display:none"></div>
+    <div id="toc-bar" aria-hidden="true" style="display:none"></div>
+    <div id="toc-popup" aria-hidden="true" style="display:none"></div>
+    <button id="toc-popup-close" aria-hidden="true" style="display:none"></button>
+    <div id="toc-solo-trigger" aria-hidden="true" style="display:none"></div>
+    <div id="copy-link" aria-hidden="true" style="display:none"></div>
+    <!-- Chirpy search overlay: #search + #search-input are the live search UI;
+         #search-trigger and #search-cancel are wired by Chirpy's JS.
+         Our #ur-search-trigger in the titlebar clicks #search-trigger to activate. -->
+    <button id="search-trigger" aria-hidden="true" style="display:none"></button>
+    <button id="search-cancel" aria-hidden="true" style="display:none"></button>
+    <search id="search" class="ur-chirpy-search d-none" aria-label="Search">
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search posts…" aria-label="Search posts">
+    </search>
     {% include_cached search-results.html lang=lang %}
 
     <!-- PWA notification (pwa-loader.html does not exist in gem 7.3.0; notification.html used instead) -->
