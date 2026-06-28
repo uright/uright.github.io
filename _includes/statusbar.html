@@ -1,0 +1,10 @@
+{%- assign host = site.url | remove: 'https://' | remove: 'http://' -%}
+<footer class="ur-statusbar ur-mono">
+  <span class="ur-status-item">{% include uright-icon.html name="git-branch" size=12 %} main</span>
+  <span class="ur-status-item">▤ {{ site.posts.size }} posts</span>
+  <span class="ur-status-item">jekyll · chirpy</span>
+  <span class="ur-status-spacer"></span>
+  <span class="ur-status-item ur-status-rss">RSS</span>
+  <span class="ur-status-item">{{ host | default: 'blog.uright.ai' }}</span>
+  <span class="ur-status-item ur-status-deployed"><span class="ur-green-dot"></span> deployed</span>
+</footer>
