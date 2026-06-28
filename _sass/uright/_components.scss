@@ -60,3 +60,42 @@
   border-radius: var(--radius-pill); padding: 3px 10px; white-space: nowrap;
 }
 .ur-hashtag:hover { color: var(--accent-300); border-color: var(--border-accent); }
+
+/* ===== Code blocks (restyle Chirpy/Rouge) ===== */
+.ur-content-body div.highlighter-rouge, .content div.highlighter-rouge {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden; margin: 18px 0;
+}
+.ur-content-body .highlight, .content .highlight { background: var(--surface-sunken); }
+.ur-content-body .highlight pre, .content .highlight pre {
+  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.75;
+  padding: 14px 16px; margin: 0; background: transparent;
+}
+/* Chirpy code header bar (filename + copy) */
+.ur-content-body .code-header, .content .code-header {
+  background: var(--gray-850); border-bottom: 1px solid var(--border-subtle);
+  height: 36px; color: var(--text-tertiary);
+}
+.content .code-header .copy-badge, .content button.copy { color: var(--text-tertiary); }
+
+/* Rouge token colors */
+.highlight .nt, .highlight .k { color: var(--violet-500); }    /* keys / keywords */
+.highlight .na { color: var(--blue-500); }                      /* sub-keys / attrs */
+.highlight .s, .highlight .s2, .highlight .s1 { color: var(--green-500); } /* strings */
+.highlight .kc, .highlight .m, .highlight .mi { color: var(--accent-300); } /* booleans / numbers */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .gp { color: var(--text-tertiary); } /* comments / prompt */
+
+/* ===== Mermaid diagram block ===== */
+.ur-content-body .mermaid, .content .mermaid {
+  background: var(--surface-sunken);
+  background-image: radial-gradient(var(--white-alpha-04) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: 20px; margin: 18px 0;
+}
+.content .mermaid .node rect, .content .mermaid .node polygon {
+  fill: var(--graph-node-bg); stroke: var(--border-default);
+}
+.content .mermaid .edgePath path { stroke: var(--graph-edge); }
