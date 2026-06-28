@@ -1,4 +1,45 @@
-/* ===== IDE grid shell (filled in Task 9; placeholder vars used now) ===== */
+/* ===== IDE grid shell ===== */
+.ur-shell {
+  display: grid;
+  grid-template-rows: var(--titlebar-h) 1fr var(--statusbar-h);
+  height: 100vh;
+  height: 100dvh;
+}
+.ur-body {
+  display: grid;
+  grid-template-columns: var(--explorer-w) 1fr var(--rail-w);
+  min-height: 0;
+}
+.ur-main { overflow-y: auto; background: var(--surface-canvas); }
+.ur-content { max-width: 860px; margin: 0 auto; }
+
+.ur-scrim {
+  position: fixed; inset: 0; background: var(--black-alpha-50);
+  z-index: 40; opacity: 0; transition: opacity var(--dur-base) var(--ease-standard);
+}
+.ur-scrim.is-open { opacity: 1; }
+
+/* ===== Mobile drawers ===== */
+@media (max-width: 1024px) {
+  .ur-body { grid-template-columns: 1fr; }
+  .ur-mobile-only { display: inline-flex; }
+  .ur-search { width: auto; }
+  .ur-search-placeholder, .ur-kbd { display: none; }
+  .ur-nav, .ur-breadcrumb { display: none; }
+
+  .ur-explorer, .ur-rail {
+    position: fixed; top: var(--titlebar-h); bottom: var(--statusbar-h);
+    z-index: 50; transition: transform var(--dur-base) var(--ease-out);
+  }
+  .ur-explorer { left: 0; transform: translateX(-100%); }
+  .ur-rail { right: 0; transform: translateX(100%); }
+  .ur-explorer.is-open, .ur-rail.is-open { transform: translateX(0); }
+}
+
+@media (max-width: 600px) {
+  .ur-explorer { width: 86vw; }
+  .ur-rail { width: 86vw; }
+}
 
 /* ===== Titlebar ===== */
 .ur-titlebar {

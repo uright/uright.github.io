@@ -1,0 +1,66 @@
+---
+layout: compress
+---
+
+<!doctype html>
+{% include origin-type.html %}
+{% include lang.html %}
+{% if site.theme_mode %}
+  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
+{% else %}
+  {% capture prefer_mode %}data-mode="dark"{% endcapture %}
+{% endif %}
+<html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
+  {% include head.html %}
+  <body>
+    <div class="ur-shell">
+      {% include titlebar.html %}
+      <div class="ur-body">
+        {% include explorer.html %}
+        <main class="ur-main ur-scroll" aria-label="Main Content">
+          <div class="ur-content">
+            {% if layout.refactor or layout.layout == 'default' %}
+              {% include refactor-content.html content=content lang=lang %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+            {% for _include in layout.tail_includes %}
+              {% assign _include_path = _include | append: '.html' %}
+              {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+            {% include_cached footer.html lang=lang %}
+          </div>
+        </main>
+        {% include right-rail.html %}
+      </div>
+      {% include statusbar.html %}
+    </div>
+
+    <!-- Mobile drawer scrim -->
+    <div class="ur-scrim" id="ur-scrim" hidden></div>
+
+    <!-- Chirpy search: mask + results (JS binds to these ids; ⌘K wiring deferred to Task 16) -->
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+    {% include_cached search-results.html lang=lang %}
+
+    <!-- PWA notification (pwa-loader.html does not exist in gem 7.3.0; notification.html used instead) -->
+    {% if site.pwa.enabled %}
+      {% include_cached notification.html lang=lang %}
+    {% endif %}
+
+    <!-- Chirpy JS: search, TOC (tocbot), glightbox, clipboard, dayjs, mathjax, mermaid, pageviews -->
+    {% include js-selector.html lang=lang %}
+
+    <!-- Chirpy search initializer (SimpleJekyllSearch binds to #search-input / #search-results) -->
+    {% include_cached search-loader.html lang=lang %}
+
+    <!-- Layout-specific scripts (e.g. comment engine on posts) -->
+    {% for _include in layout.script_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+
+    <!-- uRight mobile drawer toggle -->
+    <script src="{{ '/assets/js/uright-drawers.js' | relative_url }}" defer></script>
+  </body>
+</html>
