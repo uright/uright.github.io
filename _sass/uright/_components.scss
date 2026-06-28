@@ -1,0 +1,62 @@
+/* ===== Eyebrow accent variant ===== */
+.ur-eyebrow-accent { color: var(--accent-400); }
+
+/* ===== Category badge ===== */
+.ur-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500;
+  padding: 2px 8px; border-radius: var(--radius-pill);
+  border: 1px solid currentColor;
+  /* color set inline per-category via style attr */
+}
+
+/* ===== Thumbnail tile ===== */
+.ur-thumb {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-lg);
+  flex: none;
+  overflow: hidden;
+}
+.ur-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== Cards ===== */
+.ur-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-standard);
+}
+.ur-card:hover { transform: translateY(-1px); border-color: var(--border-strong); }
+
+/* ===== Callout (warning) ===== */
+.ur-callout, .prompt-warning {
+  display: flex; gap: 10px;
+  background: var(--status-warning-bg);
+  border-left: 3px solid var(--amber-500);
+  border-radius: var(--radius-md);
+  padding: 12px 14px; margin: 18px 0;
+  color: var(--text-secondary);
+}
+
+/* ===== Article tables ===== */
+.ur-content table, .content table {
+  width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px;
+}
+.ur-content thead th, .content thead th {
+  background: var(--gray-850); color: var(--text-secondary);
+  text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle);
+}
+.ur-content tbody td, .content tbody td {
+  padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); color: var(--gray-100);
+}
+
+/* ===== #tag chips (article footer + tags view) ===== */
+.ur-hashtag {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--text-secondary); text-decoration: none;
+  background: var(--surface-sunken); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill); padding: 3px 10px; white-space: nowrap;
+}
+.ur-hashtag:hover { color: var(--accent-300); border-color: var(--border-accent); }
