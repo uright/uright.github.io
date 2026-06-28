@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="ur-page">
+  <div class="ur-eyebrow ur-eyebrow-accent">git log --all</div>
+  <h1 class="ur-h1">Archives</h1>
+
+  {%- assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+  {%- for year in posts_by_year -%}
+  <section class="ur-year">
+    <div class="ur-year-head">
+      <span class="ur-year-num ur-mono">{{ year.name }}</span>
+      <span class="ur-hairline"></span>
+      <span class="ur-count-pill ur-mono">{{ year.items.size }} posts</span>
+    </div>
+    <div class="ur-timeline">
+      {%- for post in year.items -%}
+      {%- assign cat = post.categories | last -%}
+      {%- capture color %}{% include category-color.html category=cat field="color" %}{% endcapture -%}
+      <a class="ur-commit" href="{{ post.url | relative_url }}">
+        <span class="ur-commit-date ur-mono">{{ post.date | date: '%b %d' }}</span>
+        <span class="ur-commit-dot" style="box-shadow: 0 0 0 2px {{ color }}"></span>
+        <span class="ur-commit-title">{{ post.title }}</span>
+        <span class="ur-badge" style="color: {{ color }}">{{ cat }}</span>
+      </a>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endfor -%}
+</div>

@@ -77,3 +77,32 @@
 .ur-tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border-subtle); }
 
 @media (max-width: 1024px) { .ur-article { padding: 24px 18px 60px; } }
+
+/* ===== Shared page wrapper ===== */
+.ur-page { max-width: 820px; margin: 0 auto; padding: 30px 40px 80px; }
+.ur-hairline { flex: 1; height: 1px; background: var(--border-subtle); }
+.ur-count-pill { font-size: 11px; color: var(--text-tertiary); background: var(--surface-sunken); border-radius: var(--radius-pill); padding: 2px 10px; }
+
+/* ===== Archives ===== */
+.ur-year { margin-top: 28px; }
+.ur-year-head { display: flex; align-items: center; gap: 12px; }
+.ur-year-num { font-size: 22px; font-weight: 600; color: var(--text-primary); }
+.ur-timeline { margin: 14px 0 0 8px; border-left: 2px solid var(--border-subtle); }
+.ur-commit { display: flex; align-items: center; gap: 12px; padding: 8px 12px; text-decoration: none; position: relative; }
+.ur-commit:hover { background: var(--surface-hover); }
+.ur-commit-date { width: 54px; text-align: right; font-size: 12px; color: var(--text-tertiary); }
+.ur-commit-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--surface-canvas); margin-left: -5px; }
+.ur-commit-title { flex: 1; font-size: 14px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ===== Categories ===== */
+.ur-cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
+.ur-cat-card { display: block; padding: 18px; text-decoration: none; }
+.ur-cat-head { display: flex; align-items: center; justify-content: space-between; }
+.ur-cat-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--surface-sunken); border-radius: var(--radius-lg); }
+.ur-cat-name { font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 6px; }
+.ur-cat-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 12px; }
+.ur-cat-recent { border-top: 1px solid var(--border-subtle); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.ur-cat-recent-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ur-dot-sm { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+
+@media (max-width: 1024px) { .ur-page { padding: 24px 18px 60px; } .ur-cat-grid { grid-template-columns: 1fr; } }
