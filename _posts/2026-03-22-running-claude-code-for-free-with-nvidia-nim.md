@@ -3,7 +3,7 @@ title: "Running Claude Code for Free with Nvidia NIM"
 description: "Run Claude Code CLI at no cost by connecting it to NVIDIA NIM's free-tier inference microservices."
 date: 2026-03-22 21:11:13 -0400
 categories: [Claude Code]
-tags: [claude-code, nvidia, nim, free, litellm, qwen, glm, kimi-k2.5, minimax]
+tags: [claude-code, nvidia, nim, free, litellm, qwen, glm, kimi-k2-5, minimax]
 image:
   path: /assets/img/2026-03-22-running-claude-code-for-free-with-nvidia-nim/running-claude-code-free-nvidia-nim.png
   alt: "Running Claude Code with NVIDIA NIM inference microservices"
