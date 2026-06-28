@@ -226,5 +226,9 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
+uright:
+  show_thumbnails: true
+  show_descriptions: true
+
 plugins:
   - jekyll-redirect-from

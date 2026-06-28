@@ -1,0 +1,74 @@
+---
+layout: default
+refactor: true
+---
+
+{%- assign posts = site.posts -%}
+{%- assign featured = posts | first -%}
+
+<div class="ur-home">
+  <div class="ur-home-head">
+    <div class="ur-eyebrow ur-eyebrow-accent">JACK WONG · DEV NOTES</div>
+    <h1 class="ur-h1">Building with LLMs, in the open.</h1>
+    <p class="ur-home-sub">Notes on AI tooling, Claude Code, and the workflows behind shipping with large language models.</p>
+  </div>
+
+  {%- if featured -%}
+  {%- assign fcat = featured.categories | last -%}
+  {%- capture fcolor %}{% include category-color.html category=fcat field="color" %}{% endcapture -%}
+  {%- capture ficon %}{% include category-color.html category=fcat field="icon" %}{% endcapture -%}
+  <a class="ur-featured ur-card" href="{{ featured.url | relative_url }}">
+    <div class="ur-featured-bar"></div>
+    <div class="ur-featured-inner">
+      <div class="ur-thumb ur-featured-thumb" style="color: {{ fcolor }}">
+        {%- if featured.image.path and site.uright.show_thumbnails -%}
+          <img src="{{ featured.image.path | relative_url }}" alt="{{ featured.image.alt | default: featured.title }}">
+        {%- else -%}{% include uright-icon.html name=ficon size=34 %}{%- endif -%}
+      </div>
+      <div class="ur-featured-body">
+        <div class="ur-featured-meta">
+          <span class="ur-eyebrow ur-eyebrow-accent">FEATURED ·</span>
+          <span class="ur-badge" style="color: {{ fcolor }}">{{ fcat }}</span>
+        </div>
+        <h2 class="ur-featured-title">{{ featured.title }}</h2>
+        {%- if site.uright.show_descriptions -%}<p class="ur-featured-desc">{{ featured.description }}</p>{%- endif -%}
+        <div class="ur-meta-row ur-mono">
+          <span>{{ featured.date | date: '%Y-%m-%d' }}</span>
+          <span>{% include uright-icon.html name="clock" size=13 %} {% include read-time.html content=featured.content lang=site.lang %}</span>
+          <span class="ur-read-link">Read post {% include uright-icon.html name="arrow-right" size=13 %}</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  {%- endif -%}
+
+  <div class="ur-list-divider">
+    <span class="ur-eyebrow">ALL POSTS</span>
+    <span class="ur-count ur-mono">{{ posts.size }}</span>
+    <span class="ur-sort ur-mono">⇄ Newest first</span>
+  </div>
+
+  <div class="ur-post-list">
+    {%- for post in posts offset: 1 -%}
+    {%- assign cat = post.categories | last -%}
+    {%- capture color %}{% include category-color.html category=cat field="color" %}{% endcapture -%}
+    {%- capture icon %}{% include category-color.html category=cat field="icon" %}{% endcapture -%}
+    <a class="ur-post-card ur-card" href="{{ post.url | relative_url }}">
+      {%- if site.uright.show_thumbnails -%}
+      <div class="ur-thumb ur-post-thumb" style="color: {{ color }}">
+        {%- if post.image.path -%}<img src="{{ post.image.path | relative_url }}" alt="{{ post.image.alt | default: post.title }}">
+        {%- else -%}{% include uright-icon.html name=icon size=22 %}{%- endif -%}
+      </div>
+      {%- endif -%}
+      <div class="ur-post-body">
+        <div class="ur-post-meta">
+          <span class="ur-badge" style="color: {{ color }}">{{ cat }}</span>
+          <span class="ur-mono ur-muted">{{ post.date | date: '%Y-%m-%d' }} · {% include read-time.html content=post.content lang=site.lang %}</span>
+        </div>
+        <h3 class="ur-post-title">{{ post.title }}</h3>
+        {%- if site.uright.show_descriptions -%}<p class="ur-post-desc">{{ post.description }}</p>{%- endif -%}
+      </div>
+    </a>
+    {%- endfor -%}
+  </div>
+</div>
