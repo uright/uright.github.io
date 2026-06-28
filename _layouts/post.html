@@ -12,6 +12,7 @@ script_includes:
 
 {%- assign cat = page.categories | last -%}
 {%- capture color %}{% include category-color.html category=cat field="color" %}{% endcapture -%}
+{%- include toc-status.html -%}
 
 <div class="ur-tabstrip">
   <div class="ur-tab active">
@@ -23,7 +24,7 @@ script_includes:
   <span class="ur-tab-lang ur-mono">markdown</span>
 </div>
 
-<article class="ur-article">
+<article class="ur-article" data-toc="{{ enable_toc }}">
   <div class="ur-article-meta">
     <span class="ur-badge" style="color: {{ color }}">{{ cat }}</span>
     <span class="ur-mono ur-muted">{{ page.date | date: '%Y-%m-%d' }}</span>

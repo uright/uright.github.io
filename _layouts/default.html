@@ -18,6 +18,20 @@ layout: compress
       <div class="ur-body">
         {% include explorer.html %}
         <main class="ur-main ur-scroll" aria-label="Main Content">
+          {% if layout.panel_includes contains 'toc' %}
+            {% comment %}Post layout: no wrapping div so <article> is a direct child of <main>,
+               satisfying tocbot's querySelector('main>article[data-toc="true"]') selector.{% endcomment %}
+            {% if layout.refactor or layout.layout == 'default' %}
+              {% include refactor-content.html content=content lang=lang %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+            {% for _include in layout.tail_includes %}
+              {% assign _include_path = _include | append: '.html' %}
+              {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+            {% include_cached footer.html lang=lang %}
+          {% else %}
           <div class="ur-content">
             {% if layout.refactor or layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
@@ -30,6 +44,7 @@ layout: compress
             {% endfor %}
             {% include_cached footer.html lang=lang %}
           </div>
+          {% endif %}
         </main>
         {% include right-rail.html %}
       </div>
