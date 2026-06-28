@@ -2,7 +2,7 @@
 title: "Shift+Enter Shortcut Key Solved in Claude Code + Antigravity"
 description: "Resolving the Shift+Enter keyboard shortcut issue when using Claude Code with Antigravity"
 date: 2026-02-05 22:53:37 -0500
-categories: [Tech, Development]
+categories: [Claude Code]
 tags: [claude-code, antigravity, keyboard-shortcuts, tips]
 image:
   path: /assets/img/2026-02-05-shiftenter-shortcut-key-solved-in-claude-code-antigravity/shift-enter-fix.png

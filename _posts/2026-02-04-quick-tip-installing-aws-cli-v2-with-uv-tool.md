@@ -2,7 +2,7 @@
 title: "Quick Tip: Installing AWS CLI v2 with uv Tool"
 description: "A quick tip on using uv tool to install and manage AWS CLI v2, making Python-based CLI tool installation easier."
 date: 2026-02-04 21:55:21 -0500
-categories: [Tech, Tutorial]
+categories: [Quick Tips]
 tags: [aws, cli, uv, python, tools, quick-tip]
 image:
   path: /assets/img/2026-02-04-quick-tip-installing-aws-cli-v2-with-uv-tool/uv-aws-cli-install.png

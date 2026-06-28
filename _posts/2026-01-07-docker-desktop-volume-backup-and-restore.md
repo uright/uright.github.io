@@ -2,7 +2,7 @@
 title: "Docker Desktop Volume Backup and Restore"
 description: "Simple, portable bash scripts to backup and restore Docker volumes - perfect for migrating OpenWebUI data or any containerized application"
 date: 2026-01-07 20:56:47 -0500
-categories: [Tech, Docker]
+categories: [DevOps]
 tags: [docker, volumes, backup, openwebui, tutorial]
 image:
   path: /assets/img/2026-01-07-docker-desktop-volume-backup-and-restore/docker-volumes.png

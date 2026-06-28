@@ -2,7 +2,7 @@
 title: "Run Claude Code CLI on Your GitHub Copilot Subscription"
 description: "A quick tip on using Claude Code CLI with your existing GitHub Copilot subscription to access Claude models without a separate Anthropic subscription."
 date: 2026-03-02 14:37:09 -0500
-categories: [Tech, Ai]
+categories: [Claude Code]
 tags: [claude-code, github-copilot, cli, tips, ai, developer-tools]
 image:
   path: /assets/img/2026-03-02-run-claude-code-cli-on-your-github-copilot-subscription/claude-code-github-copilot.png

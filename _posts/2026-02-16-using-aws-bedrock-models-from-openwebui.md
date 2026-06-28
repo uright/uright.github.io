@@ -2,7 +2,7 @@
 title: "Using AWS Bedrock Models from OpenWebUI"
 description: "Guide of configuring OpenWebUI to connect to Bedrock models for inference"
 date: 2026-02-16 14:46:52 -0500
-categories: [Tech, AI]
+categories: [AI & LLMs]
 tags: [aws, bedrock, openwebui, llm]
 image:
   path: /assets/img/2026-02-16-using-aws-bedrock-models-from-openwebui/cover.png

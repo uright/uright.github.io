@@ -2,7 +2,7 @@
 title: "Text-to-Speech Tools for macOS and Windows: Superwhisper & Handy"
 description: "Discover two essential text-to-speech applications that streamline your workflow on macOS and Windows: Superwhisper and Handy."
 date: 2026-02-08 20:07:34 -0500
-categories: [Tech, Tools]
+categories: [Quick Tips]
 tags: [voice-input, dictation, productivity, cross-platform, macos, windows]
 image:
   path: /assets/img/2026-02-08-text-to-speech-tools-for-macos-and-windows-superwhisper-handy/text-to-speech-tools.png

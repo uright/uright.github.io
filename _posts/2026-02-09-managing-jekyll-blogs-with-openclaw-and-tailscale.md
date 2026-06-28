@@ -2,7 +2,7 @@
 title: "Managing Jekyll Blogs with OpenClaw and Tailscale"
 description: "Learn how to use OpenClaw to manage your Jekyll blog repository, generate images with Gemini Nano Banana, and preview posts remotely via Tailscale."
 date: 2026-02-09 00:15:47 -0500
-categories: [Tech, Tutorial]
+categories: [DevOps]
 tags: [openclaw, jekyll, tailscale, gemini, tutorial]
 image:
   path: /assets/img/2026-02-09-managing-jekyll-blogs-with-openclaw-and-tailscale/hero-image.png
