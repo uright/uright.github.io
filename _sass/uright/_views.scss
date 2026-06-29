@@ -110,14 +110,14 @@
 .ur-commit-title { flex: 1; font-size: 14px; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ===== Categories ===== */
-.ur-cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
-.ur-cat-card { display: block; padding: 18px; text-decoration: none; }
+.ur-cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.ur-cat-card { display: block; min-width: 0; padding: 18px; text-decoration: none; }
 .ur-cat-head { display: flex; align-items: center; justify-content: space-between; }
 .ur-cat-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--surface-sunken); border-radius: var(--radius-lg); }
 .ur-cat-name { font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 12px 0 6px; }
 .ur-cat-desc { font-size: 13px; color: var(--text-secondary); margin: 0 0 12px; }
 .ur-cat-recent { border-top: 1px solid var(--border-subtle); padding-top: 10px; display: flex; flex-direction: column; gap: 6px; }
-.ur-cat-recent-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ur-cat-recent-item { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; color: var(--text-tertiary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ur-dot-sm { width: 6px; height: 6px; border-radius: 50%; flex: none; }
 
 @media (max-width: 1024px) { .ur-page { padding: 24px 18px 60px; } .ur-cat-grid { grid-template-columns: 1fr; } }
