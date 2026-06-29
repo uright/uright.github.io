@@ -34,14 +34,30 @@ layout: page
   </div>
 
   <div class="ur-eyebrow ur-about-section">EXPERIENCE</div>
-  <!-- TODO(author): replace with real experience entries -->
   <div class="ur-exp">
     <div class="ur-exp-item">
       <span class="ur-exp-dot current"></span>
       <div class="ur-exp-body">
         <div class="ur-exp-role">Enterprise Architect <span class="ur-mono ur-muted">present</span></div>
-        <div class="ur-exp-company current">uright</div>
-        <p class="ur-exp-desc">Placeholder — add role description.</p>
+        <div class="ur-exp-company current">Atos</div>
+        <p class="ur-exp-desc">Technology evangelist and architect for major enterprise transformation programs.</p>
+      </div>
+      <div class="ur-exp-logo">
+        <img src="{{ '/assets/img/logos/atos.png' | relative_url }}" alt="Atos" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <div class="ur-exp">
+    <div class="ur-exp-item">
+      <span class="ur-exp-dot current"></span>
+      <div class="ur-exp-body">
+        <div class="ur-exp-role">Partner, Director of Architecture</div>
+        <div class="ur-exp-company current">AppCentrica</div>
+        <p class="ur-exp-desc">Led major digital and business transformation projects for a large number of automobile, P&C insurance, and other financial and enterprise clients.</p>
+      </div>
+      <div class="ur-exp-logo">
+        <img src="{{ '/assets/img/logos/appcentrica.jpg' | relative_url }}" alt="AppCentrica" loading="lazy" />
       </div>
     </div>
   </div>
@@ -52,6 +68,10 @@ layout: page
     <div>
       <div class="ur-edu-degree">B.Sc. Computer Science</div>
       <div class="ur-mono ur-muted">Honours Computer Science · Business Option</div>
+      <div class="ur-mono ur-muted">University of Waterloo</div>
+    </div>
+    <div class="ur-edu-logo">
+      <img src="{{ '/assets/img/logos/university-of-waterloo.png' | relative_url }}" alt="University of Waterloo" loading="lazy" />
     </div>
   </div>
 </div>
