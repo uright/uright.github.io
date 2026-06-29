@@ -1,5 +1,9 @@
 html {
   scrollbar-color: var(--gray-600) transparent;
+  /* Chirpy's base sets `overflow-y: scroll`, forcing a page-level scrollbar.
+     Our IDE shell owns scrolling inside <main>, so the page itself must not
+     scroll — otherwise body padding/overflow leaves blank space past the shell. */
+  overflow: hidden;
 }
 
 body {
@@ -7,6 +11,13 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Chirpy's base applies ~1.75rem body padding; that pushes our 100dvh shell
+     past the viewport and creates a scrollable blank gap below the status bar. */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 code, pre, kbd, .ur-mono {

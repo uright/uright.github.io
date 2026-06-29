@@ -78,6 +78,21 @@
 
 @media (max-width: 1024px) { .ur-article { padding: 24px 18px 60px; } }
 
+/* Disqus panel: JS injects #disqus_thread as a direct child of <main>, so it
+   spans the full main width (not the centered 760px article) and its iframe can
+   push past the viewport, creating a horizontal scrollbar. Constrain it to the
+   article column and clamp width so the embed never overflows. */
+#disqus_thread {
+  box-sizing: border-box;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 44px;
+  overflow-x: hidden;
+}
+#disqus_thread iframe { max-width: 100% !important; }
+@media (max-width: 1024px) { #disqus_thread { padding: 0 18px; } }
+
 /* ===== Shared page wrapper ===== */
 .ur-page { max-width: 820px; margin: 0 auto; padding: 30px 40px 80px; }
 .ur-hairline { flex: 1; height: 1px; background: var(--border-subtle); }

@@ -44,7 +44,9 @@
     <a href="{{ '/feed.xml' | relative_url }}" class="ur-icon-btn ur-rss" aria-label="RSS">{% include uright-icon.html name="rss" size=18 %}</a>
   </div>
 
+  {% if layout.panel_includes contains 'toc' %}
   <button id="ur-rail-toggle" class="ur-icon-btn ur-mobile-only" aria-label="Toggle info panel" aria-expanded="false">
     {% include uright-icon.html name="info" size=20 %}
   </button>
+  {% endif %}
 </header>

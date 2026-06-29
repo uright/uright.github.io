@@ -15,7 +15,7 @@ layout: compress
   <body>
     <div class="ur-shell">
       {% include titlebar.html %}
-      <div class="ur-body">
+      <div class="ur-body{% unless layout.panel_includes contains 'toc' %} ur-body--no-rail{% endunless %}">
         {% include explorer.html %}
         <main class="ur-main ur-scroll" aria-label="Main Content">
           {% if layout.panel_includes contains 'toc' %}
@@ -46,7 +46,9 @@ layout: compress
           </div>
           {% endif %}
         </main>
-        {% include right-rail.html %}
+        {% if layout.panel_includes contains 'toc' %}
+          {% include right-rail.html %}
+        {% endif %}
       </div>
       {% include statusbar.html %}
     </div>
@@ -94,5 +96,9 @@ layout: compress
 
     <!-- uRight mobile drawer toggle -->
     <script src="{{ '/assets/js/uright-drawers.js' | relative_url }}" defer></script>
+    <!-- uRight TOC scroll bridge (tocbot assumes window scroll; ours is .ur-main) -->
+    {% if layout.panel_includes contains 'toc' %}
+    <script src="{{ '/assets/js/uright-toc.js' | relative_url }}" defer></script>
+    {% endif %}
   </body>
 </html>

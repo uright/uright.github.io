@@ -10,6 +10,7 @@
   grid-template-columns: var(--explorer-w) 1fr var(--rail-w);
   min-height: 0;
 }
+.ur-body--no-rail { grid-template-columns: var(--explorer-w) 1fr; }
 .ur-main { overflow-y: auto; background: var(--surface-canvas); }
 .ur-content { max-width: 860px; margin: 0 auto; }
 

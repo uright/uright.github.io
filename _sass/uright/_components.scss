@@ -1,24 +1,36 @@
 /* ===== Eyebrow accent variant ===== */
-.ur-eyebrow-accent { color: var(--accent-400); }
+.ur-eyebrow-accent {
+  color: var(--accent-400);
+}
 
 /* ===== Category badge ===== */
 .ur-badge {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 500;
-  padding: 2px 8px; border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
   border: 1px solid currentColor;
   /* color set inline per-category via style attr */
 }
 
 /* ===== Thumbnail tile ===== */
 .ur-thumb {
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--surface-sunken);
   border-radius: var(--radius-lg);
   flex: none;
   overflow: hidden;
 }
-.ur-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.ur-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* ===== Cards ===== */
 .ur-card {
@@ -26,113 +38,201 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-standard);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-standard);
 }
-.ur-card:hover { transform: translateY(-1px); border-color: var(--border-strong); }
+.ur-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+}
 
 /* ===== Callout (warning) ===== */
-.ur-callout, .prompt-warning {
+.ur-callout,
+.prompt-warning {
   position: relative;
   background: var(--status-warning-bg);
   border-left: 3px solid var(--amber-500);
   border-radius: var(--radius-md);
-  padding: 12px 14px 12px 44px; margin: 18px 0;
+  padding: 12px 14px 12px 44px;
+  margin: 18px 0;
   color: var(--text-secondary);
 }
 /* Triangle-alert icon via inline SVG data-URI (stroke %23f5b544 = #f5b544, amber-500) */
-.ur-callout::before, .prompt-warning::before {
+.ur-callout::before,
+.prompt-warning::before {
   content: '';
   position: absolute;
-  left: 13px; top: 50%; transform: translateY(-50%);
-  width: 18px; height: 18px;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23f5b544' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Ccircle cx='12' cy='17' r='1'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 /* ===== Article tables ===== */
-.ur-content table, .content table {
-  width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px;
+.ur-content table,
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 14px;
 }
-.ur-content thead th, .content thead th {
-  background: var(--gray-850); color: var(--text-secondary);
-  text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle);
+.ur-content thead th,
+.content thead th {
+  background: var(--gray-850);
+  color: var(--text-secondary);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
 }
-.ur-content tbody td, .content tbody td {
-  padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); color: var(--gray-100);
+.ur-content tbody td,
+.content tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--gray-100);
 }
 
 /* ===== #tag chips (article footer + tags view) ===== */
 .ur-hashtag {
-  font-family: var(--font-mono); font-size: 13px;
-  color: var(--text-secondary); text-decoration: none;
-  background: var(--surface-sunken); border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill); padding: 3px 10px; white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  white-space: nowrap;
 }
-.ur-hashtag:hover { color: var(--accent-300); border-color: var(--border-accent); }
+.ur-hashtag:hover {
+  color: var(--accent-300);
+  border-color: var(--border-accent);
+}
 
 /* ===== Code blocks (restyle Chirpy/Rouge) =====
    Chirpy lays code out as a two-cell <table.rouge-table>: a .rouge-gutter cell
    (line numbers) and a .rouge-code cell. Horizontal spacing lives on the CELLS,
    not the <pre>. We only theme colors / font / vertical rhythm here and must
    NOT add padding to <pre> — doing so double-pads and shoves the code right. */
-.ur-content-body div.highlighter-rouge, .content div.highlighter-rouge {
+.ur-content-body div.highlighter-rouge,
+.content div.highlighter-rouge {
   background: var(--surface-sunken);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  overflow: hidden; margin: 18px 0;
+  overflow: hidden;
+  margin: 18px 0;
 }
-.ur-content-body .highlight, .content .highlight {
+.ur-content-body .highlight,
+.content .highlight {
   background: var(--surface-sunken);
-  padding-top: 12px;       /* Chirpy only ships padding-bottom; add a matching top */
-  padding-bottom: 4px;     /* small — Rouge already renders a trailing blank line */
+  padding-top: 0px; /* Chirpy only ships padding-bottom; add a matching top */
+  padding-bottom: 0px; /* small — Rouge already renders a trailing blank line */
 }
-.ur-content-body .highlight pre, .content .highlight pre {
-  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6;
-  margin: 0; padding: 0; background: transparent;  /* spacing comes from the cells */
+.ur-content-body .highlight pre,
+.content .highlight pre {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: transparent; /* spacing comes from the cells */
+}
+/* Rouge wraps the <table> in an inline <code>. An inline box around a block
+   table still emits its own line-box strut, reserving a full empty line of
+   height *below* the table — the blank gap at the bottom of the snippet.
+   Make it block so no phantom line-box is generated. */
+.ur-content-body .highlight > code,
+.content .highlight > code {
+  display: block;
 }
 /* Align the gutter + code cells to the top so the inline-block gutter doesn't
    leave a baseline gap below the last line. */
-.ur-content-body .highlight table, .content .highlight table { margin: 0; }
-.ur-content-body .highlight table td, .content .highlight table td {
-  vertical-align: top; padding-top: 0; padding-bottom: 0;
+.ur-content-body .highlight table,
+.content .highlight table {
+  margin: 0;
+}
+.ur-content-body .highlight table td,
+.content .highlight table td {
+  vertical-align: top;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 /* Tighten the gutter→code gap so code sits just right of the line numbers.
    Chirpy stacks gutter margin-right + gutter padding-right + code padding-left,
    which left a wide gap. Collapse those to a single small gap. */
 .ur-content-body .highlight table td.rouge-gutter,
 .content .highlight table td.rouge-gutter {
-  margin-left: 16px; margin-right: 10px; padding-right: 0;
+  margin-left: 16px;
+  margin-right: 10px;
+  padding-right: 0;
 }
-.ur-content-body td.rouge-code, .content td.rouge-code {
-  padding-left: 0; padding-right: 24px;  /* no extra left pad — gutter margin is the gap */
+.ur-content-body td.rouge-code,
+.content td.rouge-code {
+  padding-left: 0;
+  padding-right: 24px; /* no extra left pad — gutter margin is the gap */
 }
-.ur-content-body .highlight .lineno, .content .highlight .lineno {
+.ur-content-body .highlight .lineno,
+.content .highlight .lineno {
   color: var(--text-tertiary);
 }
 /* Chirpy code header bar (filename + copy) */
-.ur-content-body .code-header, .content .code-header {
-  background: var(--gray-850); border-bottom: 1px solid var(--border-subtle);
-  height: 36px; color: var(--text-tertiary);
+.ur-content-body .code-header,
+.content .code-header {
+  background: var(--gray-850);
+  border-bottom: 1px solid var(--border-subtle);
+  height: 36px;
+  color: var(--text-tertiary);
 }
-.content .code-header .copy-badge, .content button.copy { color: var(--text-tertiary); }
+.content .code-header .copy-badge,
+.content button.copy {
+  color: var(--text-tertiary);
+}
 
 /* Rouge token colors */
-.highlight .nt, .highlight .k { color: var(--violet-500); }    /* keys / keywords */
-.highlight .na { color: var(--blue-500); }                      /* sub-keys / attrs */
-.highlight .s, .highlight .s2, .highlight .s1 { color: var(--green-500); } /* strings */
-.highlight .kc, .highlight .m, .highlight .mi { color: var(--accent-300); } /* booleans / numbers */
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .gp { color: var(--text-tertiary); } /* comments / prompt */
+.highlight .nt,
+.highlight .k {
+  color: var(--violet-500);
+} /* keys / keywords */
+.highlight .na {
+  color: var(--blue-500);
+} /* sub-keys / attrs */
+.highlight .s,
+.highlight .s2,
+.highlight .s1 {
+  color: var(--green-500);
+} /* strings */
+.highlight .kc,
+.highlight .m,
+.highlight .mi {
+  color: var(--accent-300);
+} /* booleans / numbers */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .gp {
+  color: var(--text-tertiary);
+} /* comments / prompt */
 
 /* ===== Mermaid diagram block ===== */
-.ur-content-body .mermaid, .content .mermaid {
+.ur-content-body .mermaid,
+.content .mermaid {
   background: var(--surface-sunken);
   background-image: radial-gradient(var(--white-alpha-04) 1px, transparent 1px);
   background-size: 16px 16px;
-  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-  padding: 20px; margin: 18px 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin: 18px 0;
 }
-.content .mermaid .node rect, .content .mermaid .node polygon {
-  fill: var(--graph-node-bg); stroke: var(--border-default);
+.content .mermaid .node rect,
+.content .mermaid .node polygon {
+  fill: var(--graph-node-bg);
+  stroke: var(--border-default);
 }
-.content .mermaid .edgePath path { stroke: var(--graph-edge); }
+.content .mermaid .edgePath path {
+  stroke: var(--graph-edge);
+}
