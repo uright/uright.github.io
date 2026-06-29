@@ -1,9 +1,16 @@
-html {
+/* Use :root (specificity 0,1,0) rather than `html` (0,0,1) so this beats
+   Chirpy's `:root { overflow-y: scroll }` rule, which lives inside a
+   `@media (min-width: 850px)` block and otherwise wins the cascade on desktop.
+   The losing `html` override left the page-level scroll-y active: the IDE shell
+   is 100dvh, but the right rail's content overflows the document by a few
+   hundred px, so the still-scrollable root let a trackpad gesture rubber-band
+   the whole shell up into blank space below the status bar. Setting overflow-y
+   (the same longhand axis Chirpy targets) to hidden on :root removes that
+   page-level scroll; our IDE shell owns all scrolling inside <main>. */
+:root {
   scrollbar-color: var(--gray-600) transparent;
-  /* Chirpy's base sets `overflow-y: scroll`, forcing a page-level scrollbar.
-     Our IDE shell owns scrolling inside <main>, so the page itself must not
-     scroll — otherwise body padding/overflow leaves blank space past the shell. */
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
