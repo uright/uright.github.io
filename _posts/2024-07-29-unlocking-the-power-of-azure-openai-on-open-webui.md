@@ -2,7 +2,7 @@
 title: "Unlocking the Power of Azure OpenAI on Open WebUI (Formerly Ollama WebUI)"
 description: "A guide to configure Open WebUI to connect to Azure OpenAI service to unlock gpt-4o models"
 date: 2024-07-29 10:45:17 -0400
-categories: [Tech, AI]
+categories: [AI & LLMs]
 tags: [ollama, azure-openai, litellm, open-webui]
 image:
   path: /assets/img/2024-07-29-unlocking-the-power-of-azure-openai-on-open-webui/blog-post-image.jpeg

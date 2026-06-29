@@ -1,0 +1,36 @@
+# uright Studio theme data — category map + about-card content.
+
+categories:
+  - name: "AI & LLMs"
+    slug: "ai-llms"
+    color: "var(--blue-500)"
+    icon: "sparkles"
+    description: "Working with large language models, inference, and AI tooling."
+  - name: "Claude Code"
+    slug: "claude-code"
+    color: "var(--violet-500)"
+    icon: "terminal"
+    description: "Tips, workflows, and setups for the Claude Code CLI."
+  - name: "DevOps"
+    slug: "devops"
+    color: "var(--agent-datadoug)"
+    icon: "git-branch"
+    description: "Infrastructure, tooling, and developer environment notes."
+  - name: "Quick Tips"
+    slug: "quick-tips"
+    color: "var(--amber-500)"
+    icon: "zap"
+    description: "Short, practical tips you can apply in a few minutes."
+
+fallback:
+  color: "var(--text-tertiary)"
+  icon: "file-text"
+  description: ""
+
+# Right-rail About card.
+about:
+  initials: "JW"
+  name: "Jack Wong"
+  role: "Enterprise Architect · tech evangelist"
+  bio: "Building with LLMs in the open — notes on AI tooling, Claude Code, and dev workflows."
+  popular_tags: [claude-code, litellm, aws, openwebui, llm]

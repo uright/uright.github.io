@@ -1,0 +1,49 @@
+---
+layout: default
+refactor: true
+panel_includes:
+  - toc
+tail_includes:
+  - related-posts
+  - post-nav
+script_includes:
+  - comment
+---
+
+{%- assign cat = page.categories | last -%}
+{%- capture color %}{% include category-color.html category=cat field="color" %}{% endcapture -%}
+{%- include toc-status.html -%}
+
+<div class="ur-tabstrip">
+  <div class="ur-tab active">
+    <span style="color: var(--violet-500)">{% include uright-icon.html name="file-text" size=15 %}</span>
+    <span class="ur-tab-title">{{ page.title }}</span>
+    {% include uright-icon.html name="x" size=14 class="ur-tab-close" %}
+  </div>
+  <div class="ur-tab dimmed"><span class="ur-tab-title">README.md</span></div>
+  <span class="ur-tab-lang ur-mono">markdown</span>
+</div>
+
+<article class="ur-article" data-toc="{{ enable_toc }}">
+  <div class="ur-article-meta">
+    <span class="ur-badge" style="color: {{ color }}">{{ cat }}</span>
+    <span class="ur-mono ur-muted">{{ page.date | date: '%Y-%m-%d' }}</span>
+  </div>
+  <h1 class="ur-article-h1">{{ page.title }}</h1>
+  {%- if page.description -%}<p class="ur-lead">{{ page.description }}</p>{%- endif -%}
+  <div class="ur-byline">
+    <span class="ur-byline-avatar">JW</span>
+    <span>{{ site.social.name }}</span>
+    <span class="ur-mono ur-muted">{% include uright-icon.html name="clock" size=13 %} {% include read-time.html content=content lang=lang %}</span>
+  </div>
+
+  <div class="ur-content-body content">
+    {{ content }}
+  </div>
+
+  <div class="ur-tags-row">
+    {%- for tag in page.tags -%}
+      <a class="ur-hashtag" href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
+    {%- endfor -%}
+  </div>
+</article>

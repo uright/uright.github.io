@@ -2,7 +2,7 @@
 title: "Harnessing AI for Blog Customization: How I Identified the Top 10 Hugo Themes with ChatGPT"
 description: "Harnessing AI for Blog Customization: How I Identified the Top 10 Hugo Themes with ChatGPT"
 date: 2024-08-11 22:50:16 -0400
-categories: [Tech, AI]
+categories: [AI & LLMs]
 tags: [python, openai, gpt4o, gohugo]
 image:
   path: /assets/img/2024-08-11-how-i-identified-the-top-10-hugo-themes-with-chatgpt/blog-post-image.jpeg

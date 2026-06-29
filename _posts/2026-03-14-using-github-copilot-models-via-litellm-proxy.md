@@ -2,7 +2,7 @@
 title: "Using GitHub Copilot Models via LiteLLM Proxy"
 description: "A streamlined approach to accessing GitHub Copilot subscription models through LiteLLM Proxy, with support for OpenWebUI and Claude Code."
 date: 2026-03-14 22:53:35 -0400
-categories: [Tech, Tutorial]
+categories: [AI & LLMs]
 tags: [litellm, github-copilot, openwebui, claude-code, llm, proxy]
 image:
   path: /assets/img/2026-03-14-using-github-copilot-models-via-litellm-proxy/github-copilot-litellm-proxy.png

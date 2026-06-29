@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/colors.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/typography.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/base.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/tokens/theme-light.css">
+<link rel="stylesheet" href="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/styles.css">
+<script src="_ds/uright-studio-design-system-80cff443-463c-4f5e-b9af-7c03c1c18f34/_ds_bundle.js"></script>
+<style>
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-thumb { background: var(--gray-600); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+  *::-webkit-scrollbar-thumb:hover { background: var(--gray-500); background-clip: padding-box; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  .ub-row:hover { background: var(--surface-hover); }
+  .ub-row:hover .ub-rowmeta { color: var(--text-secondary); }
+  .ub-card { transition: border-color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard); }
+  .ub-card:hover { border-color: var(--border-strong) !important; transform: translateY(-1px); }
+  .ub-card:hover .ub-readmore { color: var(--accent-300); }
+  .ub-nav:hover { background: var(--surface-hover); color: var(--text-primary) !important; }
+  .ub-soc:hover { background: var(--surface-hover); color: var(--text-primary) !important; border-color: var(--border-strong) !important; }
+  .ub-tag:hover { border-color: var(--border-strong) !important; color: var(--text-primary) !important; }
+  .ub-toc:hover { color: var(--text-primary) !important; }
+  .ub-fcard:hover { border-color: var(--accent-alpha-40) !important; }
+  .ub-catcard:hover { border-color: var(--border-strong) !important; transform: translateY(-1px); }
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;height:100vh;min-height:0;background:var(--surface-canvas);color:var(--text-primary);font-family:var(--font-sans);font-size:14px;overflow:hidden">
+
+  <header style="display:flex;align-items:center;gap:16px;height:48px;flex-shrink:0;padding:0 14px;background:var(--surface-panel);border-bottom:1px solid var(--border-subtle);position:relative;z-index:5">
+    <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;cursor:pointer;padding-right:6px">
+      <span style="width:9px;height:9px;border-radius:50%;background:var(--accent-500);box-shadow:0 0 10px var(--accent-alpha-40);flex-shrink:0"></span>
+      <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)">uright</span>
+      <span style="font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--text-on-accent);background:var(--accent-500);padding:2px 6px;border-radius:5px;letter-spacing:-0.01em">blog</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary);padding-left:6px;border-left:1px solid var(--border-subtle);height:22px">
+      <span style="color:var(--text-muted)">~/</span><span style="color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px">{{ crumb }}</span>
+    </div>
+
+    <div style="flex:1"></div>
+
+    <div style="display:flex;align-items:center;gap:8px;width:300px;height:32px;padding:0 11px;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:var(--radius-md);color:var(--text-tertiary);box-shadow:var(--inset-input)">
+      <span style="display:flex;color:var(--text-tertiary)">{{ i.search }}</span>
+      <span style="flex:1;font-size:13px;color:var(--text-muted)">Search posts…</span>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);border:1px solid var(--border-default);border-radius:4px;padding:1px 5px">⌘K</span>
+    </div>
+
+    <nav style="display:flex;align-items:center;gap:2px">
+      <button class="ub-nav" onClick="{{ goHome }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 11px;border-radius:var(--radius-md);color:{{ navHomeColor }};background:{{ navHomeBg }};transition:var(--transition-colors)">Home</button>
+      <button class="ub-nav" onClick="{{ goArchives }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 11px;border-radius:var(--radius-md);color:{{ navArchivesColor }};background:{{ navArchivesBg }};transition:var(--transition-colors)">Archives</button>
+      <button class="ub-nav" onClick="{{ goCategories }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 11px;border-radius:var(--radius-md);color:{{ navCategoriesColor }};background:{{ navCategoriesBg }};transition:var(--transition-colors)">Categories</button>
+      <button class="ub-nav" onClick="{{ goTags }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 11px;border-radius:var(--radius-md);color:{{ navTagsColor }};background:{{ navTagsBg }};transition:var(--transition-colors)">Tags</button>
+      <button class="ub-nav" onClick="{{ goAbout }}" style="all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:6px 11px;border-radius:var(--radius-md);color:{{ navAboutColor }};background:{{ navAboutBg }};transition:var(--transition-colors)">About</button>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:6px;padding-left:10px;margin-left:2px;border-left:1px solid var(--border-subtle);height:22px">
+      <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--radius-md);border:1px solid transparent;color:var(--text-tertiary);cursor:pointer;transition:var(--transition-colors)">{{ i.github }}</span>
+      <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--radius-md);border:1px solid transparent;color:var(--text-tertiary);cursor:pointer;transition:var(--transition-colors)">{{ i.linkedin }}</span>
+      <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--radius-md);border:1px solid transparent;color:var(--accent-400);cursor:pointer;transition:var(--transition-colors)">{{ i.rss }}</span>
+    </div>
+  </header>
+
+  <div style="flex:1;display:grid;grid-template-columns:286px 1fr 264px;min-height:0">
+
+    <aside style="display:flex;flex-direction:column;min-height:0;background:var(--surface-panel);border-right:1px solid var(--border-subtle)">
+      <div style="display:flex;align-items:center;justify-content:space-between;height:36px;flex-shrink:0;padding:0 8px 0 14px;border-bottom:1px solid var(--border-subtle)">
+        <span style="font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)">Explorer</span>
+        <div style="display:flex;gap:1px">
+          <span style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-sm);color:var(--text-tertiary)">{{ i.listTree }}</span>
+          <span style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-sm);color:var(--text-tertiary)">{{ i.sliders }}</span>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:8px 0 16px">
+        <div style="padding:6px 14px 4px;font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)">Categories</div>
+        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+          <div onClick="{{ cat.onOpen }}" class="ub-row" style="display:flex;align-items:center;gap:8px;height:30px;padding:0 14px;cursor:pointer;transition:var(--transition-colors)">
+            <span style="display:flex;color:var(--text-tertiary)">{{ cat.chev }}</span>
+            <span style="display:flex;color:{{ cat.color }}">{{ cat.folder }}</span>
+            <span style="flex:1;font-size:13px;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cat.name }}</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">{{ cat.count }}</span>
+          </div>
+        </sc-for>
+
+        <div style="padding:16px 14px 4px;font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);display:flex;align-items:center;gap:6px">Recent posts</div>
+        <sc-for list="{{ recentPosts }}" as="post" hint-placeholder-count="8">
+          <div onClick="{{ post.onOpen }}" class="ub-row" style="display:flex;align-items:center;gap:9px;min-height:34px;padding:5px 14px 5px 26px;cursor:pointer;transition:var(--transition-colors)">
+            <span style="display:flex;color:{{ post.catColor }};flex-shrink:0">{{ post.rowIcon }}</span>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:12.5px;font-weight:500;color:var(--text-secondary);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ post.title }}</span>
+              <span class="ub-rowmeta" style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary);transition:var(--transition-colors)">{{ post.dateShort }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-top:1px solid var(--border-subtle);background:var(--surface-panel)">
+        <span style="display:flex;color:var(--accent-400)">{{ i.rss }}</span>
+        <span style="flex:1;font-size:12px;color:var(--text-secondary)">Subscribe to the feed</span>
+        <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary)">atom.xml</span>
+      </div>
+    </aside>
+
+    <main style="min-height:0;overflow-y:auto;background:var(--surface-canvas)">
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:780px;margin:0 auto;padding:30px 40px 80px">
+
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:24px">
+            <div>
+              <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-400);margin-bottom:8px">Jack Wong · dev notes</div>
+              <h1 style="margin:0;font-size:32px;font-weight:600;letter-spacing:-0.02em;line-height:1.15;color:var(--text-primary)">Building with LLMs, in the open.</h1>
+              <p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--text-secondary);max-width:560px">Field notes on Claude Code, local inference, AWS Bedrock &amp; Azure OpenAI — the tooling, the workarounds, and the quick wins.</p>
+            </div>
+          </div>
+
+          <div onClick="{{ featured.onOpen }}" class="ub-fcard ub-card" style="position:relative;display:flex;gap:20px;padding:20px;margin-bottom:28px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);cursor:pointer;overflow:hidden">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent-500),var(--accent-700))"></div>
+            <div style="flex-shrink:0;width:104px;height:104px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-lg);background:var(--surface-sunken);border:1px solid var(--border-subtle);color:{{ featured.catColor }}">{{ featured.thumbBig }}</div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:9px">
+                <span style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-400)">Featured</span>
+                <span style="color:var(--text-tertiary)">·</span>
+                <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;color:{{ featured.catColor }};background:{{ featured.catBg }};border:1px solid {{ featured.catBorder }};white-space:nowrap">{{ featured.cat }}</span>
+              </div>
+              <h2 style="margin:0;font-size:21px;font-weight:600;letter-spacing:-0.015em;line-height:1.25;color:var(--text-primary)">{{ featured.title }}</h2>
+              <p style="margin:8px 0 0;font-size:13.5px;line-height:1.55;color:var(--text-secondary)">{{ featured.desc }}</p>
+              <div style="flex:1"></div>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:14px;font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">
+                <span>{{ featured.dateLabel }}</span>
+                <span style="display:inline-flex;align-items:center;gap:4px">{{ featured.clock }}{{ featured.mins }} min read</span>
+                <span style="flex:1"></span>
+                <span class="ub-readmore" style="display:inline-flex;align-items:center;gap:5px;font-weight:500;color:var(--accent-400);transition:var(--transition-colors)">Read post {{ i.arrow }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <span style="font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.02em;text-transform:uppercase;color:var(--text-tertiary)">All posts</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">{{ postCount }}</span>
+            <span style="flex:1;height:1px;background:var(--border-subtle)"></span>
+            <span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-tertiary)">{{ i.sliders }} Newest first</span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ listPosts }}" as="post" hint-placeholder-count="8">
+              <div onClick="{{ post.onOpen }}" class="ub-card" style="display:flex;gap:16px;padding:14px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);cursor:pointer">
+                <sc-if value="{{ showThumbs }}" hint-placeholder-val="{{ true }}"><div style="flex-shrink:0;width:62px;height:62px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--surface-sunken);border:1px solid var(--border-subtle);color:{{ post.catColor }}">{{ post.thumb }}</div></sc-if>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                    <span style="display:inline-flex;align-items:center;gap:5px;height:18px;padding:0 7px;border-radius:var(--radius-sm);font-size:10px;font-weight:600;color:{{ post.catColor }};background:{{ post.catBg }};border:1px solid {{ post.catBorder }}">{{ post.cat }}</span>
+                    <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">{{ post.dateLabel }}</span>
+                    <span style="color:var(--text-tertiary);font-size:10px">·</span>
+                    <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">{{ post.mins }} min</span>
+                  </div>
+                  <h3 style="margin:0;font-size:15px;font-weight:600;letter-spacing:-0.01em;line-height:1.3;color:var(--text-primary)">{{ post.title }}</h3>
+                  <sc-if value="{{ showDesc }}" hint-placeholder-val="{{ true }}"><p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ post.desc }}</p></sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isPost }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky;top:0;z-index:3;display:flex;align-items:stretch;height:36px;background:var(--surface-canvas);border-bottom:1px solid var(--border-subtle)">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 12px;background:var(--surface-raised);border-right:1px solid var(--border-subtle);position:relative">
+            <span style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent-500)"></span>
+            <span style="display:flex;color:var(--violet-500)">{{ i.fileTextC }}</span>
+            <span style="font-size:12.5px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:300px">Running Claude Code for Free with Nvidia NIM</span>
+            <span style="display:flex;color:var(--text-tertiary);margin-left:2px">{{ i.x }}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 12px;border-right:1px solid var(--border-subtle);opacity:0.55">
+            <span style="display:flex;color:var(--text-tertiary)">{{ i.fileText }}</span>
+            <span style="font-size:12.5px;font-weight:500;color:var(--text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px">Using GitHub Copilot Models via LiteLLM</span>
+          </div>
+          <div style="flex:1"></div>
+          <div style="display:flex;align-items:center;gap:6px;padding:0 14px;font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)"><span style="display:flex">{{ i.terminalC }}</span>markdown</div>
+        </div>
+
+        <article style="max-width:760px;margin:0 auto;padding:34px 44px 90px">
+          <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+            <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;color:var(--violet-500);background:rgba(157,123,255,0.12);border:1px solid rgba(157,123,255,0.24)">Claude Code</span>
+            <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">2026-03-22</span>
+          </div>
+          <h1 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-0.022em;line-height:1.12;color:var(--text-primary)">Running Claude Code for Free with Nvidia NIM</h1>
+          <p style="margin:14px 0 0;font-size:16px;line-height:1.6;color:var(--text-secondary)">Run the Claude Code CLI at no cost by connecting it to NVIDIA NIM&rsquo;s free-tier inference microservices through a LiteLLM proxy.</p>
+
+          <div style="display:flex;align-items:center;gap:14px;margin:20px 0 8px;padding-bottom:22px;border-bottom:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary)">
+            <span style="display:inline-flex;align-items:center;gap:8px">
+              <x-import component-from-global-scope="UrightCreatorStudioDesignSystem_80cff4.Avatar" name="Jack Wong" size="sm" hint-size="24px,24px"></x-import>
+              <span style="color:var(--text-secondary)">Jack Wong</span>
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px">{{ i.clock }}7 min read</span>
+            <span style="flex:1"></span>
+            <span style="display:inline-flex;align-items:center;gap:5px;cursor:pointer">{{ i.link }}Share</span>
+          </div>
+
+          <h2 style="margin:34px 0 12px;font-size:21px;font-weight:600;letter-spacing:-0.015em;color:var(--text-primary);scroll-margin-top:60px">The situation</h2>
+          <p style="margin:0 0 14px;font-size:15.5px;line-height:1.72;color:var(--gray-100)">If you&rsquo;re hitting your Claude usage limits mid-session, or you&rsquo;re a CS student who wants to try Claude Code without a paid subscription, this is for you. NVIDIA offers free API access to a catalog of open-source LLMs through <a style="color:var(--accent-400);text-decoration:none;border-bottom:1px solid var(--accent-alpha-40)">build.nvidia.com</a> &mdash; their hosted NIM platform.</p>
+          <p style="margin:0 0 14px;font-size:15.5px;line-height:1.72;color:var(--gray-100)">By placing a <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:5px;padding:1.5px 6px;color:var(--accent-300)">LiteLLM</code> proxy in front of NVIDIA NIM, you can point Claude Code at these models. LiteLLM handles translation between Anthropic&rsquo;s Messages API and the OpenAI-compatible API that NIM speaks.</p>
+
+          <div style="display:flex;gap:12px;margin:20px 0;padding:14px 16px;background:var(--status-warning-bg);border:1px solid rgba(245,181,68,0.24);border-left:3px solid var(--amber-500);border-radius:var(--radius-md)">
+            <span style="display:flex;color:var(--amber-500);margin-top:1px">{{ i.warn }}</span>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--gray-100)"><strong style="color:var(--text-primary);font-weight:600">Fair warning.</strong> Claude Code will be talking to open-source models, not Claude. Extended thinking and complex tool-use chains may not work reliably &mdash; basic chat, code generation, and single-file edits generally work fine.</p>
+          </div>
+
+          <h2 style="margin:34px 0 12px;font-size:21px;font-weight:600;letter-spacing:-0.015em;color:var(--text-primary);scroll-margin-top:60px">How the pieces fit</h2>
+          <div style="margin:18px 0;padding:24px 16px;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);background-image:radial-gradient(var(--white-alpha-04) 1px, transparent 1px);background-size:16px 16px">
+            <div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap">
+              <span style="display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:var(--radius-md);background:var(--surface-raised);border:1px solid var(--border-strong);font-family:var(--font-mono);font-size:12px;color:var(--text-primary)">{{ i.terminalC }}Claude Code CLI</span>
+              <span style="width:34px;height:1px;background:var(--graph-edge);position:relative"></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:var(--radius-md);background:var(--accent-alpha-12);border:1px solid var(--accent-alpha-40);font-family:var(--font-mono);font-size:12px;color:var(--accent-300)">LiteLLM :4000</span>
+              <span style="width:34px;height:1px;background:var(--graph-edge)"></span>
+              <span style="display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 14px;border-radius:var(--radius-md);background:var(--surface-raised);border:1px solid rgba(74,163,255,0.32);font-family:var(--font-mono);font-size:12px;color:var(--blue-500)">{{ i.dbBlue }}NVIDIA NIM</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap">
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:3px 9px;border-radius:var(--radius-sm);background:var(--gray-800);border:1px solid var(--border-subtle)">Qwen 3.5</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:3px 9px;border-radius:var(--radius-sm);background:var(--gray-800);border:1px solid var(--border-subtle)">GLM 5</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:3px 9px;border-radius:var(--radius-sm);background:var(--gray-800);border:1px solid var(--border-subtle)">Kimi K2.5</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:3px 9px;border-radius:var(--radius-sm);background:var(--gray-800);border:1px solid var(--border-subtle)">MiniMax M2.5</span>
+            </div>
+            <div style="text-align:center;margin-top:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-tertiary)">fig 1 &mdash; request routing</div>
+          </div>
+
+          <h2 style="margin:34px 0 12px;font-size:21px;font-weight:600;letter-spacing:-0.015em;color:var(--text-primary);scroll-margin-top:60px">Set up the LiteLLM proxy</h2>
+          <p style="margin:0 0 14px;font-size:15.5px;line-height:1.72;color:var(--gray-100)">Create an empty folder and add a <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:5px;padding:1.5px 6px;color:var(--accent-300)">config.yaml</code>:</p>
+
+          <div style="margin:18px 0;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:8px;height:36px;padding:0 8px 0 13px;background:var(--gray-850);border-bottom:1px solid var(--border-subtle)">
+              <span style="display:flex;color:var(--text-tertiary)">{{ i.fileText }}</span>
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)">config.yaml</span>
+              <span style="flex:1"></span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary);padding:2px 7px;border-radius:var(--radius-sm);background:var(--gray-800);border:1px solid var(--border-subtle)">yaml</span>
+              <span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:var(--radius-sm);color:var(--text-tertiary);font-size:11px;cursor:pointer">{{ i.copy }}copy</span>
+            </div>
+            <pre style="margin:0;padding:15px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;background:var(--surface-sunken);color:var(--gray-100)"><span style="color:var(--violet-500)">model_list</span>:
+  - <span style="color:var(--blue-500)">model_name</span>: <span style="color:var(--green-500)">claude-sonnet-4-6</span>
+    <span style="color:var(--blue-500)">litellm_params</span>:
+      <span style="color:var(--blue-500)">model</span>: <span style="color:var(--green-500)">nvidia_nim/qwen/qwen3.5-122b-a10b</span>
+      <span style="color:var(--blue-500)">api_key</span>: <span style="color:var(--green-500)">os.environ/NVIDIA_NIM_API_KEY</span>
+
+  - <span style="color:var(--blue-500)">model_name</span>: <span style="color:var(--green-500)">claude-opus-4-6</span>
+    <span style="color:var(--blue-500)">litellm_params</span>:
+      <span style="color:var(--blue-500)">model</span>: <span style="color:var(--green-500)">nvidia_nim/z-ai/glm5</span>
+      <span style="color:var(--blue-500)">api_key</span>: <span style="color:var(--green-500)">os.environ/NVIDIA_NIM_API_KEY</span>
+
+<span style="color:var(--violet-500)">litellm_settings</span>:
+  <span style="color:var(--blue-500)">drop_params</span>: <span style="color:var(--accent-300)">true</span>  <span style="color:var(--text-tertiary)"># drop Anthropic-only params</span></pre>
+          </div>
+
+          <h2 style="margin:34px 0 12px;font-size:21px;font-weight:600;letter-spacing:-0.015em;color:var(--text-primary);scroll-margin-top:60px">Pick your models</h2>
+          <p style="margin:0 0 14px;font-size:15.5px;line-height:1.72;color:var(--gray-100)">The NIM catalog has 40+ models. Some strong options for coding tasks:</p>
+
+          <div style="margin:18px 0;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+              <thead>
+                <tr style="background:var(--gray-850)">
+                  <th style="text-align:left;padding:9px 14px;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">Model</th>
+                  <th style="text-align:left;padding:9px 14px;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:11px">NIM ID</th>
+                  <th style="text-align:left;padding:9px 14px;font-weight:600;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding:9px 14px;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">Qwen 3.5 122B</td><td style="padding:9px 14px;font-family:var(--font-mono);font-size:11.5px;color:var(--accent-300);border-bottom:1px solid var(--border-subtle)">qwen/qwen3.5-122b</td><td style="padding:9px 14px;color:var(--text-tertiary);border-bottom:1px solid var(--border-subtle)">Strong coder, MoE</td></tr>
+                <tr><td style="padding:9px 14px;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">GLM-5</td><td style="padding:9px 14px;font-family:var(--font-mono);font-size:11.5px;color:var(--accent-300);border-bottom:1px solid var(--border-subtle)">z-ai/glm5</td><td style="padding:9px 14px;color:var(--text-tertiary);border-bottom:1px solid var(--border-subtle)">744B MoE, great reasoning</td></tr>
+                <tr><td style="padding:9px 14px;color:var(--text-primary)">Kimi K2.5</td><td style="padding:9px 14px;font-family:var(--font-mono);font-size:11.5px;color:var(--accent-300)">moonshotai/kimi-k2.5</td><td style="padding:9px 14px;color:var(--text-tertiary)">1T MoE from Moonshot</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 style="margin:34px 0 12px;font-size:21px;font-weight:600;letter-spacing:-0.015em;color:var(--text-primary);scroll-margin-top:60px">Run the proxy</h2>
+          <div style="margin:18px 0;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+            <div style="display:flex;align-items:center;gap:8px;height:36px;padding:0 8px 0 13px;background:var(--gray-850);border-bottom:1px solid var(--border-subtle)">
+              <span style="display:flex;color:var(--text-tertiary)">{{ i.terminal }}</span>
+              <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)">bash</span>
+              <span style="flex:1"></span>
+              <span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:var(--radius-sm);color:var(--text-tertiary);font-size:11px;cursor:pointer">{{ i.copy }}copy</span>
+            </div>
+            <pre style="margin:0;padding:15px 16px;overflow-x:auto;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;background:var(--surface-sunken);color:var(--gray-100)"><span style="color:var(--text-tertiary)">$</span> <span style="color:var(--accent-300)">docker</span> run -d -p <span style="color:var(--green-500)">4000:4000</span> \
+    -e <span style="color:var(--blue-500)">NVIDIA_NIM_API_KEY</span>=<span style="color:var(--green-500)">"nvapi-..."</span> \
+    -v <span style="color:var(--green-500)">$(pwd)/config.yaml:/app/config.yaml</span> \
+    --name litellm-nim \
+    docker.litellm.ai/berriai/litellm:main-stable</pre>
+          </div>
+
+          <p style="margin:18px 0 0;font-size:15.5px;line-height:1.72;color:var(--gray-100)">Reload your shell, run <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--surface-sunken);border:1px solid var(--border-subtle);border-radius:5px;padding:1.5px 6px;color:var(--accent-300)">claude-nim</code>, and you have a free, no-subscription fallback for Claude Code.</p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:32px;padding-top:22px;border-top:1px solid var(--border-subtle)">
+            <span class="ub-tag" style="display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:pointer"><span style="color:var(--text-tertiary)">#</span>claude-code</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:pointer"><span style="color:var(--text-tertiary)">#</span>nvidia</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:pointer"><span style="color:var(--text-tertiary)">#</span>litellm</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:pointer"><span style="color:var(--text-tertiary)">#</span>free</span>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;gap:14px;margin-top:24px">
+            <div onClick="{{ goHome }}" class="ub-card" style="flex:1;padding:14px 16px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);cursor:pointer">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary);margin-bottom:5px">&larr; previous</div>
+              <div style="font-size:13px;font-weight:500;color:var(--text-secondary)">Run Claude Code on your Copilot subscription</div>
+            </div>
+            <div onClick="{{ goHome }}" class="ub-card" style="flex:1;padding:14px 16px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);cursor:pointer;text-align:right">
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary);margin-bottom:5px">next &rarr;</div>
+              <div style="font-size:13px;font-weight:500;color:var(--text-secondary)">Using GitHub Copilot models via LiteLLM</div>
+            </div>
+          </div>
+        </article>
+      </sc-if>
+      <sc-if value="{{ isArchives }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:720px;margin:0 auto;padding:34px 44px 90px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-400);margin-bottom:8px">git log --all</div>
+          <h1 style="margin:0 0 6px;font-size:30px;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)">Archives</h1>
+          <p style="margin:0 0 30px;font-size:14px;color:var(--text-tertiary)">Every post, newest first &mdash; 17 entries across 2 years.</p>
+
+          <sc-for list="{{ archiveYears }}" as="year" hint-placeholder-count="2">
+            <div style="margin-bottom:14px">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+                <span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em">{{ year.year }}</span>
+                <span style="height:1px;flex:1;background:var(--border-subtle)"></span>
+                <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:2px 8px;border-radius:var(--radius-pill);background:var(--gray-800);border:1px solid var(--border-subtle)">{{ year.count }} posts</span>
+              </div>
+              <div style="position:relative;padding-left:22px">
+                <span style="position:absolute;left:6px;top:14px;bottom:14px;width:2px;background:var(--border-default)"></span>
+                <sc-for list="{{ year.items }}" as="post" hint-placeholder-count="6">
+                  <div onClick="{{ post.onOpen }}" class="ub-row" style="position:relative;display:flex;align-items:center;gap:14px;min-height:40px;padding:7px 12px 7px 4px;border-radius:var(--radius-md);cursor:pointer;transition:var(--transition-colors)">
+                    <span style="position:absolute;left:-19px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;background:var(--surface-canvas);border:2px solid {{ post.catColor }};box-shadow:0 0 0 3px var(--surface-canvas)"></span>
+                    <span style="flex-shrink:0;width:54px;font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);text-align:right">{{ post.monthDay }}</span>
+                    <span style="flex:1;min-width:0;font-size:14px;font-weight:500;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ post.title }}</span>
+                    <span style="flex-shrink:0;display:inline-flex;align-items:center;height:18px;padding:0 7px;border-radius:var(--radius-sm);font-size:10px;font-weight:600;color:{{ post.catColor }};background:{{ post.catBg }};border:1px solid {{ post.catBorder }};white-space:nowrap">{{ post.cat }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isCategories }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:760px;margin:0 auto;padding:34px 44px 90px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-400);margin-bottom:8px">~/posts</div>
+          <h1 style="margin:0 0 6px;font-size:30px;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)">Categories</h1>
+          <p style="margin:0 0 28px;font-size:14px;color:var(--text-tertiary)">Four working folders. Pick a topic to browse its posts.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <sc-for list="{{ categoryCards }}" as="cat" hint-placeholder-count="4">
+              <div onClick="{{ cat.onOpen }}" class="ub-catcard" style="display:flex;flex-direction:column;padding:18px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);cursor:pointer;transition:border-color var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                  <span style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:var(--radius-lg);color:{{ cat.color }};background:{{ cat.bg }};border:1px solid {{ cat.border }}">{{ cat.big }}</span>
+                  <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);padding:3px 9px;border-radius:var(--radius-pill);background:var(--gray-800);border:1px solid var(--border-subtle)">{{ cat.count }} posts</span>
+                </div>
+                <h2 style="margin:0 0 6px;font-size:17px;font-weight:600;letter-spacing:-0.01em;color:var(--text-primary)">{{ cat.name }}</h2>
+                <p style="margin:0 0 14px;font-size:13px;line-height:1.55;color:var(--text-tertiary)">{{ cat.desc }}</p>
+                <div style="display:flex;flex-direction:column;gap:2px;margin-top:auto;padding-top:12px;border-top:1px solid var(--border-subtle)">
+                  <sc-for list="{{ cat.recent }}" as="post" hint-placeholder-count="3">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-tertiary)">
+                      <span style="width:4px;height:4px;border-radius:50%;background:{{ post.catColor }};flex-shrink:0"></span>
+                      <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ post.title }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isTags }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:720px;margin:0 auto;padding:34px 44px 90px">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-400);margin-bottom:8px">grep -r #</div>
+          <h1 style="margin:0 0 6px;font-size:30px;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)">Tags</h1>
+          <p style="margin:0 0 28px;font-size:14px;color:var(--text-tertiary)">{{ tagCount }} tags across the archive. Larger means more posts.</p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px 12px;align-items:baseline;padding:24px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-xl)">
+            <sc-for list="{{ tagCloud }}" as="tag" hint-placeholder-count="24">
+              <span onClick="{{ tag.onOpen }}" class="ub-toc" style="display:inline-flex;align-items:baseline;gap:2px;font-family:var(--font-mono);cursor:pointer;line-height:1;white-space:nowrap;color:{{ tag.color }};font-size:{{ tag.size }};font-weight:{{ tag.weight }};transition:var(--transition-colors)"><span style="opacity:0.5;font-size:0.7em">#</span>{{ tag.name }}<sup style="font-size:0.5em;color:var(--text-tertiary);font-weight:400;margin-left:2px">{{ tag.count }}</sup></span>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">
+            <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--accent-300)"></span>8+ posts</span>
+            <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--text-secondary)"></span>2&ndash;4 posts</span>
+            <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--text-tertiary)"></span>1 post</span>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:720px;margin:0 auto;padding:34px 44px 90px">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);margin-bottom:18px">cat about.md</div>
+
+          <div style="display:flex;gap:20px;align-items:center;padding-bottom:26px;margin-bottom:26px;border-bottom:1px solid var(--border-subtle)">
+            <x-import component-from-global-scope="UrightCreatorStudioDesignSystem_80cff4.Avatar" name="Jack Wong" size="xl" ring="true" hint-size="56px,56px"></x-import>
+            <div style="flex:1;min-width:0">
+              <h1 style="margin:0;font-size:26px;font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)">Jack Wong</h1>
+              <div style="margin-top:5px;font-family:var(--font-mono);font-size:12.5px;color:var(--accent-400)">Enterprise Architect &middot; tech evangelist</div>
+              <div style="display:flex;gap:7px;margin-top:14px">
+                <span class="ub-soc" style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:12px;cursor:pointer;transition:var(--transition-colors)">{{ i.github }}GitHub</span>
+                <span class="ub-soc" style="display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);font-size:12px;cursor:pointer;transition:var(--transition-colors)">{{ i.linkedin }}LinkedIn</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin:0 0 30px;font-size:16px;line-height:1.7;color:var(--gray-100)">I&rsquo;m a software engineer and a tech enthusiast. I love sharing what I learn about the tools I use every day &mdash; LLM inference, cloud architecture and the small workflows that compound. This blog is where the notes live.</p>
+
+          <h2 style="margin:0 0 12px;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-tertiary)">Skills</h2>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px">
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">AWS Bedrock</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">Azure OpenAI</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">PGVector</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">Qdrant</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">LLMs &amp; deep learning</span>
+            <span class="ub-tag" style="display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:default">Enterprise architecture</span>
+          </div>
+
+          <h2 style="margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-tertiary)">Experience</h2>
+          <div style="position:relative;padding-left:22px;margin-bottom:34px">
+            <span style="position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--border-default)"></span>
+            <div style="position:relative;margin-bottom:18px">
+              <span style="position:absolute;left:-21px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent-500);box-shadow:0 0 0 3px var(--surface-canvas)"></span>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">Enterprise Architect</div>
+                <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);white-space:nowrap">Jul 2023 &mdash; present</div>
+              </div>
+              <div style="font-size:13px;color:var(--accent-400);margin:2px 0 5px">Eviden</div>
+              <p style="margin:0;font-size:13.5px;line-height:1.6;color:var(--text-tertiary)">Technology evangelist and architect for major enterprise transformation programs.</p>
+            </div>
+            <div style="position:relative">
+              <span style="position:absolute;left:-21px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--surface-canvas);border:2px solid var(--gray-500);box-shadow:0 0 0 3px var(--surface-canvas)"></span>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">Partner, Director of Architecture</div>
+                <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary);white-space:nowrap">Oct 2011 &mdash; Jul 2023</div>
+              </div>
+              <div style="font-size:13px;color:var(--text-secondary);margin:2px 0 5px">AppCentrica Inc</div>
+              <p style="margin:0;font-size:13.5px;line-height:1.6;color:var(--text-tertiary)">Led digital and business transformation projects for automobile, P&amp;C insurance and other financial and enterprise clients.</p>
+            </div>
+          </div>
+
+          <h2 style="margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-tertiary)">Education</h2>
+          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+            <span style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--radius-md);background:var(--surface-sunken);border:1px solid var(--border-subtle);color:var(--text-secondary);flex-shrink:0">{{ i.layersC }}</span>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Bachelor of Computer Science</div>
+              <div style="font-size:13px;color:var(--text-secondary);margin:2px 0 6px">University of Waterloo</div>
+              <div style="font-family:var(--font-mono);font-size:11.5px;color:var(--text-tertiary)">Honours Computer Science &middot; Business Option</div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+
+    <aside style="min-height:0;overflow-y:auto;background:var(--surface-panel);border-left:1px solid var(--border-subtle)">
+      <sc-if value="{{ showAboutRail }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:18px 16px">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px">
+            <x-import component-from-global-scope="UrightCreatorStudioDesignSystem_80cff4.Avatar" name="Jack Wong" size="lg" ring="true" hint-size="40px,40px"></x-import>
+            <div style="min-width:0">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary);line-height:1.2">Jack Wong</div>
+              <div style="font-size:11px;color:var(--text-tertiary);font-family:var(--font-mono);margin-top:2px">Enterprise Architect</div>
+            </div>
+          </div>
+          <p style="margin:0 0 14px;font-size:12.5px;line-height:1.55;color:var(--text-secondary)">Software engineer &amp; tech evangelist sharing hands-on notes from the LLM tooling trenches.</p>
+          <div style="display:flex;gap:6px;margin-bottom:20px">
+            <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);cursor:pointer;transition:var(--transition-colors)">{{ i.github }}</span>
+            <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);cursor:pointer;transition:var(--transition-colors)">{{ i.linkedin }}</span>
+            <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--accent-400);cursor:pointer;transition:var(--transition-colors)">{{ i.rss }}</span>
+          </div>
+
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px">Popular tags</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px">
+            <sc-for list="{{ popularTags }}" as="tag" hint-placeholder-count="10">
+              <span onClick="{{ goTags }}" class="ub-tag" style="display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:var(--radius-md);font-family:var(--font-mono);font-size:11px;color:var(--text-secondary);background:var(--gray-750);border:1px solid var(--border-default);cursor:pointer;white-space:nowrap;transition:var(--transition-colors)"><span style="color:var(--text-tertiary)">#</span>{{ tag.name }}</span>
+            </sc-for>
+          </div>
+
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px">Stats</div>
+          <div style="display:flex;flex-direction:column;gap:1px;font-family:var(--font-mono);font-size:12px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);overflow:hidden;white-space:nowrap">
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">posts</span><span style="color:var(--text-secondary)">17</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">categories</span><span style="color:var(--text-secondary)">4</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">tags</span><span style="color:var(--text-secondary)">38</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">since</span><span style="color:var(--text-secondary)">2024</span></div>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isPost }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:18px 16px">
+          <div style="display:flex;align-items:center;gap:7px;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px">{{ i.listTree }}On this page</div>
+          <div style="display:flex;flex-direction:column;gap:1px;position:relative;padding-left:11px;margin-bottom:24px">
+            <span style="position:absolute;left:0;top:4px;bottom:4px;width:2px;background:var(--border-subtle);border-radius:2px"></span>
+            <span style="position:absolute;left:0;top:4px;height:22px;width:2px;background:var(--accent-500);border-radius:2px"></span>
+            <a class="ub-toc" style="font-size:12.5px;color:var(--accent-400);padding:4px 0;text-decoration:none;cursor:pointer;font-weight:500">The situation</a>
+            <a class="ub-toc" style="font-size:12.5px;color:var(--text-tertiary);padding:4px 0;text-decoration:none;cursor:pointer;transition:var(--transition-colors)">How the pieces fit</a>
+            <a class="ub-toc" style="font-size:12.5px;color:var(--text-tertiary);padding:4px 0;text-decoration:none;cursor:pointer;transition:var(--transition-colors)">Set up the LiteLLM proxy</a>
+            <a class="ub-toc" style="font-size:12.5px;color:var(--text-tertiary);padding:4px 0;text-decoration:none;cursor:pointer;transition:var(--transition-colors)">Pick your models</a>
+            <a class="ub-toc" style="font-size:12.5px;color:var(--text-tertiary);padding:4px 0;text-decoration:none;cursor:pointer;transition:var(--transition-colors)">Run the proxy</a>
+          </div>
+
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px">Details</div>
+          <div style="display:flex;flex-direction:column;gap:1px;font-family:var(--font-mono);font-size:12px;border:1px solid var(--border-subtle);border-radius:var(--radius-md);overflow:hidden;margin-bottom:20px;white-space:nowrap">
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">category</span><span style="color:var(--violet-500)">Claude Code</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">published</span><span style="color:var(--text-secondary)">2026-03-22</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">words</span><span style="color:var(--text-secondary)">1,180</span></div>
+            <div style="display:flex;justify-content:space-between;padding:8px 11px;background:var(--surface-sunken)"><span style="color:var(--text-tertiary)">reading</span><span style="color:var(--text-secondary)">7 min</span></div>
+          </div>
+
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px">Share</div>
+          <div style="display:flex;gap:6px">
+            <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);cursor:pointer;transition:var(--transition-colors)">{{ i.link }}</span>
+            <span class="ub-soc" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);color:var(--text-secondary);cursor:pointer;transition:var(--transition-colors)">{{ i.github }}</span>
+          </div>
+        </div>
+      </sc-if>
+    </aside>
+  </div>
+
+  <footer style="display:flex;align-items:center;gap:14px;height:26px;flex-shrink:0;padding:0 14px;background:var(--surface-panel);border-top:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)">
+    <span style="display:inline-flex;align-items:center;gap:5px;color:var(--text-secondary)">{{ i.gitBranch }}main</span>
+    <span style="display:inline-flex;align-items:center;gap:5px">{{ i.fileText }}17 posts</span>
+    <span>jekyll · chirpy</span>
+    <span style="flex:1"></span>
+    <span style="display:inline-flex;align-items:center;gap:5px;color:var(--accent-400)">{{ i.rss }}RSS</span>
+    <span>blog.uright.ai</span>
+    <span style="display:inline-flex;align-items:center;gap:5px;color:var(--status-success)"><span style="width:6px;height:6px;border-radius:50%;background:var(--status-success)"></span>deployed</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;showThumbnails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Post list&quot;,&quot;label&quot;:&quot;Show thumbnails&quot;},&quot;showPostDescriptions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Post list&quot;,&quot;label&quot;:&quot;Show descriptions&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', activeSlug: 'running-claude-code-for-free-with-nvidia-nim' };
+
+  paths = {
+    search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',
+    'chevron-right': '<path d="m9 18 6-6-6-6"/>',
+    'chevron-down': '<path d="m6 9 6 6 6-6"/>',
+    'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+    'sliders-horizontal': '<path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/>',
+    folder: '<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+    'folder-open': '<path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/>',
+    'file-text': '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>',
+    'message-square': '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>',
+    database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>',
+    'git-branch': '<line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>',
+    'git-commit': '<circle cx="12" cy="12" r="3"/><line x1="3" x2="9" y1="12" y2="12"/><line x1="15" x2="21" y1="12" y2="12"/>',
+    network: '<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/>',
+    table: '<path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/>',
+    copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+    link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+    terminal: '<path d="m4 17 6-6-6-6"/><path d="M12 19h8"/>',
+    zap: '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+    command: '<path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"/>',
+    'list-tree': '<path d="M21 12h-8"/><path d="M21 6H8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/>',
+    'refresh-cw': '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+    'trash-2': '<path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/>',
+    bot: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
+    download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>',
+    layers: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.49 1.59a1 1 0 0 0 0 1.83l8.59 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.84L17.92 9.5"/>',
+    clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+    hash: '<line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/>',
+    rss: '<path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>',
+    'external-link': '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
+    linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    'arrow-up-right': '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
+    x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    'triangle-alert': '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  };
+
+  icon(name, size, color, stroke) {
+    const inner = this.paths[name] || this.paths.search;
+    return React.createElement('svg', {
+      width: size || 16, height: size || 16, viewBox: '0 0 24 24', fill: 'none',
+      stroke: color || 'currentColor', strokeWidth: stroke || 2,
+      strokeLinecap: 'round', strokeLinejoin: 'round',
+      style: { flexShrink: 0, display: 'block' },
+      dangerouslySetInnerHTML: { __html: inner },
+    });
+  }
+
+  cats() {
+    return {
+      'AI & LLMs': { color: 'var(--blue-500)', bg: 'rgba(74,163,255,0.12)', border: 'rgba(74,163,255,0.24)', icon: 'database' },
+      'Claude Code': { color: 'var(--violet-500)', bg: 'rgba(157,123,255,0.12)', border: 'rgba(157,123,255,0.24)', icon: 'command' },
+      'DevOps': { color: 'var(--agent-datadoug)', bg: 'rgba(76,201,176,0.12)', border: 'rgba(76,201,176,0.24)', icon: 'terminal' },
+      'Quick Tips': { color: 'var(--amber-500)', bg: 'rgba(245,181,68,0.12)', border: 'rgba(245,181,68,0.24)', icon: 'zap' },
+    };
+  }
+
+  rawPosts() {
+    return [
+      { slug: 'running-claude-code-for-free-with-nvidia-nim', title: 'Running Claude Code for Free with Nvidia NIM', cat: 'Claude Code', icon: 'zap', mins: 7, y: 2026, m: 3, d: 22, file: 'nvidia-nim-free-claude-code.md', desc: 'Point Claude Code at NVIDIA NIM\u2019s free-tier models through a LiteLLM proxy and keep working past your usage limits.' },
+      { slug: 'using-github-copilot-models-via-litellm-proxy', title: 'Using GitHub Copilot Models via LiteLLM Proxy', cat: 'Claude Code', icon: 'git-branch', mins: 9, y: 2026, m: 3, d: 14, file: 'copilot-models-litellm.md', desc: 'Expose your Copilot subscription\u2019s models through a local OpenAI-compatible endpoint for any client.' },
+      { slug: 'sound-notifications-for-claude-code-on-macos', title: 'Sound Notifications for Claude Code on macOS', cat: 'Claude Code', icon: 'message-square', mins: 5, y: 2026, m: 3, d: 15, file: 'cc-sound-macos.md', desc: 'Get an audible ping when Claude Code finishes a long task on macOS using hooks and afplay.' },
+      { slug: 'run-claude-code-cli-on-your-github-copilot-subscription', title: 'Run Claude Code CLI on Your GitHub Copilot Subscription', cat: 'Claude Code', icon: 'git-commit', mins: 6, y: 2026, m: 3, d: 2, file: 'cc-on-copilot.md', desc: 'Reuse the Copilot models you already pay for to drive the Claude Code CLI.' },
+      { slug: 'switching-between-claude-profiles-on-anthropic-and-bedrock', title: 'Switching Between Claude Profiles on Anthropic and Bedrock', cat: 'Claude Code', icon: 'refresh-cw', mins: 4, y: 2026, m: 2, d: 28, file: 'claude-profiles.md', desc: 'Flip between Anthropic direct and AWS Bedrock credentials with a couple of shell aliases.' },
+      { slug: 'sound-notifications-for-claude-code-on-wsl', title: 'Sound Notifications for Claude Code on WSL', cat: 'Claude Code', icon: 'terminal', mins: 5, y: 2026, m: 2, d: 24, file: 'cc-sound-wsl.md', desc: 'Bridge WSL hooks to the Windows host so Claude Code can play a notification sound.' },
+      { slug: 'using-aws-bedrock-models-from-openwebui', title: 'Using AWS Bedrock Models from OpenWebUI', cat: 'AI & LLMs', icon: 'database', mins: 6, y: 2026, m: 2, d: 16, file: 'bedrock-openwebui.md', desc: 'Wire Open WebUI to AWS Bedrock so you can chat with Claude and Titan from a self-hosted UI.' },
+      { slug: 'managing-jekyll-blogs-with-openclaw-and-tailscale', title: 'Managing Jekyll Blogs with OpenClaw and Tailscale', cat: 'DevOps', icon: 'network', mins: 5, y: 2026, m: 2, d: 9, file: 'jekyll-openclaw-tailscale.md', desc: 'Edit and preview your Jekyll site remotely over a private Tailscale network.' },
+      { slug: 'text-to-speech-tools-for-macos-and-windows-superwhisper-handy', title: 'Text-to-Speech Tools for macOS and Windows', cat: 'DevOps', icon: 'message-square', mins: 5, y: 2026, m: 2, d: 8, file: 'tts-tools.md', desc: 'A look at superwhisper and Handy for fast dictation on both platforms.' },
+      { slug: 'sharing-git-credentials-between-wsl-and-windows-host', title: 'Sharing Git Credentials Between WSL and Windows Host', cat: 'DevOps', icon: 'git-branch', mins: 5, y: 2026, m: 2, d: 8, file: 'git-creds-wsl.md', desc: 'Stop re-authenticating: share one credential manager across WSL and Windows.' },
+      { slug: 'shiftenter-shortcut-key-solved-in-claude-code-antigravity', title: 'Shift+Enter Shortcut Key Solved in Claude Code / Antigravity', cat: 'Quick Tips', icon: 'command', mins: 2, y: 2026, m: 2, d: 5, file: 'shift-enter-fix.md', desc: 'The terminal keybinding tweak that makes multi-line input work as expected.' },
+      { slug: 'quick-tip-installing-aws-cli-v2-with-uv-tool', title: 'Quick Tip: Installing AWS CLI v2 with uv tool', cat: 'Quick Tips', icon: 'zap', mins: 2, y: 2026, m: 2, d: 4, file: 'aws-cli-uv.md', desc: 'A one-liner to install and manage the AWS CLI v2 with uv tool.' },
+      { slug: 'docker-desktop-volume-backup-and-restore', title: 'Docker Desktop Volume Backup and Restore', cat: 'DevOps', icon: 'database', mins: 4, y: 2026, m: 1, d: 7, file: 'docker-volume-backup.md', desc: 'Snapshot and restore named Docker volumes with a portable tar workflow.' },
+      { slug: 'unlocking-the-power-of-azure-openai-on-open-webui', title: 'Unlocking the Power of Azure OpenAI on Open WebUI', cat: 'AI & LLMs', icon: 'database', mins: 6, y: 2024, m: 7, d: 29, file: 'azure-openai-openwebui.md', desc: 'Connect Open WebUI to Azure OpenAI deployments for a private chat front-end.' },
+      { slug: 'how-i-identified-the-top-10-hugo-themes-with-chatgpt', title: 'How I Identified the Top 10 Hugo Themes with ChatGPT', cat: 'AI & LLMs', icon: 'sparkles', mins: 7, y: 2024, m: 8, d: 11, file: 'top-hugo-themes-chatgpt.md', desc: 'Using ChatGPT to research and rank Hugo themes against a set of criteria.' },
+      { slug: 'codellama-instruct-13b-writing-snake-game', title: 'CodeLlama Instruct 13b Writing a Snake Game', cat: 'AI & LLMs', icon: 'bot', mins: 8, y: 2024, m: 2, d: 1, file: 'codellama-snake.md', desc: 'Putting a local CodeLlama model to work building a playable Snake game.' },
+      { slug: 'private-gpt-clear-ingested-files', title: 'PrivateGPT: Clear Ingested Files', cat: 'AI & LLMs', icon: 'trash-2', mins: 3, y: 2024, m: 1, d: 27, file: 'privategpt-clear-files.md', desc: 'Reset PrivateGPT\u2019s vector store and start fresh with a clean ingestion.' },
+    ];
+  }
+
+  monthName(m) { return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m-1]; }
+
+  buildPosts() {
+    const C = this.cats();
+    return this.rawPosts().map((p) => {
+      const c = C[p.cat];
+      return {
+        ...p,
+        catColor: c.color, catBg: c.bg, catBorder: c.border,
+        dateLabel: this.monthName(p.m) + ' ' + p.d + ', ' + p.y,
+        monthDay: this.monthName(p.m) + ' ' + p.d,
+        dayPad: String(p.d).padStart(2,'0'),
+        dateShort: p.y + '-' + String(p.m).padStart(2,'0') + '-' + String(p.d).padStart(2,'0'),
+        fileName: p.file,
+        thumb: this.icon(p.icon, 26, c.color, 1.75),
+        thumbBig: this.icon(p.icon, 40, c.color, 1.6),
+        rowIcon: this.icon('file-text', 15, c.color, 1.75),
+        chev: this.icon('chevron-right', 13, 'currentColor', 2),
+        folder: this.icon('folder', 15, c.color, 1.75),
+        onOpen: () => this.setState({ page: 'post', activeSlug: p.slug }),
+      };
+    });
+  }
+
+  go(page) { return () => this.setState({ page }); }
+
+  navColor(p) { return this.state.page === p ? 'var(--text-primary)' : 'var(--text-tertiary)'; }
+  navBg(p) { return this.state.page === p ? 'var(--surface-active)' : 'transparent'; }
+
+  renderVals() {
+    const page = this.state.page;
+    const posts = this.buildPosts();
+    const C = this.cats();
+    const featured = posts[0];
+    const categories = Object.keys(C).map((name) => {
+      const c = C[name];
+      const count = posts.filter((p) => p.cat === name).length;
+      return {
+        name, count, color: c.color,
+        folder: this.icon('folder', 15, c.color, 1.75),
+        chev: this.icon('chevron-right', 13, 'var(--text-tertiary)', 2),
+        onOpen: this.go('categories'),
+      };
+    });
+    const popularTags = [
+      { name: 'claude-code' }, { name: 'litellm' }, { name: 'aws' }, { name: 'bedrock' },
+      { name: 'docker' }, { name: 'wsl' }, { name: 'openwebui' }, { name: 'nvidia' },
+    ];
+    const activePost = posts.find((p) => p.slug === this.state.activeSlug) || posts[0];
+    const crumbMap = { home: 'posts', post: 'posts / ' + activePost.title, archives: 'archives', categories: 'categories', tags: 'tags', about: 'about' };
+
+    const byYear = {};
+    posts.forEach((p) => { (byYear[p.y] = byYear[p.y] || []).push(p); });
+    const archiveYears = Object.keys(byYear).sort((a, b) => b - a).map((y) => ({ year: y, count: byYear[y].length, items: byYear[y] }));
+
+    const catDesc = {
+      'AI & LLMs': 'Local inference, Bedrock, Azure OpenAI and getting real work out of open models.',
+      'Claude Code': 'Driving the Claude Code CLI \u2014 proxies, providers, profiles and notifications.',
+      'DevOps': 'The plumbing: Docker, WSL, Tailscale, git and keeping environments tidy.',
+      'Quick Tips': 'Short, high-leverage fixes you can apply in under five minutes.',
+    };
+    const categoryCards = Object.keys(C).map((name) => {
+      const c = C[name];
+      const ps = posts.filter((p) => p.cat === name);
+      return {
+        name, count: ps.length, color: c.color, bg: c.bg, border: c.border,
+        big: this.icon(c.icon, 22, c.color, 1.7),
+        arrow: this.icon('arrow-right', 14, 'currentColor', 2),
+        desc: catDesc[name], recent: ps.slice(0, 3),
+        onOpen: this.go('home'),
+      };
+    });
+
+    const tagData = [
+      ['claude-code', 9], ['litellm', 4], ['aws', 4], ['llm', 3], ['docker', 3], ['wsl', 3],
+      ['bedrock', 2], ['openwebui', 2], ['macos', 2], ['copilot', 2], ['free', 2], ['nvidia', 1],
+      ['nim', 1], ['qwen', 1], ['glm', 1], ['kimi-k2.5', 1], ['azure-openai', 2], ['ollama', 1],
+      ['tailscale', 1], ['jekyll', 1], ['chatgpt', 1], ['hugo', 1], ['codellama', 1], ['privategpt', 1],
+      ['git', 2], ['uv', 1], ['tts', 1], ['notifications', 2], ['docker-volume', 1], ['anthropic', 2],
+    ];
+    const tagCloud = tagData.map(([name, count]) => {
+      let size = 13, weight = 400, color = 'var(--text-tertiary)';
+      if (count >= 8) { size = 19; weight = 600; color = 'var(--accent-300)'; }
+      else if (count >= 4) { size = 16; weight = 500; color = 'var(--text-secondary)'; }
+      else if (count >= 2) { size = 14; weight = 500; color = 'var(--text-secondary)'; }
+      return { name, count, size: size + 'px', weight, color, onOpen: this.go('tags') };
+    });
+
+    const showThumbs = this.props.showThumbnails ?? true;
+    const showDesc = this.props.showPostDescriptions ?? true;
+
+    return {
+      showThumbs, showDesc,
+      crumb: crumbMap[page] || 'posts',
+      isHome: page === 'home', isPost: page === 'post', isArchives: page === 'archives',
+      isCategories: page === 'categories', isTags: page === 'tags', isAbout: page === 'about',
+      showAboutRail: page !== 'post',
+      goHome: this.go('home'), goArchives: this.go('archives'), goCategories: this.go('categories'),
+      goTags: this.go('tags'), goAbout: this.go('about'),
+      navHomeColor: this.navColor('home'), navHomeBg: this.navBg('home'),
+      navArchivesColor: this.navColor('archives'), navArchivesBg: this.navBg('archives'),
+      navCategoriesColor: this.navColor('categories'), navCategoriesBg: this.navBg('categories'),
+      navTagsColor: this.navColor('tags'), navTagsBg: this.navBg('tags'),
+      navAboutColor: this.navColor('about'), navAboutBg: this.navBg('about'),
+      posts, recentPosts: posts.slice(0, 9), listPosts: posts.slice(1),
+      featured: { ...featured, clock: this.icon('clock', 12, 'currentColor', 1.75), arrow: this.icon('arrow-right', 13, 'currentColor', 2) },
+      categories, popularTags, postCount: posts.length,
+      archiveYears, categoryCards, tagCloud, tagCount: tagData.length,
+      i: {
+        search: this.icon('search', 15, 'currentColor', 2),
+        github: this.icon('github', 17, 'currentColor', 1.75),
+        linkedin: this.icon('linkedin', 16, 'currentColor', 1.75),
+        rss: this.icon('rss', 15, 'currentColor', 1.9),
+        listTree: this.icon('list-tree', 15, 'currentColor', 1.9),
+        sliders: this.icon('sliders-horizontal', 14, 'currentColor', 1.9),
+        arrow: this.icon('arrow-right', 13, 'currentColor', 2),
+        gitBranch: this.icon('git-branch', 12, 'currentColor', 1.9),
+        fileText: this.icon('file-text', 12, 'currentColor', 1.9),
+        copy: this.icon('copy', 14, 'currentColor', 1.9),
+        link: this.icon('link', 14, 'currentColor', 1.9),
+        terminal: this.icon('terminal', 13, 'currentColor', 1.9),
+        externalLink: this.icon('external-link', 13, 'currentColor', 1.9),
+        clock: this.icon('clock', 13, 'currentColor', 1.8),
+        calendar: this.icon('calendar', 13, 'currentColor', 1.8),
+        hash: this.icon('hash', 13, 'currentColor', 1.8),
+        check: this.icon('check', 13, 'currentColor', 2.2),
+        command: this.icon('command', 13, 'currentColor', 1.8),
+        chevR: this.icon('chevron-right', 13, 'currentColor', 2),
+        arrowUR: this.icon('arrow-up-right', 13, 'currentColor', 2),
+        x: this.icon('x', 13, 'currentColor', 2),
+        fileTextC: this.icon('file-text', 13, 'var(--violet-500)', 1.9),
+        terminalC: this.icon('terminal', 13, 'currentColor', 1.9),
+        dbBlue: this.icon('database', 13, 'var(--blue-500)', 1.9),
+        warn: this.icon('triangle-alert', 16, 'currentColor', 1.9),
+        layersC: this.icon('layers', 20, 'currentColor', 1.7),
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

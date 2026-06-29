@@ -1,0 +1,5 @@
+{%- comment -%} Renders a Lucide glyph from the sprite. Params: name (required), class (optional), size (optional, default 24). {%- endcomment -%}
+{%- assign sz = include.size | default: 24 -%}
+<svg class="ur-icon {{ include.class }}" width="{{ sz }}" height="{{ sz }}" aria-hidden="true" focusable="false">
+  <use href="{{ '/assets/img/lucide-sprite.svg' | relative_url }}#lucide-{{ include.name }}"></use>
+</svg>

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div class="ur-page">
+  <div class="ur-eyebrow ur-eyebrow-accent">grep -r #</div>
+  <h1 class="ur-h1">Tags</h1>
+
+  <div class="ur-tag-cloud ur-card">
+    {%- assign tags = site.tags | sort -%}
+    {%- for tag in tags -%}
+    {%- assign n = tag[1].size -%}
+    {%- assign sz = 'sm' -%}
+    {%- if n >= 8 -%}{%- assign sz = 'xl' -%}
+    {%- elsif n >= 5 -%}{%- assign sz = 'lg' -%}
+    {%- elsif n >= 2 -%}{%- assign sz = 'md' -%}{%- endif -%}
+    <a class="ur-cloud-tag ur-cloud-{{ sz }} ur-mono" href="{{ '/tags/' | append: tag[0] | relative_url }}">#{{ tag[0] }}<sup>{{ n }}</sup></a>
+    {%- endfor -%}
+  </div>
+</div>

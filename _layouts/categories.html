@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="ur-page">
+  <div class="ur-eyebrow ur-eyebrow-accent">~/posts</div>
+  <h1 class="ur-h1">Categories</h1>
+
+  <div class="ur-cat-grid">
+    {%- for c in site.data.uright.categories -%}
+    {%- assign posts_in = site.categories[c.name] -%}
+    <a class="ur-cat-card ur-card" href="{{ '/categories/' | append: c.slug | append: '/' | relative_url }}">
+      <div class="ur-cat-head">
+        <span class="ur-cat-icon" style="color: {{ c.color }}">{% include uright-icon.html name=c.icon size=22 %}</span>
+        <span class="ur-count-pill ur-mono">{{ posts_in.size | default: 0 }} posts</span>
+      </div>
+      <h2 class="ur-cat-name">{{ c.name }}</h2>
+      <p class="ur-cat-desc">{{ c.description }}</p>
+      <div class="ur-cat-recent">
+        {%- assign recent3 = posts_in | slice: 0, 3 -%}
+        {%- for post in recent3 -%}
+        <span class="ur-cat-recent-item"><span class="ur-dot-sm" style="background: {{ c.color }}"></span>{{ post.title }}</span>
+        {%- endfor -%}
+      </div>
+    </a>
+    {%- endfor -%}
+  </div>
+</div>

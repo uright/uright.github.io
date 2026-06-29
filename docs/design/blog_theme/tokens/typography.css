@@ -1,0 +1,80 @@
+/* ==========================================================================
+   uright Studio — Typography tokens
+   Geist for UI, Geist Mono for code, data, file paths, identifiers.
+   Compact, dense, IDE-grade scale.
+   ========================================================================== */
+
+:root {
+  /* ---- Families -------------------------------------------------------- */
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'JetBrains Mono', ui-monospace, 'Menlo', monospace;
+
+  /* ---- Weights --------------------------------------------------------- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Size scale (px values; dense pro-tool steps) -------------------- */
+  --text-2xs: 10px;  /* micro labels, badges */
+  --text-xs:  11px;  /* captions, metadata, file meta */
+  --text-sm:  12px;  /* dense UI default, table cells, controls */
+  --text-md:  13px;  /* body / primary UI text */
+  --text-base: 14px; /* comfortable body, chat messages */
+  --text-lg:  16px;  /* section titles */
+  --text-xl:  20px;  /* panel headings */
+  --text-2xl: 26px;  /* view titles */
+  --text-3xl: 34px;  /* hero / empty-state display */
+  --text-4xl: 46px;  /* marketing / large display */
+
+  /* ---- Line heights ---------------------------------------------------- */
+  --leading-none: 1;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* ---- Letter spacing -------------------------------------------------- */
+  --tracking-tighter: -0.02em; /* large display */
+  --tracking-tight: -0.011em;  /* headings */
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-caps: 0.06em;     /* uppercase eyebrow labels */
+
+  /* ======================================================================
+     Semantic type roles
+     ====================================================================== */
+  --type-display-size: var(--text-3xl);
+  --type-display-weight: var(--weight-semibold);
+  --type-display-leading: var(--leading-tight);
+  --type-display-tracking: var(--tracking-tighter);
+
+  --type-title-size: var(--text-2xl);
+  --type-title-weight: var(--weight-semibold);
+  --type-title-leading: var(--leading-tight);
+  --type-title-tracking: var(--tracking-tight);
+
+  --type-heading-size: var(--text-xl);
+  --type-heading-weight: var(--weight-semibold);
+  --type-heading-leading: var(--leading-snug);
+
+  --type-subheading-size: var(--text-lg);
+  --type-subheading-weight: var(--weight-semibold);
+
+  --type-body-size: var(--text-base);
+  --type-body-weight: var(--weight-regular);
+  --type-body-leading: var(--leading-normal);
+
+  --type-ui-size: var(--text-md);
+  --type-ui-weight: var(--weight-medium);
+
+  --type-caption-size: var(--text-xs);
+  --type-caption-weight: var(--weight-regular);
+
+  --type-eyebrow-size: var(--text-2xs);
+  --type-eyebrow-weight: var(--weight-semibold);
+  --type-eyebrow-tracking: var(--tracking-caps);
+
+  --type-code-size: var(--text-sm);
+  --type-code-leading: var(--leading-relaxed);
+}

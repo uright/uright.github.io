@@ -1,0 +1,59 @@
+html {
+  scrollbar-color: var(--gray-600) transparent;
+  /* Chirpy's base sets `overflow-y: scroll`, forcing a page-level scrollbar.
+     Our IDE shell owns scrolling inside <main>, so the page itself must not
+     scroll — otherwise body padding/overflow leaves blank space past the shell. */
+  overflow: hidden;
+}
+
+body {
+  background: var(--surface-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* Chirpy's base applies ~1.75rem body padding; that pushes our 100dvh shell
+     past the viewport and creates a scrollable blank gap below the status bar. */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+code, pre, kbd, .ur-mono {
+  font-family: var(--font-mono);
+}
+
+/* Thin scrollbars on scrollable panels */
+.ur-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-600) transparent;
+}
+.ur-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.ur-scroll::-webkit-scrollbar-track { background: transparent; }
+.ur-scroll::-webkit-scrollbar-thumb {
+  background: var(--gray-600);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.ur-icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+  color: currentColor;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
+}

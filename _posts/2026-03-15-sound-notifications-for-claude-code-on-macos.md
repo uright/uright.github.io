@@ -2,7 +2,7 @@
 title: "Sound Notifications for Claude Code on macOS"
 description: "Quick tip: Add audio alerts to Claude Code using macOS built-in system sounds when it stops or needs attention"
 date: 2026-03-15 00:33:03 -0400
-categories: [Tech, Quick Tips]
+categories: [Claude Code]
 tags: [claude-code, macos, productivity, cli]
 image:
   path: /assets/img/2026-03-15-sound-notifications-for-claude-code-on-macos/hero-image.png

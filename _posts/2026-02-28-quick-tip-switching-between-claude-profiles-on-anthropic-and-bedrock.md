@@ -2,7 +2,7 @@
 title: "Quick Tip: Switching Between Claude Profiles on Anthropic and Bedrock"
 description: "Tips for managing multiple Claude profiles when switching between Anthropic and AWS Bedrock."
 date: 2026-02-28 16:41:56 -0500
-categories: [Tech, Ai]
+categories: [Claude Code]
 tags: [claude, anthropic, bedrock, aws, tips, profiles]
 image:
   path: /assets/img/2026-02-28-quick-tip-switching-between-claude-profiles-on-anthropic-and-bedrock/claude-profiles-anthropic-bedrock.png

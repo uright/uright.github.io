@@ -1,0 +1,91 @@
+/* ==========================================================================
+   uright Studio — Base layer
+   Light reset + app-level defaults. Keep minimal; components carry their own.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  background: var(--surface-canvas);
+  font-feature-settings: 'cv01', 'cv03', 'ss01';
+}
+
+/* App-level surface helper for specimen cards & previews */
+.ur-surface {
+  background: var(--surface-canvas);
+  color: var(--text-primary);
+}
+
+::selection {
+  background: var(--accent-alpha-24);
+  color: var(--text-primary);
+}
+
+/* Scrollbars — thin, dark, themed (Electron / desktop feel) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-600) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--gray-600);
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+  background-clip: content-box;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--type-code-size);
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus-tight);
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

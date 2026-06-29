@@ -2,7 +2,7 @@
 title: "privateGPT Clear Ingested Files"
 description: "Streamline Your privateGPT Experience: A Guide to Effortlessly Clearing Ingested Files with a Custom Python Script"
 date: 2024-01-27 23:25:28 -0500
-categories: [Tech, AI]
+categories: [AI & LLMs]
 tags: [privategpt, python, api]
 image:
   path: /assets/img/2024-01-27-private-gpt-clear-ingested-files/private-gpt.png

@@ -1,0 +1,104 @@
+---
+layout: compress
+---
+
+<!doctype html>
+{% include origin-type.html %}
+{% include lang.html %}
+{% if site.theme_mode %}
+  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
+{% else %}
+  {% capture prefer_mode %}data-mode="dark"{% endcapture %}
+{% endif %}
+<html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
+  {% include head.html %}
+  <body>
+    <div class="ur-shell">
+      {% include titlebar.html %}
+      <div class="ur-body{% unless layout.panel_includes contains 'toc' %} ur-body--no-rail{% endunless %}">
+        {% include explorer.html %}
+        <main class="ur-main ur-scroll" aria-label="Main Content">
+          {% if layout.panel_includes contains 'toc' %}
+            {% comment %}Post layout: no wrapping div so <article> is a direct child of <main>,
+               satisfying tocbot's querySelector('main>article[data-toc="true"]') selector.{% endcomment %}
+            {% if layout.refactor or layout.layout == 'default' %}
+              {% include refactor-content.html content=content lang=lang %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+            {% for _include in layout.tail_includes %}
+              {% assign _include_path = _include | append: '.html' %}
+              {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+            {% include_cached footer.html lang=lang %}
+          {% else %}
+          <div class="ur-content">
+            {% if layout.refactor or layout.layout == 'default' %}
+              {% include refactor-content.html content=content lang=lang %}
+            {% else %}
+              {{ content }}
+            {% endif %}
+            {% for _include in layout.tail_includes %}
+              {% assign _include_path = _include | append: '.html' %}
+              {% include {{ _include_path }} lang=lang %}
+            {% endfor %}
+            {% include_cached footer.html lang=lang %}
+          </div>
+          {% endif %}
+        </main>
+        {% if layout.panel_includes contains 'toc' %}
+          {% include right-rail.html %}
+        {% endif %}
+      </div>
+      {% include statusbar.html %}
+    </div>
+
+    <!-- Mobile drawer scrim -->
+    <div class="ur-scrim" id="ur-scrim" hidden></div>
+
+    <!-- Chirpy DOM stubs: Chirpy's minified JS hard-codes these IDs; provide no-op stubs
+         so it doesn't throw TypeError when elements are absent from our custom layout. -->
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1" style="z-index:900;background:rgba(0,0,0,0.55);" aria-hidden="true"></div>
+    <button id="sidebar-trigger" aria-hidden="true" style="display:none"></button>
+    <div id="sidebar" aria-hidden="true" style="display:none"></div>
+    <div id="topbar-title" aria-hidden="true" style="display:none"></div>
+    <button id="mode-toggle" aria-hidden="true" style="display:none"></button>
+    <div id="back-to-top" aria-hidden="true" style="display:none"></div>
+    <div id="toc-bar" aria-hidden="true" style="display:none"></div>
+    <section id="toc-wrapper" aria-hidden="true" style="display:none"></section>
+    <div id="toc-popup" aria-hidden="true" style="display:none"></div>
+    <button id="toc-popup-close" aria-hidden="true" style="display:none"></button>
+    <div id="toc-solo-trigger" aria-hidden="true" style="display:none"></div>
+    <div id="copy-link" aria-hidden="true" style="display:none"></div>
+    <!-- Chirpy search overlay: #search + #search-input are the live search UI;
+         #search-trigger and #search-cancel are wired by Chirpy's JS.
+         Our #ur-search-trigger in the titlebar clicks #search-trigger to activate. -->
+    <button id="search-trigger" aria-hidden="true" style="display:none"></button>
+    <button id="search-cancel" aria-hidden="true" style="display:none"></button>
+    <search id="search" class="ur-chirpy-search d-none" aria-label="Search">
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search posts…" aria-label="Search posts">
+    </search>
+    {% include_cached search-results.html lang=lang %}
+
+    <!-- PWA notification (pwa-loader.html does not exist in gem 7.3.0; notification.html used instead) -->
+    {% if site.pwa.enabled %}
+      {% include_cached notification.html lang=lang %}
+    {% endif %}
+
+    <!-- Chirpy search initializer (SimpleJekyllSearch binds to #search-input / #search-results) -->
+    {% include_cached search-loader.html lang=lang %}
+
+    <!-- Layout-specific scripts (e.g. comment engine on posts) -->
+    {% for _include in layout.script_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+
+    <!-- uRight mobile drawer toggle -->
+    <script src="{{ '/assets/js/uright-drawers.js' | relative_url }}" defer></script>
+    <!-- uRight TOC scroll bridge (tocbot assumes window scroll; ours is .ur-main) -->
+    {% if layout.panel_includes contains 'toc' %}
+    <script src="{{ '/assets/js/uright-toc.js' | relative_url }}" defer></script>
+    {% endif %}
+  </body>
+</html>

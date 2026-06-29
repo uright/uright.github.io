@@ -2,7 +2,7 @@
 title: "Sound Notifications for Claude Code on WSL/Windows 11"
 description: "Quick tip: Add audio alerts to Claude Code using Windows built-in sounds when it stops or needs attention"
 date: 2026-02-24 00:42:00 -0500
-categories: [Tech, Quick Tips]
+categories: [Claude Code]
 tags: [claude-code, wsl, windows11, productivity, cli]
 image:
   path: /assets/img/2026-02-24-sound-notifications-for-claude-code-on-wsl/hero-image.png

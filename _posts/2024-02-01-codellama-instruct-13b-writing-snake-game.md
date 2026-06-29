@@ -2,7 +2,7 @@
 title: "codellama instruct 13b Writing Snake Game"
 description: "Codellama-13b 5-bit quantized model was used to write a snake game in LM Studio, and the results were not as bad as expected."
 date: 2024-02-01 21:35:36 -0500
-categories: [Tech, AI]
+categories: [AI & LLMs]
 tags: [codellama, lmstudio, python, ai-coding]
 image:
   path: /assets/img/2024-02-01-codellama-instruct-13b-writing-snake-game/snake-game.png

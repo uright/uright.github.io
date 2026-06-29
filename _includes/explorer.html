@@ -1,0 +1,44 @@
+<nav class="ur-explorer ur-scroll" aria-label="Explorer">
+  <div class="ur-explorer-head">
+    <span class="ur-eyebrow">EXPLORER</span>
+    <span class="ur-explorer-actions">
+      {% include uright-icon.html name="list-tree" size=16 %}
+      {% include uright-icon.html name="refresh-cw" size=16 %}
+    </span>
+  </div>
+
+  <div class="ur-section">
+    <div class="ur-section-title ur-eyebrow">CATEGORIES</div>
+    {%- for c in site.data.uright.categories -%}
+      {%- assign posts_in = site.categories[c.name] -%}
+      <a class="ur-folder-row" href="{{ '/categories/' | append: c.slug | append: '/' | relative_url }}">
+        {% include uright-icon.html name="chevron-right" size=14 class="ur-chevron" %}
+        <span class="ur-folder-icon" style="color: {{ c.color }}">{% include uright-icon.html name=c.icon size=16 %}</span>
+        <span class="ur-folder-name">{{ c.name }}</span>
+        <span class="ur-count ur-mono">{{ posts_in.size | default: 0 }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+
+  <div class="ur-section">
+    <div class="ur-section-title ur-eyebrow">RECENT POSTS</div>
+    {%- assign recent = site.posts | slice: 0, 8 -%}
+    {%- for post in recent -%}
+      {%- assign cat = post.categories | last -%}
+      {%- capture catcolor %}{% include category-color.html category=cat field="color" %}{% endcapture -%}
+      <a class="ur-file-row" href="{{ post.url | relative_url }}">
+        <span class="ur-file-icon" style="color: {{ catcolor }}">{% include uright-icon.html name="file-text" size=15 %}</span>
+        <span class="ur-file-body">
+          <span class="ur-file-title">{{ post.title }}</span>
+          <span class="ur-file-date ur-mono">{{ post.date | date: '%Y-%m-%d' }}</span>
+        </span>
+      </a>
+    {%- endfor -%}
+  </div>
+
+  <div class="ur-explorer-foot">
+    {% include uright-icon.html name="rss" size=15 %}
+    <a href="{{ '/feed.xml' | relative_url }}">Subscribe to the feed</a>
+    <span class="ur-mono ur-muted">atom.xml</span>
+  </div>
+</nav>

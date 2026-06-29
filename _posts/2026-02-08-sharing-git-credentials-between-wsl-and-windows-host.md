@@ -2,7 +2,7 @@
 title: "Sharing Git Credentials Between WSL and Windows Host"
 description: "Configure git credential management to seamlessly bridge WSL and Windows host systems. Discover quick setup tricks that allow WSL to access your host's stored credentials without duplication."
 date: 2026-02-08 21:33:20 -0500
-categories: [Tech, Development]
+categories: [DevOps]
 tags: [wsl, git, credentials, windows, development, quick-tip]
 image:
   path: /assets/img/2026-02-08-sharing-git-credentials-between-wsl-and-windows-host/wsl-git-credentials.png
