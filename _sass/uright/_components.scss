@@ -162,18 +162,28 @@
   padding-bottom: 0;
 }
 /* Tighten the gutter→code gap so code sits just right of the line numbers.
-   Chirpy stacks gutter margin-right + gutter padding-right + code padding-left,
-   which left a wide gap. Collapse those to a single small gap. */
+   Chirpy sets the gutter cell to display:inline-block with horizontal MARGINS.
+   Margins on a table cell are ignored by the table column algorithm, so under
+   table-layout:auto the gutter column width is resolved per-table from its
+   content — a 1-line snippet ("1") and a multi-line snippet ("1\n2") get
+   different column widths, leaving a phantom gap that over-indents short blocks.
+   Fix: keep the cell as a real table-cell, drop the margins, and pin the gutter
+   to a shrink-to-content column (width:1% + nowrap) so every block aligns. */
 .ur-content-body .highlight table td.rouge-gutter,
 .content .highlight table td.rouge-gutter {
-  margin-left: 16px;
-  margin-right: 10px;
-  padding-right: 0;
+  display: table-cell;
+  margin: 0;
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+  padding-left: 16px;
+  padding-right: 12px;
 }
 .ur-content-body td.rouge-code,
 .content td.rouge-code {
-  padding-left: 0;
-  padding-right: 24px; /* no extra left pad — gutter margin is the gap */
+  width: auto;
+  padding-left: 0; /* gutter padding-right is the gap */
+  padding-right: 24px;
 }
 .ur-content-body .highlight .lineno,
 .content .highlight .lineno {
