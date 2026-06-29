@@ -40,7 +40,10 @@
 (function () {
   var urBtn = document.getElementById('ur-search-trigger');
   var chirpyTrigger = document.getElementById('search-trigger');
+  var chirpyCancel = document.getElementById('search-cancel');
   var searchInput = document.getElementById('search-input');
+  var searchBox = document.getElementById('search');
+  var resultWrapper = document.getElementById('search-result-wrapper');
 
   function activateSearch() {
     // Let Chirpy's own JS handle the state (it bound to #search-trigger click).
@@ -54,15 +57,39 @@
     }
   }
 
+  function closeSearch() {
+    // Chirpy's #search-cancel handler hides #search and the result wrapper.
+    if (chirpyCancel) chirpyCancel.click();
+  }
+
+  // Mirror the result wrapper's visibility onto #search so the input row can
+  // square off its bottom border and merge with the results card below.
+  // Chirpy toggles `d-none` on #search-result-wrapper; watch for that.
+  if (searchBox && resultWrapper) {
+    var syncResultsState = function () {
+      var open = !resultWrapper.classList.contains('d-none');
+      searchBox.classList.toggle('ur-has-results', open);
+    };
+    new MutationObserver(syncResultsState).observe(resultWrapper, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+    syncResultsState();
+  }
+
   if (urBtn) {
     urBtn.addEventListener('click', activateSearch);
   }
 
   document.addEventListener('keydown', function (e) {
     // Cmd+K (mac) or Ctrl+K (win/linux) — open search
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
       e.preventDefault();
       activateSearch();
+    }
+    // Escape — close the search overlay if it is open.
+    if (e.key === 'Escape' && searchBox && searchBox.classList.contains('d-flex')) {
+      closeSearch();
     }
   });
 })();
