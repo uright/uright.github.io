@@ -71,17 +71,44 @@
 }
 .ur-hashtag:hover { color: var(--accent-300); border-color: var(--border-accent); }
 
-/* ===== Code blocks (restyle Chirpy/Rouge) ===== */
+/* ===== Code blocks (restyle Chirpy/Rouge) =====
+   Chirpy lays code out as a two-cell <table.rouge-table>: a .rouge-gutter cell
+   (line numbers) and a .rouge-code cell. Horizontal spacing lives on the CELLS,
+   not the <pre>. We only theme colors / font / vertical rhythm here and must
+   NOT add padding to <pre> — doing so double-pads and shoves the code right. */
 .ur-content-body div.highlighter-rouge, .content div.highlighter-rouge {
   background: var(--surface-sunken);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden; margin: 18px 0;
 }
-.ur-content-body .highlight, .content .highlight { background: var(--surface-sunken); }
+.ur-content-body .highlight, .content .highlight {
+  background: var(--surface-sunken);
+  padding-top: 12px;       /* Chirpy only ships padding-bottom; add a matching top */
+  padding-bottom: 4px;     /* small — Rouge already renders a trailing blank line */
+}
 .ur-content-body .highlight pre, .content .highlight pre {
-  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.75;
-  padding: 14px 16px; margin: 0; background: transparent;
+  font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6;
+  margin: 0; padding: 0; background: transparent;  /* spacing comes from the cells */
+}
+/* Align the gutter + code cells to the top so the inline-block gutter doesn't
+   leave a baseline gap below the last line. */
+.ur-content-body .highlight table, .content .highlight table { margin: 0; }
+.ur-content-body .highlight table td, .content .highlight table td {
+  vertical-align: top; padding-top: 0; padding-bottom: 0;
+}
+/* Tighten the gutter→code gap so code sits just right of the line numbers.
+   Chirpy stacks gutter margin-right + gutter padding-right + code padding-left,
+   which left a wide gap. Collapse those to a single small gap. */
+.ur-content-body .highlight table td.rouge-gutter,
+.content .highlight table td.rouge-gutter {
+  margin-left: 16px; margin-right: 10px; padding-right: 0;
+}
+.ur-content-body td.rouge-code, .content td.rouge-code {
+  padding-left: 0; padding-right: 24px;  /* no extra left pad — gutter margin is the gap */
+}
+.ur-content-body .highlight .lineno, .content .highlight .lineno {
+  color: var(--text-tertiary);
 }
 /* Chirpy code header bar (filename + copy) */
 .ur-content-body .code-header, .content .code-header {
