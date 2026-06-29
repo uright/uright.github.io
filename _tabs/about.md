@@ -9,7 +9,7 @@ layout: page
   <div class="ur-about-head">
     <div class="ur-eyebrow ur-mono">cat about.md</div>
     <div class="ur-about-id">
-      <span class="ur-about-avatar-lg">JW</span>
+      <img class="ur-about-avatar-lg" src="{{ '/assets/img/jack-wong-profile.png' | relative_url }}" alt="Jack Wong" />
       <div>
         <h1 class="ur-h1">Jack Wong</h1>
         <div class="ur-about-role ur-mono">Enterprise Architect · tech evangelist</div>

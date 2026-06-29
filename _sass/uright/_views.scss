@@ -138,6 +138,7 @@
   width: 56px; height: 56px; border-radius: 50%; flex: none;
   display: flex; align-items: center; justify-content: center;
   font-weight: 600; background: var(--surface-sunken); box-shadow: 0 0 0 2px var(--accent-500); color: var(--text-primary);
+  object-fit: cover;
 }
 .ur-about-pills { margin-left: auto; display: flex; gap: 8px; }
 .ur-pill {
