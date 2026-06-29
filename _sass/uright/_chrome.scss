@@ -2,15 +2,23 @@
 .ur-shell {
   display: grid;
   grid-template-rows: var(--titlebar-h) 1fr var(--statusbar-h);
+  /* Constrain the single column to the viewport so grid items (.ur-body) can't
+     widen the shell past it via their auto min-width. */
+  grid-template-columns: minmax(0, 1fr);
   height: 100vh;
   height: 100dvh;
 }
 .ur-body {
   display: grid;
-  grid-template-columns: var(--explorer-w) 1fr var(--rail-w);
+  /* minmax(0, 1fr) so the main track can shrink below its content's min-content
+     width instead of blowing the grid out past the viewport (mobile overflow). */
+  grid-template-columns: var(--explorer-w) minmax(0, 1fr) var(--rail-w);
+  /* min-width: 0 lets this grid item shrink within .ur-shell's track instead of
+     forcing the shell wider than the viewport. */
+  min-width: 0;
   min-height: 0;
 }
-.ur-body--no-rail { grid-template-columns: var(--explorer-w) 1fr; }
+.ur-body--no-rail { grid-template-columns: var(--explorer-w) minmax(0, 1fr); }
 .ur-main { overflow-y: auto; min-width: 0; background: var(--surface-canvas); }
 .ur-content { max-width: 860px; margin: 0 auto; }
 
@@ -19,28 +27,6 @@
   z-index: 40; opacity: 0; transition: opacity var(--dur-base) var(--ease-standard);
 }
 .ur-scrim.is-open { opacity: 1; }
-
-/* ===== Mobile drawers ===== */
-@media (max-width: 1024px) {
-  .ur-body { grid-template-columns: 1fr; }
-  .ur-mobile-only { display: inline-flex; }
-  .ur-search { width: auto; }
-  .ur-search-placeholder, .ur-kbd { display: none; }
-  .ur-nav, .ur-breadcrumb { display: none; }
-
-  .ur-explorer, .ur-rail {
-    position: fixed; top: var(--titlebar-h); bottom: var(--statusbar-h);
-    z-index: 50; transition: transform var(--dur-base) var(--ease-out);
-  }
-  .ur-explorer { left: 0; transform: translateX(-100%); }
-  .ur-rail { right: 0; transform: translateX(100%); }
-  .ur-explorer.is-open, .ur-rail.is-open { transform: translateX(0); }
-}
-
-@media (max-width: 600px) {
-  .ur-explorer { width: 86vw; }
-  .ur-rail { width: 86vw; }
-}
 
 /* ===== Titlebar ===== */
 .ur-titlebar {
@@ -321,6 +307,12 @@
 }
 .ur-file-date { font-size: 10px; color: var(--text-tertiary); }
 
+/* Mobile primary-nav rows inside the explorer drawer (shown only < 1024px). */
+.ur-nav-row .ur-folder-icon { color: var(--text-tertiary); display: inline-flex; }
+.ur-nav-row.active { background: var(--surface-active); }
+.ur-nav-row.active .ur-folder-name { color: var(--text-primary); }
+.ur-nav-row.active .ur-folder-icon { color: var(--accent-400); }
+
 .ur-explorer-foot {
   display: flex; align-items: center; gap: 6px;
   height: 38px; padding: 0 12px; margin-top: 8px;
@@ -393,3 +385,39 @@
   border-radius: var(--radius-pill); padding: 3px 8px;
 }
 .ur-tag-chip:hover { border-color: var(--border-accent); color: var(--accent-300); }
+
+/* ===== Mobile drawers =====
+ * Kept at the END of this file so these overrides win the source-order cascade
+ * over the equal-specificity base rules above (e.g. `.ur-mobile-only { display:
+ * none }`, `.ur-nav { display: flex }`). Otherwise the later base rule would win
+ * and the toggles would stay hidden / the desktop nav would stay visible. */
+@media (max-width: 1024px) {
+  /* minmax(0, …) keeps the single column from expanding to .ur-content's
+     860px max-width and overflowing the viewport. */
+  .ur-body { grid-template-columns: minmax(0, 1fr); }
+  /* On mobile the explorer/rail are off-canvas drawers, so the content column
+     spans the full width — drop the 860px desktop cap that left a centering gap. */
+  .ur-content { max-width: 100%; }
+  /* Reveal the explorer / info-rail drawer toggles (hidden on desktop). */
+  .ur-mobile-only { display: inline-flex; }
+  /* The in-drawer primary nav is a block section, not an inline control. */
+  .ur-mobile-nav.ur-mobile-only { display: block; }
+  .ur-search { width: auto; }
+  .ur-search-placeholder, .ur-kbd { display: none; }
+  /* Hide the desktop primary nav + breadcrumb — navigation moves into the
+     explorer drawer opened by the hamburger toggle. */
+  .ur-nav, .ur-breadcrumb { display: none; }
+
+  .ur-explorer, .ur-rail {
+    position: fixed; top: var(--titlebar-h); bottom: var(--statusbar-h);
+    z-index: 50; transition: transform var(--dur-base) var(--ease-out);
+  }
+  .ur-explorer { left: 0; transform: translateX(-100%); }
+  .ur-rail { right: 0; transform: translateX(100%); }
+  .ur-explorer.is-open, .ur-rail.is-open { transform: translateX(0); }
+}
+
+@media (max-width: 600px) {
+  .ur-explorer { width: 86vw; }
+  .ur-rail { width: 86vw; }
+}

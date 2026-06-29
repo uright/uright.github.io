@@ -7,6 +7,32 @@
     </span>
   </div>
 
+  {%- comment -%} Mobile-only primary nav: the titlebar nav is hidden below 1024px,
+    so the main sections must be reachable from inside the explorer drawer. {%- endcomment -%}
+  <div class="ur-section ur-mobile-nav ur-mobile-only">
+    <div class="ur-section-title ur-eyebrow">NAVIGATE</div>
+    <a class="ur-folder-row ur-nav-row{% if page.layout == 'home' %} active{% endif %}" href="{{ '/' | relative_url }}">
+      <span class="ur-folder-icon">{% include uright-icon.html name="terminal" size=16 %}</span>
+      <span class="ur-folder-name">Home</span>
+    </a>
+    <a class="ur-folder-row ur-nav-row{% if page.layout == 'archives' %} active{% endif %}" href="{{ '/archives/' | relative_url }}">
+      <span class="ur-folder-icon">{% include uright-icon.html name="git-branch" size=16 %}</span>
+      <span class="ur-folder-name">Archives</span>
+    </a>
+    <a class="ur-folder-row ur-nav-row{% if page.layout == 'categories' or page.layout == 'category' %} active{% endif %}" href="{{ '/categories/' | relative_url }}">
+      <span class="ur-folder-icon">{% include uright-icon.html name="layers" size=16 %}</span>
+      <span class="ur-folder-name">Categories</span>
+    </a>
+    <a class="ur-folder-row ur-nav-row{% if page.layout == 'tags' or page.layout == 'tag' %} active{% endif %}" href="{{ '/tags/' | relative_url }}">
+      <span class="ur-folder-icon">{% include uright-icon.html name="hash" size=16 %}</span>
+      <span class="ur-folder-name">Tags</span>
+    </a>
+    <a class="ur-folder-row ur-nav-row{% if page.url == '/about/' %} active{% endif %}" href="{{ '/about/' | relative_url }}">
+      <span class="ur-folder-icon">{% include uright-icon.html name="bot" size=16 %}</span>
+      <span class="ur-folder-name">About</span>
+    </a>
+  </div>
+
   <div class="ur-section">
     <div class="ur-section-title ur-eyebrow">CATEGORIES</div>
     {%- for c in site.data.uright.categories -%}
