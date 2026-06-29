@@ -37,6 +37,9 @@
   display: flex; align-items: center; gap: 2px;
   height: var(--tab-h); padding: 0 8px;
   background: var(--surface-panel); border-bottom: 1px solid var(--border-subtle);
+  /* Clip overflowing tabs (e.g. the dimmed second tab) so they don't spill past
+     the viewport edge on narrow screens. */
+  overflow: hidden;
 }
 .ur-tab {
   position: relative; display: flex; align-items: center; gap: 6px;
