@@ -18,8 +18,12 @@
   var toc = document.getElementById('toc');
   if (!main || !toc) return;
 
-  // Breathing room below the top of <main> so the heading isn't flush to the edge.
-  var OFFSET = 24;
+  // The .ur-tabstrip is sticky at the top of <main>, overlaying the top --tab-h
+  // pixels of scrolled content. Clear it plus breathing room so a heading
+  // scrolled-to via a TOC click lands below the tab strip, not under it.
+  // Mirrors `scroll-margin-top` on headings in _sass/uright/_views.scss.
+  var tabH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tab-h'), 10) || 36;
+  var OFFSET = tabH + 16;
 
   function headings() {
     // tocbot renders <a class="toc-link" href="#heading-id"> entries.

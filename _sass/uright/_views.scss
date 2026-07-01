@@ -69,6 +69,12 @@
 
 /* Article body typography */
 .ur-content-body { font-size: 15.5px; line-height: 1.72; color: var(--gray-100); }
+/* TOC anchors scroll the heading to the top of the .ur-main scroll container.
+   The .ur-tabstrip is `position: sticky; top: 0` inside that container, so it
+   overlays the top --tab-h pixels of scrolled content. Clear it plus breathing
+   room, otherwise an anchored heading lands underneath the tab strip and its
+   top is clipped. Keep this in sync with OFFSET in assets/js/uright-toc.js. */
+.ur-content-body :is(h1, h2, h3, h4, h5, h6) { scroll-margin-top: calc(var(--tab-h) + 16px); }
 .ur-content-body h2 { font-size: 21px; font-weight: 600; letter-spacing: -0.015em; color: var(--text-primary); margin: 32px 0 12px; }
 .ur-content-body :not(pre) > code {
   font-family: var(--font-mono); font-size: 0.85em;
