@@ -102,6 +102,25 @@
 #disqus_thread iframe { max-width: 100% !important; }
 @media (max-width: 1024px) { #disqus_thread { padding: 0 18px; } }
 
+/* Tail includes (Related posts "Further Reading" + post navigation) render in
+   #tail-wrapper, outside .ur-article, so they miss the centered 760px column
+   and its symmetric 44px gutters — leaving them flush-left while grid gutters
+   pad the right, an asymmetric look. Constrain them to match the article body. */
+#related-posts,
+.post-navigation {
+  box-sizing: border-box;
+  max-width: 760px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 44px;
+  padding-right: 44px;
+}
+@media (max-width: 1024px) {
+  #related-posts,
+  .post-navigation { padding-left: 18px; padding-right: 18px; }
+}
+
 /* ===== Shared page wrapper ===== */
 .ur-page { max-width: 820px; margin: 0 auto; padding: 30px 40px 80px; }
 .ur-hairline { flex: 1; height: 1px; background: var(--border-subtle); }
