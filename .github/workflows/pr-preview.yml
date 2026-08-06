@@ -1,0 +1,132 @@
+name: PR Preview Build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll site for preview
+        run: |
+          bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Create preview archive
+        run: |
+          cd _site
+          tar -czf ../pr-${{ github.event.pull_request.number }}-preview.tar.gz .
+          cd ..
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-${{ github.event.pull_request.number }}-preview
+          path: pr-${{ github.event.pull_request.number }}-preview.tar.gz
+          retention-days: 7
+
+      - name: Test site
+        run: |
+          bundle exec htmlproofer ./_site \
+            --disable-external \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+        continue-on-error: true
+
+      - name: Comment PR with preview info
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const runId = context.runId;
+            const artifactUrl = `https://github.com/${{ github.repository }}/actions/runs/${runId}`;
+
+            const comment = `## 🚀 Preview Build Complete!
+
+            Your PR has been built successfully and is ready for review.
+
+            ### 📦 Preview Artifact
+
+            Download the built site as an artifact from the [workflow run](${artifactUrl}).
+
+            ### 🔍 How to Preview Locally
+
+            1. Download the artifact from the link above
+            2. Extract the tar.gz file
+            3. Serve with any static server:
+               \`\`\`bash
+               # Using Python
+               python3 -m http.server 8000
+
+               # Using Node.js
+               npx serve
+
+               # Using PHP
+               php -S localhost:8000
+               \`\`\`
+            4. Open http://localhost:8000 in your browser
+
+            ### 💡 Alternative: Pull and Preview with Docker
+
+            \`\`\`bash
+            git fetch origin
+            git checkout ${context.payload.pull_request.head.ref}
+            docker compose up --build
+            # Visit http://localhost:4000
+            \`\`\`
+
+            ---
+
+            ✅ Built from commit: \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
+            🌿 Branch: \`${context.payload.pull_request.head.ref}\`
+            🔄 The preview will be automatically rebuilt when you push new commits.`;
+
+            // Check if we already commented
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber
+            });
+
+            const botComment = comments.data.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Preview Build Complete')
+            );
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: comment
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: comment
+              });
+            }
