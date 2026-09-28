@@ -14,13 +14,13 @@ mermaid: true
 
 Meta recently released **Muse Spark 1.3**. It's highly capable and very cheap. The lowest tier of the **Muse Code** subscription is only **$6.99 CAD / month**, which makes it a good fallback for when my Anthropic Max subscription hits its limit mid-week.
 
-![muse-spark-claude-code-screenshot](/assets/img/2026-09-27-using-claude-code-with-muse-spark-subscription/muse-spark-claude-code-screenshot.png)
-
 ### Why Not Just Use NVIDIA NIM?
 
 In a [previous post](/posts/running-claude-code-for-free-with-nvidia-nim/) I set up Claude Code on NVIDIA NIM, and that setup is still great. It's free, and `deepseek-4.1-flash` is a solid workhorse model. The catch is speed: NIM's free tier can be slow, and waiting through a long agentic session adds up. What I wanted was a fast, reliable backup for when my Anthropic limit runs out. At $6.99 CAD/month, Muse Spark is cheap enough to keep around for exactly that.
 
 The Meta developer console even has a Claude Code section on its dashboard, so I expected setup to take five minutes. It didn't.
+
+![muse-spark-claude-code-screenshot](/assets/img/2026-09-27-using-claude-code-with-muse-spark-subscription/muse-spark-claude-code-screenshot.png)
 
 ## The Problem: No API Key for Subscription Projects
 
