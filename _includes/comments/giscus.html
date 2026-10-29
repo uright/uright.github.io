@@ -1,11 +1,17 @@
 <!-- https://giscus.app/ -->
-<!-- Override of Chirpy 7.3 comments/giscus.html: only change is the dark theme,
-     dark_dimmed -> transparent_dark, so the widget sits on the uright canvas
-     instead of rendering as a gray slab. -->
+<!-- Override of Chirpy 7.6 comments/giscus.html. Changes:
+     - dark theme dark_dimmed -> transparent_dark, so the widget sits on the
+       uright canvas instead of rendering as a gray slab;
+     - prefer the fixed <html data-bs-theme> over Theme.resolvedTheme, which
+       reports the OS preference even when theme_mode pins the site to dark.
+     Re-sync with the gem when upgrading Chirpy: its Theme JS API changes
+     between minor versions. -->
 <script>
   (function () {
-    const themeMapper = Theme.getThemeMapper('light', 'transparent_dark');
-    const initTheme = themeMapper[Theme.visualState];
+    const themeMap = Theme.newThemeMap('light', 'transparent_dark');
+    const resolvedTheme = () =>
+      document.documentElement.dataset.bsTheme || Theme.resolvedTheme;
+    const initTheme = themeMap[resolvedTheme()];
 
     let lang = '{{ site.comments.giscus.lang | default: lang }}';
     {%- comment -%} https://github.com/giscus/giscus/tree/main/locales {%- endcomment -%}
@@ -40,8 +46,8 @@
     $footer.insertAdjacentElement("beforebegin", giscusNode);
 
     addEventListener('message', (event) => {
-      if (event.source === window && event.data && event.data.id === Theme.ID) {
-        const newTheme = themeMapper[Theme.visualState];
+      if (event.source === window && event.data && event.data.id === Theme.eventId) {
+        const newTheme = themeMap[resolvedTheme()];
 
         const message = {
           setConfig: {
@@ -49,9 +55,19 @@
           }
         };
 
-        const giscus =
-          document.getElementsByClassName('giscus-frame')[0].contentWindow;
-        giscus.postMessage({ giscus: message }, 'https://giscus.app');
+        const iframe = document.querySelector('.giscus-frame');
+
+        if (!iframe) {
+          return;
+        }
+
+        if (iframe.classList.contains('giscus-frame--loading')) {
+          let url = new URL(iframe.src);
+          url.searchParams.set('theme', newTheme);
+          iframe.src = url.toString();
+        }
+
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
       }
     });
   })();

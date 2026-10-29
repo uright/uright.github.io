@@ -5,11 +5,10 @@ layout: compress
 <!doctype html>
 {% include origin-type.html %}
 {% include lang.html %}
-{% if site.theme_mode %}
-  {% capture prefer_mode %}data-mode="{{ site.theme_mode }}"{% endcapture %}
-{% else %}
-  {% capture prefer_mode %}data-mode="dark"{% endcapture %}
-{% endif %}
+{% comment %}Chirpy <=7.3 keys its color mode off data-mode; 7.4+ (Bootstrap 5.3)
+   uses data-bs-theme. Emit both so the fixed mode holds on either gem version.{% endcomment %}
+{% assign _mode = site.theme_mode | default: 'dark' %}
+{% capture prefer_mode %}data-mode="{{ _mode }}" data-bs-theme="{{ _mode }}"{% endcapture %}
 <html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
   <body>
