@@ -87,11 +87,12 @@
 
 @media (max-width: 1024px) { .ur-article { padding: 24px 18px 60px; } }
 
-/* Disqus panel: JS injects #disqus_thread as a direct child of <main>, so it
-   spans the full main width (not the centered 760px article) and its iframe can
-   push past the viewport, creating a horizontal scrollbar. Constrain it to the
-   article column and clamp width so the embed never overflows. */
-#disqus_thread {
+/* Giscus panel: client.js inserts .giscus right before <footer>, a direct
+   child of <main>, so it spans the full main width (not the centered 760px
+   article) and its iframe can push past the viewport, creating a horizontal
+   scrollbar. Constrain it to the article column and clamp width so the embed
+   never overflows. */
+.giscus {
   box-sizing: border-box;
   max-width: 760px;
   width: 100%;
@@ -99,8 +100,8 @@
   padding: 0 44px;
   overflow-x: hidden;
 }
-#disqus_thread iframe { max-width: 100% !important; }
-@media (max-width: 1024px) { #disqus_thread { padding: 0 18px; } }
+.giscus-frame { max-width: 100% !important; }
+@media (max-width: 1024px) { .giscus { padding: 0 18px; } }
 
 /* Tail includes (Related posts "Further Reading" + post navigation) render in
    #tail-wrapper, outside .ur-article, so they miss the centered 760px column
