@@ -4,6 +4,9 @@ description: "Claude Max includes $100 of API credit every month, but interactiv
 date: 2026-11-01 12:51:04 -0500
 categories: [Claude Code, AI & LLMs]
 tags: [claude-code, anthropic, pi, api, tips]
+image:
+  path: /assets/img/2026-11-01-claude-api-credit-with-pi/hero.png
+  alt: "A Claude Code 'Credit balance is too low' error, with $100 of monthly API credit flowing to the Pi coding agent instead"
 mermaid: true
 ---
 
