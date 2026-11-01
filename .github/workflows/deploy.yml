@@ -59,6 +59,8 @@ jobs:
 
   # Deployment job
   deploy:
+    # PRs only build; deploying is blocked by github-pages environment protection
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
