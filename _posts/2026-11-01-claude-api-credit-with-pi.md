@@ -17,9 +17,16 @@ So I created an API key, pointed Claude Code at it, and got this:
 API error: Credit balance is too low
 ```
 
-To my surprise, **the API credit can't be used in Claude Code itself.** It isn't a balance problem. Claude Code just isn't something the credit pays for.
+To my surprise, **the API credit can't be used in Claude Code itself**, at least not in an interactive session (more on the exception below). It isn't a balance problem. Interactive Claude Code just isn't something the credit pays for.
 
 The workaround I've settled on is the [Pi coding agent](https://github.com/earendil-works/pi). Pi runs on a plain Anthropic API key, so the credit covers it. This post shows how to claim the credit, why Claude Code rejects it, and how to set up Pi so the $100 doesn't expire unused.
+
+> **TL;DR**
+> 1. claude.ai → **Settings > Billing** → **API credits** → **Link organization**
+> 2. In the Console, create a workspace with a spend limit and an API key in it
+> 3. Install Pi: `curl -fsSL https://pi.dev/install.sh | sh`
+> 4. Run `pi`, then `/login` → Anthropic → **API key** (not the subscription login)
+{: .prompt-tip }
 
 ## Why Claude Code Rejects the Credit
 
@@ -53,6 +60,7 @@ graph LR
     K --> P["claude -p (headless)"]
     K --> SDK[Agent SDK / your own apps]
     K -.->|not covered| CC
+    linkStyle 6 stroke:#ef4444,stroke-width:2px,color:#ef4444
 ```
 
 ## Step 1: Claim Your Credit
@@ -125,7 +133,7 @@ pi
 
 Pick **Anthropic**, then choose the **API key** method and paste the key from Step 2. Pi saves it in `~/.pi/agent/auth.json`.
 
-> **Choose the API key, not the Anthropic browser/subscription login.** Pi also offers a subscription login for Anthropic. That bills your plan limits (which you've already used up) instead of the credit. It's also the path Anthropic's terms warn about: OAuth is meant for "ordinary use of Claude Code and other native Anthropic applications", and third-party tools "should use API key authentication through Claude Console".
+> **Choose the API key, not the Anthropic browser/subscription login.** Pi also offers a subscription login for Anthropic. That bills your plan limits (which you've already used up) instead of the credit. It's also the path Anthropic's terms warn about: subscription OAuth is meant for "ordinary use of Claude Code and other native Anthropic applications", and the help center says the preferred way to use third-party tools "is through API key authentication through Claude Console".
 {: .prompt-danger }
 
 Using `/login` has a nice side effect: the key lives in Pi's own config, not in your shell environment. That matters, because if `ANTHROPIC_API_KEY` is exported globally, interactive Claude Code will offer to use it, and you're back to the credit balance error (see Tips below).
@@ -135,6 +143,10 @@ Treat `~/.pi/agent/auth.json` like a password. Pi's docs warn that it "can conta
 If you prefer environment variables, scope the key to Pi only with an alias, the same pattern as my [Claude profile aliases](/posts/quick-tip-switching-between-claude-profiles-on-anthropic-and-bedrock/):
 
 ```bash
+# store the key in a file only you can read
+mkdir -p ~/.config && echo 'sk-ant-...' > ~/.config/anthropic-credit-key
+chmod 600 ~/.config/anthropic-credit-key
+
 alias pi-credit='ANTHROPIC_API_KEY=$(cat ~/.config/anthropic-credit-key) pi'
 ```
 
@@ -159,7 +171,7 @@ An agentic coding session can go through millions of tokens, so model choice mat
 | Haiku 5.5  | $0.10 | $0.50  | $0.01     |
 | Sonnet 5.5 | $2    | $10    | $0.10     |
 | Opus 5.5   | $4    | $20    | $0.20     |
-| Fable 5.1  | $10   | $50    | —         |
+| Fable 5.1  | $10   | $50    | $0.25     |
 
 Haiku 5.5's price applies to prompts up to 100K tokens ($0.50 / $2.50 above that). Prices are from Anthropic's [pricing page](https://platform.claude.com/docs/en/about-claude/pricing) as of November 2026.
 
@@ -175,7 +187,7 @@ A few things I keep in mind:
 
 **The credit doesn't raise your Claude Code limits.** The docs are explicit: "Credits don't change your usage limits in Claude or Claude Code." It's a separate pool that only API clients like Pi can spend.
 
-**Running out is safe.** When the credit is gone, API requests just stop until the next deposit. Your Claude plan is never charged, unless you've bought extra credits or turned on auto-reload in the Console. Included credits are always spent before purchased ones.
+**Running out is safe.** When the credit is gone, API requests just stop until the next deposit, unless you've bought credits or turned on auto-reload in the Console, in which case those get spent. Your Claude plan is never charged. Included credits are always spent before purchased ones.
 
 **Don't share the key.** The Supplemental Credit Terms say credits "may only be used by the holder of the Anthropic account" and can't be transferred or sold.
 
