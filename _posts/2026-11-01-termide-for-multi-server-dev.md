@@ -1,7 +1,7 @@
 ---
 title: "Termide: A Terminal IDE for Hopping Between Servers, Repos and Worktrees"
 description: "Why I swapped VS Code + code-server for Termide, a single-binary Rust terminal IDE, to work across several servers over ssh and herdr."
-date: 2026-11-01 12:40:00 -0500
+date: 2026-11-01 12:51:52 -0500
 categories: [DevOps]
 tags: [termide, terminal, ssh, herdr, git-worktree, tools]
 mermaid: true
