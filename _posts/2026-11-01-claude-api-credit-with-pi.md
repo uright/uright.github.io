@@ -11,10 +11,10 @@ mermaid: true
 
 My Anthropic Max subscription comes with **$100 of API credit every month**. That's handy, because I usually hit the plan's weekly usage limit before the week is over, and the credit is a natural way to keep going until the limit resets.
 
-So I created an API key, pointed Claude Code at it, and got an error telling me my credit balance was too low. Anthropic documents the message as:
+So I created an API key, pointed Claude Code at it, and got this:
 
 ```text
-Credit balance too low · Add funds: https://platform.claude.com/settings/billing
+API error: Credit balance is too low
 ```
 
 To my surprise, **the API credit can't be used in Claude Code itself.** It isn't a balance problem. Claude Code just isn't something the credit pays for.
@@ -32,7 +32,13 @@ This isn't a bug. Anthropic's [API credits documentation](https://platform.claud
 | Claude Agent SDK                            | Bedrock, Vertex, Foundry, Claude Platform on AWS    |
 | Console Playground                          |                                                     |
 
-When an organization holds *only* these credits and Claude Code sends a request, the docs say you get exactly the `Credit balance too low` message above.
+When an organization holds *only* these credits and Claude Code sends a request, the docs say Claude Code shows:
+
+```text
+Credit balance too low · Add funds: https://platform.claude.com/settings/billing
+```
+
+The wording I got was slightly different, but it's the same rejection.
 
 There's one nuance worth knowing. The [help center article](https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans) clarifies that only **interactive** Claude Code (terminal, IDE, desktop, web) is excluded. Running `claude -p` yourself with an API key from the linked organization **is** covered, and so is the Agent SDK. Runs started by the Claude Code GitHub Action, an IDE extension, or the desktop app count as Claude Code usage and aren't covered.
 
@@ -122,7 +128,7 @@ Pick **Anthropic**, then choose the **API key** method and paste the key from St
 > **Choose the API key, not the Anthropic browser/subscription login.** Pi also offers a subscription login for Anthropic. That bills your plan limits (which you've already used up) instead of the credit. It's also the path Anthropic's terms warn about: OAuth is meant for "ordinary use of Claude Code and other native Anthropic applications", and third-party tools "should use API key authentication through Claude Console".
 {: .prompt-danger }
 
-Using `/login` has a nice side effect: the key lives in Pi's own config, not in your shell environment. That matters, because if `ANTHROPIC_API_KEY` is exported globally, interactive Claude Code will offer to use it, and you're back to `Credit balance too low` (see Tips below).
+Using `/login` has a nice side effect: the key lives in Pi's own config, not in your shell environment. That matters, because if `ANTHROPIC_API_KEY` is exported globally, interactive Claude Code will offer to use it, and you're back to the credit balance error (see Tips below).
 
 Treat `~/.pi/agent/auth.json` like a password. Pi's docs warn that it "can contain API keys and OAuth tokens. Keep it private and do not commit it."
 
@@ -165,7 +171,7 @@ A few things I keep in mind:
 
 ## Tips
 
-**Keep `ANTHROPIC_API_KEY` out of your global shell profile.** When it's set, interactive Claude Code asks once whether to use it and remembers your answer. If you said yes, every `claude` session now goes to the API key and fails with `Credit balance too low`. Run `/status` to see which credential Claude Code is using, flip **Use custom API key** in `/config`, or `unset ANTHROPIC_API_KEY` to go back to your subscription.
+**Keep `ANTHROPIC_API_KEY` out of your global shell profile.** When it's set, interactive Claude Code asks once whether to use it and remembers your answer. If you said yes, every `claude` session now goes to the API key and fails with the credit balance error. Run `/status` to see which credential Claude Code is using, flip **Use custom API key** in `/config`, or `unset ANTHROPIC_API_KEY` to go back to your subscription.
 
 **The credit doesn't raise your Claude Code limits.** The docs are explicit: "Credits don't change your usage limits in Claude or Claude Code." It's a separate pool that only API clients like Pi can spend.
 
@@ -175,4 +181,4 @@ A few things I keep in mind:
 
 ## All Set!
 
-If you're on Max, you already have $100 of API credit a month, and if you've only tried it in Claude Code, you've probably seen `Credit balance too low` and given up. Link your plan to a Console organization, give Pi an API key from it, and that credit becomes a weekly-limit fallback that costs nothing extra. If you want more options, [Muse Spark](/posts/using-claude-code-with-muse-spark-subscription/) and [NVIDIA NIM](/posts/running-claude-code-for-free-with-nvidia-nim/) are still good backups too.
+If you're on Max, you already have $100 of API credit a month, and if you've only tried it in Claude Code, you've probably seen a "credit balance is too low" error and given up. Link your plan to a Console organization, give Pi an API key from it, and that credit becomes a weekly-limit fallback that costs nothing extra. If you want more options, [Muse Spark](/posts/using-claude-code-with-muse-spark-subscription/) and [NVIDIA NIM](/posts/running-claude-code-for-free-with-nvidia-nim/) are still good backups too.
