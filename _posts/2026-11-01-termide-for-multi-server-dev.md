@@ -4,6 +4,9 @@ description: "Why I swapped VS Code + code-server for Termide, a single-binary R
 date: 2026-11-01 12:51:52 -0500
 categories: [DevOps]
 tags: [termide, terminal, ssh, herdr, git-worktree, tools]
+image:
+  path: /assets/img/2026-11-01-termide-for-multi-server-dev/hero.png
+  alt: "Termide terminal IDE window connected to three servers, with theme swatches fanned behind it"
 mermaid: true
 ---
 
