@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Mounted repo is owned by the host user; let git (used by the lastmod plugin) read it
+RUN git config --global --add safe.directory /srv/jekyll
+
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile* ./
 

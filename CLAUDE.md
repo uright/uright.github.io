@@ -16,9 +16,9 @@ thing needed to work here productively (see Architecture below).
 Dev server (Docker, no local Ruby needed):
 
 ```bash
-docker-compose up --build          # serves at http://localhost:4000, LiveReload on 35729
-docker-compose down
-docker-compose run --rm jekyll bundle exec jekyll build   # production build
+docker compose up --build          # serves at http://localhost:4000, LiveReload on 35729
+docker compose down
+docker compose run --rm jekyll bundle exec jekyll build   # production build
 ```
 
 Dev server (local Ruby):
