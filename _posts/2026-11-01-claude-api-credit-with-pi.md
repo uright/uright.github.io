@@ -1,7 +1,7 @@
 ---
 title: "Use Your Claude Max API Credit with Pi When You Hit the Weekly Limit"
 description: "Claude Max includes $100 of API credit every month, but interactive Claude Code won't spend it. Here's how to claim it and put it to work in the Pi coding agent."
-date: 2026-11-01 12:30:00 -0500
+date: 2026-11-01 12:51:04 -0500
 categories: [Claude Code, AI & LLMs]
 tags: [claude-code, anthropic, pi, api, tips]
 mermaid: true
